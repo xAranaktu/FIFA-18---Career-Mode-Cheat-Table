@@ -4,10 +4,10 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
 
 
 # Table of Contents
-   * [Frequently asked questions](#F.A.Q)
+   * [Frequently asked questions](#f.a.q)
    * [Getting Started](#getting-started)
-   * [The Journey](#The-Journey)
-   * [Sim Match Settings](#Sim-Match-Settings)
+   * [The Journey](#the-journey)
+   * [Sim Match Settings](#sim-match-settings)
 
 ## F.A.Q
 
