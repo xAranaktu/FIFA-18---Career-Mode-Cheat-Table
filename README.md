@@ -9,6 +9,10 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
    * [Video Tutorials](#video-tutorials)
    * [The Journey](#the-journey)
    * [Sim Match Settings](#sim-match-settings)
+   * [Free & Unlimited Releasing Players](#free-and-unlimited-releasing-players)
+   * [Contract Negotiation](#contract-negotiation)
+   * [Editing Player](#editing-player)
+
 
 ## F.A.Q
 
@@ -21,7 +25,7 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
 
 
 * **It's possible to make X/Y/Z?**
-  - It's my favorite question. Guys, basically everything is possible, but not everything is worth doing. Do you want to play as Mario? Sure, it's possible, but I'll not spend 5 years on trying to import Mario model to the game just because one crazy guy wants to replace Messi with Italian plumber. If you have got a request write [here](https://github.com/xAranaktu/FIFA-18---Career-Mode-Cheat-Table/labels/request) and maybe one day you will see it added to the table.
+  - It's my favourite question. Guys, basically everything is possible, but not everything is worth doing. Do you want to play as Mario? Sure, it's possible, but I'll not spend 5 years on trying to import Mario model to the game just because one crazy guy wants to replace Messi with Italian plumber. If you have got a request write [here](https://github.com/xAranaktu/FIFA-18---Career-Mode-Cheat-Table/labels/request) and maybe one day you will see it added to the table.
 
 
 * **Why cracked version is not supported?**
@@ -66,3 +70,49 @@ Or mine YouTube channel, if you like watching videos without sound -> [Pawelek21
 
 * **Max_injuries = 0**
   - Players in both teams will not get injured during match simulation.
+
+## Free and Unlimited Releasing Players
+* **Free & Unlimited Releasing Players**
+  - By default, the game is allowing us to release only 2 or 3 players from your club during season. This script is allowing you to release as many players as you want from your club without paying anything. Remeber that you can't have less than 20 players in your senior team.
+
+## Contract Negotiation
+Any terms you set here will be accepted by the player during contract negotiations.
+
+[Contract Negotiation - Video Tutorial by Und3rcov3r Nerd
+](https://youtu.be/Y9t2QilaC8M?t=65)
+
+* **Contract Negotiation**
+  - Wage - Self-explanatory. It's 500 by default. 
+  - Contract Length - Self-explanatory. It's 72 by default (6 years). 
+  - Release Clause - Self-explanatory. It's 0 by default, so a player will not have a release clause. 
+  - Squad Role - It's 5 by default. 5 = Prospect, 4 = Sporadic, 3 = Rotation, 2 = Important, 1 = Crucial
+  - Signing Bonus - It's 0 by default.
+  - Bonus Type - It's 0 by default. 0 = Appearances, 1 = Clean Sheets, 2 = Goals scored
+  - Bonus Type - Count - It's 50 by default. 
+  - Bonus Type - Sum - It's 5 by default. You will pay 5$ after player will reach bonus type count.
+
+## Editing Player
+
+[Editing Player - Video Tutorial by Und3rcov3r Nerd
+](https://youtu.be/Y9t2QilaC8M?t=296)
+[Editing Player Name](https://youtu.be/OvjyZ4nKL_U?t=37)
+
+* **Unlock "Edit Player" in career menu**
+  - This is equivalent to buying "Edit player in career" in EASFC Catalogue. Nothing more.
+
+* **Easy Player Edit**
+  - Activate this script and in-game go to "Squad->Edit Player-> Choose the player you want to edit", go back to the table and make your changes. Make sure you "Apply & exit" in-game, otherwise, your changes will not save. 
+  - If you want to edit "Known As" make sure that you picked a player with "Known as" to initialize pointers. As you can see on [Video](https://youtu.be/OvjyZ4nKL_U?t=37) I'm picking Isco, because he has a "Known as" name.
+
+* **Player_Data**
+  - [Video](https://youtu.be/Y9t2QilaC8M?t=552). This script is also allowing us to edit player, but it's riskier. Here we are overwritting data in database, so there is a risk that we overwrite something 
+sensitive and our career mode will be screwed because of this. 
+  - If you don't know how to change birthdate check [F.A.Q](#f.a.q). Or use "Easy Player Edit"
+  - Base value is 1 (Cheat engine will display 0), so max. value for attributes is 98 (it will be 99 in-game).
+  - If you don't know how to change traits check [F.A.Q](#f.a.q)
+  - Height - Base value is 130cm. So, if you put 0 in cheat engine that means your player will be a 130cm height. You shouldn't go over 215cm (85 in CE).
+  - Weight - Base value is 30kg. So, if you put 0 in cheat engine that means your player weight will be a 30kg. You shouldn't go over 115kg (85 in CE).
+  - Max. value for skill moves and weak foot is 4 (it will be 5 in-game)
+  - attackingworkrate & defensiveworkrate. 0 = medium, 1 = low, 2 = high
+
+ 
