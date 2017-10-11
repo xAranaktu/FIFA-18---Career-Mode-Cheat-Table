@@ -95,6 +95,7 @@ Any terms you set here will be accepted by the player during contract negotiatio
 
 [Editing Player - Video Tutorial by Und3rcov3r Nerd
 ](https://youtu.be/Y9t2QilaC8M?t=296)
+
 [Editing Player Name](https://youtu.be/OvjyZ4nKL_U?t=37)
 
 * **Unlock "Edit Player" in career menu**
