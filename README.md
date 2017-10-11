@@ -9,7 +9,7 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
    * [The Journey](#The-Journey)
    * [Sim Match Settings](#Sim-Match-Settings)
 
-# F.A.Q
+## F.A.Q
 
 * **Can you make a cheat for FUT/Pro Clubs?**
   - No, I can't. Stop asking about that.
@@ -35,16 +35,16 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
   - It's a right time to use your save backup. :)
 
 
-# Getting Started
+## Getting Started
 
 After you unzip the archive you probably notice that there are actually two cheat tables. So, which one you should use? If you have a trial game version (Origin Access) then use "FIFA18_TRIAL.exe - Career Table.CT", otherwise use "FIFA18 - Career Table.CT". To open this file you need to install [Cheat Engine](http://www.cheatengine.org/downloads.php). I'd recommend to download and install the newest version of it.
 
-# Video Tutorials
+## Video Tutorials
 
 If you like watching video tutorials then you should check a YouTube channel of this guy -> [Und3rcov3r Nerd](https://www.youtube.com/channel/UCmw8d7G15f-zk1TvzYwYiiQ)
 Or mine YouTube channel, if you like watching videos without sound -> [Pawelek212](https://www.youtube.com/user/Pawelek212/videos)
 
-# The Journey
+## The Journey
 
 * **99 Skill Points**
   -  99 Skill points available to spend in The Journey game mode.
@@ -57,7 +57,7 @@ Or mine YouTube channel, if you like watching videos without sound -> [Pawelek21
 * **999,999 Followers**
   - 999,999 Followers on Alex Hunter social media profile.
 
-# Sim Match Settings
+## Sim Match Settings
 
 * **Max_cards = 0**
   - Players in both teams will not receive any cards during match simulation.
