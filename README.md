@@ -6,6 +6,7 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
 # Table of Contents
    * [Frequently asked questions](#f.a.q)
    * [Getting Started](#getting-started)
+   * [Video Tutorials](#video-tutorials)
    * [The Journey](#the-journey)
    * [Sim Match Settings](#sim-match-settings)
 
