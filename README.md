@@ -127,7 +127,8 @@ sensitive and our career mode will be screwed because of this.
 
  ## Traits
  
- Make sure you type a value by using your keyboard. Copy & paste method may not work
+ Make sure you type a value by using your keyboard. Copy & paste method may not work.
+ 
  Check [F.A.Q](#f.a.q) if you want to know how to add multiple traits.
 
 
