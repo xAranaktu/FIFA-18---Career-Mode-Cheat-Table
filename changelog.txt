@@ -1,0 +1,75 @@
+FIFA 18 - Career mode Cheat Table
+
+Changelog:
+
+	Update 29.09.2017:
+
+		- Added "Player Data". I'll probably add everything from table called "players" located in fifa database in upcoming days.
+		WARNING!! Make a backup save of your career mode progress before you edit anything in "Player Data". Otherwise you may lose your whole progress.
+		
+	
+	Update 30.09.2017
+
+		- Updated "Player Data". Most important stuff like skillmoves/hairs/potential etc. has been added. Let me know if I forgot about something important
+		- Added "Edit Job Offer". 
+		
+	Update 01.10.2017
+
+		- Maic updated his BootsID list! You can find it in first post! Thanks Maic! 
+		- Added preferredposition4 to "Player Data"
+		- Added "The Journey" -> "99 Skill Points".
+		- Added "Youth Academy".
+		
+	Update 03.10.2017
+
+		- Added qasar80's script (without "training_progress.ini")
+		- "Easy Player Edit" script. In FIFA 18 go to Squad -> Edit Player -> Choose player you want to edit -> make your changes in table
+		- Added "PLAYERREGEN = 0" to "Youth Academy".
+		
+	Update 04.10.2017
+
+		- Added some pointers to "Easy Player Edit".
+		
+	Update 07.10.2017
+
+		- Addresses updated. All functions should work with latest game update.
+		
+	Update 09.10.2017
+		
+		- Added "Sim Match Settings"
+		- Added option to edit player attributes in "The Journey"
+		- Added script "999,999 Followers" for "The Journey"
+		- Added "Contract Negotiation" - https://youtu.be/K5CxZVT9geQ
+		- Added "facialhairtypecode" to "Player_Data->Appearance"
+		
+	Update 10.10.2017
+		
+		- Removed User's Scripts
+		- Added script allowing to release unlimited amount of player from club, for free. (https://youtu.be/OvjyZ4nKL_U)
+		- Added pointer for "Position ID", "First Name", "Last Name", "Name on shirt" and "Known as" to "Easy Player Edit" (https://youtu.be/OvjyZ4nKL_U)
+
+	Update 12.10.2017
+		- Fixed "Training Everyday".
+		- Added "Unlimited Training Sessions" https://youtu.be/-I-9y33HmRE
+		
+	Update 14.10.2017
+	    - Added "Don't lose stamina" to "Sim Match Settings"
+		- Added "Transfer Window Configuration->Transfer.ini & Transfers.ini"
+		- Added all attributes to "Easy Player Edit"
+		- Added "Commentary Name ID" to "Easy Player Edit". Just to test, It's probably not working atm.
+		- Added "Set up multiple scouting networks in the same country" to "Youth Academy"
+		- Removed "PLAYERREGEN = 0"
+		
+	Update 16.10.2017
+		- Added "Send scout to any country" to "Youth Academy"
+		- Added "Ultimate Difficulty" and "Change Stadium" to "Match Settings"
+		- Editing traits is now more user friendly. (Thanks to lampuiho)
+		
+	Update 17.10.2017 FINAL (?)
+		- Added "TeamID" to "Player_Data->Player Info". - It's for more advenced users, don't use it on your main career.
+		
+	Update 19.10.2017 FINAL (????)
+		- Added "ClubID" to "Edit Job Offer"
+		
+	Update 20.10.2017
+		- Added "Side Changer" - Watching match (CPU vs. CPU) in career mode is now possible.	
