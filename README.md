@@ -34,7 +34,7 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
 
 
 * **How can I edit player traits?**
-  - Traits list is available [here](#traits). If you want to add more than 1 trait then you need to sum values of traits in windows calculator. for example, 2 - Long Throw-in & 4 - Power free kick. 2 + 4 = 6. If you set value of "traits1" to "6" in Cheat table your player will have "Long Throw-in" and "Power free kick" traits.
+  - Traits list is available [here](#traits). For older Cheat table version, if you want to add more than 1 trait then you need to sum values of traits in windows calculator. for example, 2 - Long Throw-in & 4 - Power free kick. 2 + 4 = 6. If you set value of "traits1" to "6" in Cheat table your player will have "Long Throw-in" and "Power free kick" traits. In newer versions just replace '0' with '1'.
 
 
 * **Why cracked version is not supported?**
@@ -42,11 +42,17 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
 
 
 * **After activating function nothing happens, what's wrong?**
-  - Try to restart the game and cheat engine, or maybe even your PC. If it's not helping try to use older versions of cheat table.
+  - Try to restart the game and cheat engine, or maybe even your PC, also make sure you have started FIFA before cheat engine and you are attached to the game process. If it's not helping try to use older versions of cheat table.
 
 
 * **My game is crashing.**
   - It's a right time to use your save backup. :)
+
+* **How to keep options in cheat table activated permanently?**
+  - You can use lua to make your life easier. There is a .lua script in folder with cheat table called "autoattach.lua". [here](http://fearlessrevolution.com/viewtopic.php?f=4&t=4976&p=21649#p21608) you can read how to use it.
+
+* **What's "Transfer.ini & Transfers.ini"?**
+  - This script is allowing to edit some settings from these .ini files. Generally, it can be used to make transfer window more active. This script is using default settings, you need to edit it to see any different in game. Right click -> Change script -> Edit what you want to edit (Just change value after "#".) -> Ok -> Activate script -> Load your career save. [Here's my config](https://pastebin.com/9QAkY79D)
 
 
 ## Getting Started
