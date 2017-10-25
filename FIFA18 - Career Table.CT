@@ -76,7 +76,7 @@
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem_hunterskillpoints,2048,"FIFA18.exe"+31DADD0)
+alloc(newmem_hunterskillpoints,2048,"FIFA18.exe"+31DAE20)
 label(returnhere)
 label(originalcode)
 label(exit)
@@ -92,7 +92,7 @@ int 3
 exit:
 jmp returnhere
 
-"FIFA18.exe"+31DADD0:
+"FIFA18.exe"+31DAE20:
 jmp newmem_hunterskillpoints
 returnhere:
 
@@ -102,36 +102,36 @@ returnhere:
 [DISABLE]
 //code from here till the end of the code will be used to disable the cheat
 dealloc(newmem_hunterskillpoints)
-"FIFA18.exe"+31DADD0:
+"FIFA18.exe"+31DAE20:
 mov eax,[rdx+50]
 ret
 int 3
 {
 // 48 89 D9 41 FF 90 F8 00 00 00
-"FIFA18.exe"+AB1FCAE: 48 85 DB                    -  test rbx,rbx
-"FIFA18.exe"+AB1FCB1: 74 2A                       -  je FIFA18.exe+AB1FCDD
-"FIFA18.exe"+AB1FCB3: 48 8B 4F 20                 -  mov rcx,[rdi+20]
-"FIFA18.exe"+AB1FCB7: 48 8B 01                    -  mov rax,[rcx]
-"FIFA18.exe"+AB1FCBA: FF 50 40                    -  call qword ptr [rax+40]
-"FIFA18.exe"+AB1FCBD: 48 8B 10                    -  mov rdx,[rax]
-"FIFA18.exe"+AB1FCC0: 48 89 C1                    -  mov rcx,rax
-"FIFA18.exe"+AB1FCC3: FF 92 C8 00 00 00           -  call qword ptr [rdx+000000C8]
-"FIFA18.exe"+AB1FCC9: 4C 8B 03                    -  mov r8,[rbx]
-"FIFA18.exe"+AB1FCCC: 48 89 C2                    -  mov rdx,rax
+"FIFA18.exe"+9E2545E: 48 85 DB                                   -  test rbx,rbx
+"FIFA18.exe"+9E25461: 74 2E                                      -  je FIFA18.exe+9E25491
+"FIFA18.exe"+9E25463: 48 8B 4F 20                                -  mov rcx,[rdi+20]
+"FIFA18.exe"+9E25467: 48 8B 01                                   -  mov rax,[rcx]
+"FIFA18.exe"+9E2546A: FF 50 40                                   -  call qword ptr [rax+40]
+"FIFA18.exe"+9E2546D: 48 8B 10                                   -  mov rdx,[rax]
+"FIFA18.exe"+9E25470: 48 89 C1                                   -  mov rcx,rax
+"FIFA18.exe"+9E25473: FF 92 C8 00 00 00                          -  call qword ptr [rdx+000000C8]
+"FIFA18.exe"+9E25479: 4C 8B 03                                   -  mov r8,[rbx]
+"FIFA18.exe"+9E2547C: 48 89 C2                                   -  mov rdx,rax
 // ---------- INJECTING HERE ----------
-"FIFA18.exe"+AB1FCCF: 48 89 D9                    -  mov rcx,rbx
-"FIFA18.exe"+AB1FCD2: 41 FF 90 F8 00 00 00        -  call qword ptr [r8+000000F8]
+"FIFA18.exe"+9E2547F: 48 89 D9                                   -  mov rcx,rbx
+"FIFA18.exe"+9E25482: 41 FF 90 F8 00 00 00                       -  call qword ptr [r8+000000F8]
 // ---------- DONE INJECTING  ----------
-"FIFA18.exe"+AB1FCD9: 89 C7                       -  mov edi,eax
-"FIFA18.exe"+AB1FCDB: EB 02                       -  jmp FIFA18.exe+AB1FCDF
-"FIFA18.exe"+AB1FCDD: 31 FF                       -  xor edi,edi
-"FIFA18.exe"+AB1FCDF: 48 85 DB                    -  test rbx,rbx
-"FIFA18.exe"+AB1FCE2: 74 0A                       -  je FIFA18.exe+AB1FCEE
-"FIFA18.exe"+AB1FCE4: 48 8B 03                    -  mov rax,[rbx]
-"FIFA18.exe"+AB1FCE7: 48 89 D9                    -  mov rcx,rbx
-"FIFA18.exe"+AB1FCEA: FF 50 08                    -  call qword ptr [rax+08]
-"FIFA18.exe"+AB1FCED: 90                          -  nop
-"FIFA18.exe"+AB1FCEE: 89 F8                       -  mov eax,edi
+"FIFA18.exe"+9E25489: 89 C7                                      -  mov edi,eax
+"FIFA18.exe"+9E2548B: EB 06                                      -  jmp FIFA18.exe+9E25493
+"FIFA18.exe"+9E2548D: 21 0E                                      -  and [rsi],ecx
+"FIFA18.exe"+9E2548F: AC                                         -  lodsb
+"FIFA18.exe"+9E25490: 00 31                                      -  add [rcx],dh
+"FIFA18.exe"+9E25492: FF 48 85                                   -  dec [rax-7B]
+"FIFA18.exe"+9E25495: DB                                         -
+"FIFA18.exe"+9E25496: 74 0A                                      -  je FIFA18.exe+9E254A2
+"FIFA18.exe"+9E25498: 48 8B 03                                   -  mov rax,[rbx]
+"FIFA18.exe"+9E2549B: 48 89 D9                                   -  mov rcx,rbx
 }
 </AssemblerScript>
             </CheatEntry>
@@ -1199,32 +1199,6 @@ dealloc(ptrEasyEditKnownAs)
                           <Offsets>
                             <Offset>0</Offset>
                           </Offsets>
-                        </CheatEntry>
-                      </CheatEntries>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1665</ID>
-                      <Description>"Commentary Name ID (?)"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrEasyEdit</Address>
-                      <Offsets>
-                        <Offset>68</Offset>
-                        <Offset>410</Offset>
-                        <Offset>0</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1668</ID>
-                      <Description>"Commentary Name ID's"</Description>
-                      <Options moHideChildren="1"/>
-                      <LastState Value="" RealAddress="00000000"/>
-                      <GroupHeader>1</GroupHeader>
-                      <CheatEntries>
-                        <CheatEntry>
-                          <ID>1669</ID>
-                          <Description>"http://www.redmessi.at/commentary-fifa-18/"</Description>
-                          <LastState Value="" RealAddress="00000000"/>
-                          <GroupHeader>1</GroupHeader>
                         </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
