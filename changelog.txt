@@ -72,4 +72,7 @@ Changelog:
 		- Added "ClubID" to "Edit Job Offer"
 		
 	Update 20.10.2017
-		- Added "Side Changer" - Watching match (CPU vs. CPU) in career mode is now possible.	
+		- Added "Side Changer" - Watching match (CPU vs. CPU) in career mode is now possible.
+
+	Update 26.10.2017
+		- Working with FIFA 18 TITLE UPDATE 3
