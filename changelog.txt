@@ -76,3 +76,6 @@ Changelog:
 
 	Update 26.10.2017
 		- Working with FIFA 18 TITLE UPDATE 3
+		
+	Update 07.11.2017
+		- Added "Unlimited Substitutions" and "Disable Substitutions" to "In-Game Hacks"
