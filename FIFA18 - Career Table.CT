@@ -59,7 +59,7 @@
       <ID>1106</ID>
       <Description>"ActivateItFirst"</Description>
       <Options moHideChildren="1"/>
-      <LastState Value="" RealAddress="00000000"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -6528,7 +6528,7 @@ dealloc(ptr_YA_NatID)
           <ID>599</ID>
           <Description>"In-Game Hacks"</Description>
           <Options moHideChildren="1"/>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 aobscanmodule(INJECT_ingame_stamina,FIFA18.exe,F3 0F 10 B1 A4 00 00 00 48) // should be unique
@@ -7026,25 +7026,26 @@ getAddressList().getMemoryRecordByDescription("TIME").Value=0
               <ID>1879</ID>
               <Description>"Substitutions"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
+              <LastState Value="" Activated="1" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
                   <ID>18</ID>
                   <Description>"Unlimited Substitutions"</Description>
-                  <LastState/>
+                  <LastState Activated="1"/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_UnlimitedSubstitutions,FIFA18.exe,8B 84 11 48 8D 00 00) // should be unique
-alloc(newmem_UnlimitedSubstitutions,$1000,"FIFA18.exe"+14EDC7A)
+aobscanmodule(INJECT_UnlimitedSubstitutions,FIFA18.exe,48 69 D0 AC 04 00 00 8B 84 0A 48) // should be unique
+alloc(newmem_UnlimitedSubstitutions,$1000,"FIFA18.exe"+14EDC73)
 
 label(code_UnlimitedSubstitutions)
 label(ret_UnlimitedSubstitutions)
 
 newmem_UnlimitedSubstitutions:
-  mov [rcx+rdx+00008D48], #7
+
 code_UnlimitedSubstitutions:
-  mov eax,[rcx+rdx+00008D48]
+  imul rdx,rax,000004AC
+  mov [rcx+rdx+00008D48], #7
   jmp ret_UnlimitedSubstitutions
 
 INJECT_UnlimitedSubstitutions:
@@ -7057,14 +7058,15 @@ registersymbol(INJECT_UnlimitedSubstitutions)
 [DISABLE]
 //code_UnlimitedSubstitutions from here till the end of the code_UnlimitedSubstitutions will be used to disable the cheat
 INJECT_UnlimitedSubstitutions:
-  db 8B 84 11 48 8D 00 00
+  db 48 69 D0 AC 04 00 00
 
 unregistersymbol(INJECT_UnlimitedSubstitutions)
 dealloc(newmem_UnlimitedSubstitutions)
 
 {
-// ORIGINAL code_UnlimitedSubstitutions - INJECTION POINT: "FIFA18.exe"+14EDC7A
+// ORIGINAL code_UnlimitedSubstitutions - INJECT_UnlimitedSubstitutionsION POINT: "FIFA18.exe"+14EDC73
 
+"FIFA18.exe"+14EDC67: CC                    -  int 3
 "FIFA18.exe"+14EDC68: CC                    -  int 3
 "FIFA18.exe"+14EDC69: CC                    -  int 3
 "FIFA18.exe"+14EDC6A: CC                    -  int 3
@@ -7074,10 +7076,10 @@ dealloc(newmem_UnlimitedSubstitutions)
 "FIFA18.exe"+14EDC6E: CC                    -  int 3
 "FIFA18.exe"+14EDC6F: CC                    -  int 3
 "FIFA18.exe"+14EDC70: 48 63 C2              -  movsxd  rax,edx
+// ---------- INJECT_UnlimitedSubstitutionsING HERE ----------
 "FIFA18.exe"+14EDC73: 48 69 D0 AC 04 00 00  -  imul rdx,rax,000004AC
-// ---------- INJECTING HERE ----------
-"FIFA18.exe"+14EDC7A: 8B 84 11 48 8D 00 00  -  mov eax,[rcx+rdx+00008D48]
-// ---------- DONE INJECTING  ----------
+// ---------- DONE INJECT_UnlimitedSubstitutionsING  ----------
+"FIFA18.exe"+14EDC7A: 8B 84 0A 48 8D 00 00  -  mov eax,[rdx+rcx+00008D48]
 "FIFA18.exe"+14EDC81: C3                    -  ret
 "FIFA18.exe"+14EDC82: CC                    -  int 3
 "FIFA18.exe"+14EDC83: CC                    -  int 3
@@ -7087,7 +7089,6 @@ dealloc(newmem_UnlimitedSubstitutions)
 "FIFA18.exe"+14EDC87: CC                    -  int 3
 "FIFA18.exe"+14EDC88: CC                    -  int 3
 "FIFA18.exe"+14EDC89: CC                    -  int 3
-"FIFA18.exe"+14EDC8A: CC                    -  int 3
 }
 </AssemblerScript>
                 </CheatEntry>
