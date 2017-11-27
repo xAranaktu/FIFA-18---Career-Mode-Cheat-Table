@@ -59,7 +59,7 @@
       <ID>1106</ID>
       <Description>"ActivateItFirst"</Description>
       <Options moHideChildren="1"/>
-      <LastState Value="" Activated="1" RealAddress="00000000"/>
+      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
@@ -2037,6 +2037,30 @@ dealloc(ptrTeamplayerlinks)
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
+                              <ID>1920</ID>
+                              <Description>"Is_Retiring"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>16</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1951</ID>
+                              <Description>"preferredfoot"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>49</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
                               <ID>1294</ID>
                               <Description>"OVR"</Description>
                               <VariableType>Binary</VariableType>
@@ -2089,7 +2113,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"FirstNameID"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
-                              <BitLength>15</BitLength>
+                              <BitLength>16</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -2101,7 +2125,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"LastNameID"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
-                              <BitLength>15</BitLength>
+                              <BitLength>16</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -2109,11 +2133,23 @@ dealloc(ptrTeamplayerlinks)
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
+                              <ID>1938</ID>
+                              <Description>"International Rep"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>39</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
                               <ID>853</ID>
                               <Description>"CommonNameID"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
-                              <BitLength>15</BitLength>
+                              <BitLength>16</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -2125,7 +2161,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"PlayerJerseyNameID"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
-                              <BitLength>15</BitLength>
+                              <BitLength>16</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -2149,7 +2185,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"playerjointeamdate"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
-                              <BitLength>18</BitLength>
+                              <BitLength>20</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -2185,7 +2221,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"preferredposition3"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>2</BitStart>
-                              <BitLength>5</BitLength>
+                              <BitLength>6</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -2209,7 +2245,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"Nationality"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
-                              <BitLength>8</BitLength>
+                              <BitLength>12</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -2221,7 +2257,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"birthdate"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
-                              <BitLength>18</BitLength>
+                              <BitLength>20</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -3306,6 +3342,42 @@ dealloc(ptrTeamplayerlinks)
                                     <Offset>A</Offset>
                                   </Offsets>
                                 </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1961</ID>
+                                  <Description>"Unknown"</Description>
+                                  <VariableType>Binary</VariableType>
+                                  <BitStart>4</BitStart>
+                                  <BitLength>1</BitLength>
+                                  <ShowAsBinary>0</ShowAsBinary>
+                                  <Address>playerDataPtr</Address>
+                                  <Offsets>
+                                    <Offset>A</Offset>
+                                  </Offsets>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1960</ID>
+                                  <Description>"Saves with Feet"</Description>
+                                  <VariableType>Binary</VariableType>
+                                  <BitStart>5</BitStart>
+                                  <BitLength>1</BitLength>
+                                  <ShowAsBinary>0</ShowAsBinary>
+                                  <Address>playerDataPtr</Address>
+                                  <Offsets>
+                                    <Offset>A</Offset>
+                                  </Offsets>
+                                </CheatEntry>
+                                <CheatEntry>
+                                  <ID>1959</ID>
+                                  <Description>"Set Play Specialist"</Description>
+                                  <VariableType>Binary</VariableType>
+                                  <BitStart>6</BitStart>
+                                  <BitLength>1</BitLength>
+                                  <ShowAsBinary>0</ShowAsBinary>
+                                  <Address>playerDataPtr</Address>
+                                  <Offsets>
+                                    <Offset>A</Offset>
+                                  </Offsets>
+                                </CheatEntry>
                               </CheatEntries>
                             </CheatEntry>
                           </CheatEntries>
@@ -3322,11 +3394,143 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"shoetypecode"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>7</BitStart>
-                              <BitLength>8</BitLength>
+                              <BitLength>9</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
                                 <Offset>2A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1966</ID>
+                              <Description>"shoedesigncode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>56</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1967</ID>
+                              <Description>"Shoe_Color_Code_1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>56</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1927</ID>
+                              <Description>"Shoe_Color_Code_2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>19</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1931</ID>
+                              <Description>"Accessory_colour_code_1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>24</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1970</ID>
+                              <Description>"Accessory_colour_code_2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>5B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1948</ID>
+                              <Description>"Accessory_colour_code_3"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>43</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1956</ID>
+                              <Description>"Accessory_colour_code_4"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>50</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1949</ID>
+                              <Description>"Accessory_Code_1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>44</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1965</ID>
+                              <Description>"Accessory_Code_2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>55</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1930</ID>
+                              <Description>"Accessory_code_3"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>24</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1923</ID>
+                              <Description>"Accessory_code_4"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>E</Offset>
                               </Offsets>
                             </CheatEntry>
                           </CheatEntries>
@@ -3339,11 +3543,23 @@ dealloc(ptrTeamplayerlinks)
                           <GroupHeader>1</GroupHeader>
                           <CheatEntries>
                             <CheatEntry>
+                              <ID>1935</ID>
+                              <Description>"GK - Glove Type Code"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>35</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
                               <ID>903</ID>
                               <Description>"Height"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
-                              <BitLength>6</BitLength>
+                              <BitLength>7</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -3367,7 +3583,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"headtypecode"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>3</BitStart>
-                              <BitLength>13</BitLength>
+                              <BitLength>14</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -3379,7 +3595,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"bodytypecode"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>6</BitStart>
-                              <BitLength>8</BitLength>
+                              <BitLength>7</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -3399,6 +3615,18 @@ dealloc(ptrTeamplayerlinks)
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
+                              <ID>1968</ID>
+                              <Description>"hairstylecode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>57</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
                               <ID>1301</ID>
                               <Description>"haircolorcode"</Description>
                               <VariableType>Binary</VariableType>
@@ -3408,6 +3636,18 @@ dealloc(ptrTeamplayerlinks)
                               <Address>playerDataPtr</Address>
                               <Offsets>
                                 <Offset>B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1952</ID>
+                              <Description>"sideburnscode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>49</Offset>
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
@@ -3424,14 +3664,38 @@ dealloc(ptrTeamplayerlinks)
                             </CheatEntry>
                             <CheatEntry>
                               <ID>1609</ID>
-                              <Description>"facialhaircolorcode (?)"</Description>
+                              <Description>"facialhaircolorcode"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>1</BitStart>
-                              <BitLength>3</BitLength>
+                              <BitLength>4</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
                                 <Offset>5C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1944</ID>
+                              <Description>"eyebrowcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>40</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1946</ID>
+                              <Description>"eyecolorcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>43</Offset>
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
@@ -3446,6 +3710,150 @@ dealloc(ptrTeamplayerlinks)
                                 <Offset>52</Offset>
                               </Offsets>
                             </CheatEntry>
+                            <CheatEntry>
+                              <ID>1953</ID>
+                              <Description>"skintypecode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>4B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1922</ID>
+                              <Description>"Jersey Style Code"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1932</ID>
+                              <Description>"Has Seasonal Jersey"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>28</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1947</ID>
+                              <Description>"jerseysleevelengthcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>43</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1964</ID>
+                              <Description>"jerseyfit"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>55</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1958</ID>
+                              <Description>"shortstyle"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>53</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1933</ID>
+                              <Description>"socklengthcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>34</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1925</ID>
+                              <Description>"Tattoo - Left Arm"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>6</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>F</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1926</ID>
+                              <Description>"Tattoo - Back Neck"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>6</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>12</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1936</ID>
+                              <Description>"Tattoo - Right Arm"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>6</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>36</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1954</ID>
+                              <Description>"Tattoo - Right Neck"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>6</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>4B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1962</ID>
+                              <Description>"Tattoo - Left Neck"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>6</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>54</Offset>
+                              </Offsets>
+                            </CheatEntry>
                           </CheatEntries>
                         </CheatEntry>
                         <CheatEntry>
@@ -3455,6 +3863,78 @@ dealloc(ptrTeamplayerlinks)
                           <LastState Value="" RealAddress="00000000"/>
                           <GroupHeader>1</GroupHeader>
                           <CheatEntries>
+                            <CheatEntry>
+                              <ID>1963</ID>
+                              <Description>"emotion"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>55</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1924</ID>
+                              <Description>"GK - SaveType"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>E</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1955</ID>
+                              <Description>"GK - Kick Style"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>4C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1934</ID>
+                              <Description>"Has Hight Quality Head"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>35</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1950</ID>
+                              <Description>"HeadClassCode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>47</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1957</ID>
+                              <Description>"Head Variation"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>52</Offset>
+                              </Offsets>
+                            </CheatEntry>
                             <CheatEntry>
                               <ID>1304</ID>
                               <Description>"skillmoves"</Description>
@@ -3508,7 +3988,7 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"runningcode1"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>1</BitStart>
-                              <BitLength>5</BitLength>
+                              <BitLength>7</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -3520,7 +4000,127 @@ dealloc(ptrTeamplayerlinks)
                               <Description>"runningcode2"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>6</BitStart>
-                              <BitLength>5</BitLength>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>40</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1945</ID>
+                              <Description>"modifier"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>41</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1918</ID>
+                              <Description>"animfreekickstartposcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>15</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1919</ID>
+                              <Description>"animpenaltieskickstylecode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>16</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1929</ID>
+                              <Description>"animpenaltiesapproachcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>21</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1939</ID>
+                              <Description>"animpenaltiesmotionstylecode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>39</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1969</ID>
+                              <Description>"animpenaltiesstartposcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>58</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1928</ID>
+                              <Description>"Finishing_Code_1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>1C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1942</ID>
+                              <Description>"Finishing_Code_2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>3c</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1941</ID>
+                              <Description>"usercaneditname"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>playerDataPtr</Address>
+                              <Offsets>
+                                <Offset>3C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1943</ID>
+                              <Description>"Is_Customized"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>1</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>playerDataPtr</Address>
                               <Offsets>
@@ -6528,7 +7128,7 @@ dealloc(ptr_YA_NatID)
           <ID>599</ID>
           <Description>"In-Game Hacks"</Description>
           <Options moHideChildren="1"/>
-          <LastState Activated="1"/>
+          <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 aobscanmodule(INJECT_ingame_stamina,FIFA18.exe,F3 0F 10 B1 A4 00 00 00 48) // should be unique
@@ -7026,13 +7626,13 @@ getAddressList().getMemoryRecordByDescription("TIME").Value=0
               <ID>1879</ID>
               <Description>"Substitutions"</Description>
               <Options moHideChildren="1"/>
-              <LastState Value="" Activated="1" RealAddress="00000000"/>
+              <LastState Value="" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
                 <CheatEntry>
                   <ID>18</ID>
                   <Description>"Unlimited Substitutions"</Description>
-                  <LastState Activated="1"/>
+                  <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 aobscanmodule(INJECT_UnlimitedSubstitutions,FIFA18.exe,48 69 D0 AC 04 00 00 8B 84 0A 48) // should be unique

@@ -79,3 +79,6 @@ Changelog:
 		
 	Update 07.11.2017
 		- Added "Unlimited Substitutions" and "Disable Substitutions" to "In-Game Hacks"
+		
+	Update 27.11.2017
+		- Added all missing columns from "players" table to "Player Data".
