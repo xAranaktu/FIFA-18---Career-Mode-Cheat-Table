@@ -82,3 +82,9 @@ Changelog:
 		
 	Update 27.11.2017
 		- Added all missing columns from "players" table to "Player Data".
+	
+	Update 23.12.2017
+		- Added "Transfer HUB" -> "Change Release Clause value to 1$" (Change will be permanent!)
+		- Added "Weather", "Time of Day", "Half Length" to "Match Settings"
+		- Fixed "Disable Substitutions" - You can choose which team will have disabled substitutions now.
+		- Added short guide explaining how to assign commentary name to a player to F.A.Q (https://github.com/xAranaktu/FIFA-18---Career-Mode-Cheat-Table/blob/master/README.md)

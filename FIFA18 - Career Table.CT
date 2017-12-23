@@ -5072,6 +5072,79 @@ dealloc(ClubID)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>1971</ID>
+          <Description>"Transfer HUB"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>8</ID>
+              <Description>"Change Release Clause value to 1$"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_EditReleaseClause,FIFA18.exe,8B 48 08 83 F9 FF 74 06) // should be unique
+alloc(newmem_EditReleaseClause,$1000,"FIFA18.exe"+356B9D7)
+
+label(code_EditReleaseClause)
+label(ret_EditReleaseClause)
+
+newmem_EditReleaseClause:
+  mov [rax+08], #1
+
+code_EditReleaseClause:
+  mov ecx,[rax+08]
+  cmp ecx,-01
+  jmp ret_EditReleaseClause
+
+INJECT_EditReleaseClause:
+  jmp newmem_EditReleaseClause
+  nop
+ret_EditReleaseClause:
+registersymbol(INJECT_EditReleaseClause)
+
+[DISABLE]
+
+INJECT_EditReleaseClause:
+  db 8B 48 08 83 F9 FF
+
+unregistersymbol(INJECT_EditReleaseClause)
+dealloc(newmem_EditReleaseClause)
+
+{
+// ORIGINAL code_EditReleaseClause - INJECTION POINT: "FIFA18.exe"+356B9D7
+
+"FIFA18.exe"+356B9BC: 0F 1F 40 00              -  nop [rax+00]
+"FIFA18.exe"+356B9C0: 39 30                    -  cmp [rax],esi
+"FIFA18.exe"+356B9C2: 75 05                    -  jne FIFA18.exe+356B9C9
+"FIFA18.exe"+356B9C4: 39 68 04                 -  cmp [rax+04],ebp
+"FIFA18.exe"+356B9C7: 74 09                    -  je FIFA18.exe+356B9D2
+"FIFA18.exe"+356B9C9: 48 83 C0 0C              -  add rax,0C
+"FIFA18.exe"+356B9CD: 48 3B C1                 -  cmp rax,rcx
+"FIFA18.exe"+356B9D0: 75 EE                    -  jne FIFA18.exe+356B9C0
+"FIFA18.exe"+356B9D2: 48 3B C1                 -  cmp rax,rcx
+"FIFA18.exe"+356B9D5: 74 0E                    -  je FIFA18.exe+356B9E5
+// ---------- INJECTING HERE ----------
+"FIFA18.exe"+356B9D7: 8B 48 08                 -  mov ecx,[rax+08]
+"FIFA18.exe"+356B9DA: 83 F9 FF                 -  cmp ecx,-01
+// ---------- DONE INJECTING  ----------
+"FIFA18.exe"+356B9DD: 74 06                    -  je FIFA18.exe+356B9E5
+"FIFA18.exe"+356B9DF: 89 8F C0 00 00 00        -  mov [rdi+000000C0],ecx
+"FIFA18.exe"+356B9E5: 48 8B 5C 24 60           -  mov rbx,[rsp+60]
+"FIFA18.exe"+356B9EA: 48 8B 6C 24 68           -  mov rbp,[rsp+68]
+"FIFA18.exe"+356B9EF: 48 8B 74 24 70           -  mov rsi,[rsp+70]
+"FIFA18.exe"+356B9F4: 48 8B 7C 24 78           -  mov rdi,[rsp+78]
+"FIFA18.exe"+356B9F9: 48 83 C4 50              -  add rsp,50
+"FIFA18.exe"+356B9FD: 41 5E                    -  pop r14
+"FIFA18.exe"+356B9FF: C3                       -  ret
+"FIFA18.exe"+356BA00: 40 55                    -  push rbp
+}
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
           <ID>1736</ID>
           <Description>"Transfer Window Configuration"</Description>
           <Options moHideChildren="1"/>
@@ -5781,6 +5854,258 @@ dealloc(StadiumID)
                   <Description>"StadiumID"</Description>
                   <VariableType>4 Bytes</VariableType>
                   <Address>StadiumID</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1981</ID>
+              <Description>"Time of Day"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_TimeOfDay,FIFA18.exe,8B 55 77 48 8B 4D 67) // should be unique
+alloc(newmem_TimeOfDay,$1000,"FIFA18.exe"+2C713F4)
+
+label(code_TimeOfDay)
+label(ret_TimeOfDay)
+
+alloc(TimeOfDay, 4)
+registersymbol(TimeOfDay)
+TimeOfDay:
+dd (int)2000
+
+newmem_TimeOfDay:
+  mov edx, [TimeOfDay]
+
+code_TimeOfDay:
+  mov rcx,[rbp+67]
+  jmp ret_TimeOfDay
+
+INJECT_TimeOfDay:
+  jmp newmem_TimeOfDay
+  nop
+  nop
+ret_TimeOfDay:
+registersymbol(INJECT_TimeOfDay)
+
+[DISABLE]
+//code_TimeOfDay from here till the end of the code_TimeOfDay will be used to disable the cheat
+INJECT_TimeOfDay:
+  db 8B 55 77 48 8B 4D 67
+
+unregistersymbol(INJECT_TimeOfDay)
+dealloc(newmem_TimeOfDay)
+unregistersymbol(TimeOfDay)
+dealloc(TimeOfDay)
+
+{
+// ORIGINAL code_TimeOfDay - INJECT_TimeOfDayION POINT: "FIFA18.exe"+2C713F4
+
+"FIFA18.exe"+2C713CB: 84 C0                    -  test al,al
+"FIFA18.exe"+2C713CD: 74 6D                    -  je FIFA18.exe+2C7143C
+"FIFA18.exe"+2C713CF: C7 45 77 00 00 00 00     -  mov [rbp+77],00000000
+"FIFA18.exe"+2C713D6: E8 75 B5 F2 FF           -  call FIFA18.exe+2B9C950
+"FIFA18.exe"+2C713DB: 48 8B C8                 -  mov rcx,rax
+"FIFA18.exe"+2C713DE: E8 3D 78 2C 00           -  call FIFA18.exe+2F38C20
+"FIFA18.exe"+2C713E3: 48 8B C8                 -  mov rcx,rax
+"FIFA18.exe"+2C713E6: 4C 8D 45 77              -  lea r8,[rbp+77]
+"FIFA18.exe"+2C713EA: BA 40 01 00 00           -  mov edx,00000140
+"FIFA18.exe"+2C713EF: E8 CC 90 DC FF           -  call FIFA18.exe+2A3A4C0
+// ---------- INJECT_TimeOfDayING HERE ----------
+"FIFA18.exe"+2C713F4: 8B 55 77                 -  mov edx,[rbp+77]
+"FIFA18.exe"+2C713F7: 48 8B 4D 67              -  mov rcx,[rbp+67]
+// ---------- DONE INJECT_TimeOfDayING  ----------
+"FIFA18.exe"+2C713FB: E8 90 F2 FF FF           -  call FIFA18.exe+2C70690
+"FIFA18.exe"+2C71400: 48 C7 45 CF FF FF FF FF  -  mov [rbp-31],FFFFFFFF
+"FIFA18.exe"+2C71408: C7 45 D7 FF FF FF FF     -  mov [rbp-29],FFFFFFFF
+"FIFA18.exe"+2C7140F: E8 3C B5 F2 FF           -  call FIFA18.exe+2B9C950
+"FIFA18.exe"+2C71414: 48 8B C8                 -  mov rcx,rax
+"FIFA18.exe"+2C71417: E8 04 78 2C 00           -  call FIFA18.exe+2F38C20
+"FIFA18.exe"+2C7141C: 48 8B C8                 -  mov rcx,rax
+"FIFA18.exe"+2C7141F: 4C 8D 45 CF              -  lea r8,[rbp-31]
+"FIFA18.exe"+2C71423: BA 78 00 00 00           -  mov edx,00000078
+"FIFA18.exe"+2C71428: E8 B3 12 DD FF           -  call FIFA18.exe+2A426E0
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1984</ID>
+                  <Description>"TimeOfDay"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>TimeOfDay</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1986</ID>
+              <Description>"Weather"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_Match_Weather,FIFA18.exe,83 F8 FF 0F 44 C6 EB) // should be unique
+alloc(newmem_Match_Weather,$1000,"FIFA18.exe"+2A37E7F)
+
+label(code_Match_Weather)
+label(ret_Match_Weather)
+
+alloc(Weather, 4)
+registersymbol(Weather)
+
+// Weather IDs:
+// 0 - Clear
+// 1 - Hazy
+// 2 - Cloudy
+// 3 - Rain
+// 4 - Showers
+// 5 - Snow
+// 6 - Flurries
+// 7 - Overcast
+// 8 - Foggy
+Weather:
+dd (int)0
+
+newmem_Match_Weather:
+  mov eax, [Weather]
+
+code_Match_Weather:
+  cmp eax,-01
+  cmove eax,esi
+  jmp ret_Match_Weather
+
+INJECT_Match_Weather:
+  jmp newmem_Match_Weather
+  nop
+ret_Match_Weather:
+registersymbol(INJECT_Match_Weather)
+
+[DISABLE]
+//code_Match_Weather from here till the end of the code_Match_Weather will be used to disable the cheat
+INJECT_Match_Weather:
+  db 83 F8 FF 0F 44 C6
+
+unregistersymbol(INJECT_Match_Weather)
+dealloc(newmem_Match_Weather)
+unregistersymbol(Weather)
+dealloc(Weather)
+
+{
+// ORIGINAL code_Match_Weather - INJECTION POINT: "FIFA18.exe"+2A37E7F
+
+"FIFA18.exe"+2A37E58: 3A 44 39 FF              -  cmp al,[rcx+rdi-01]
+"FIFA18.exe"+2A37E5C: 75 29                    -  jne FIFA18.exe+2A37E87
+"FIFA18.exe"+2A37E5E: 48 83 FF 08              -  cmp rdi,08
+"FIFA18.exe"+2A37E62: 75 EC                    -  jne FIFA18.exe+2A37E50
+"FIFA18.exe"+2A37E64: E8 E7 62 0E FF           -  call FIFA18.exe+1B1E150
+"FIFA18.exe"+2A37E69: 48 8B C8                 -  mov rcx,rax
+"FIFA18.exe"+2A37E6C: 41 B1 01                 -  mov r9l,01
+"FIFA18.exe"+2A37E6F: 41 83 C8 FF              -  or r8d,-01
+"FIFA18.exe"+2A37E73: 48 8D 15 E6 C0 BF 01     -  lea rdx,[FIFA18.exe+4633F60]
+"FIFA18.exe"+2A37E7A: E8 E1 62 0E FF           -  call FIFA18.exe+1B1E160
+// ---------- INJECTING HERE ----------
+"FIFA18.exe"+2A37E7F: 83 F8 FF                 -  cmp eax,-01
+"FIFA18.exe"+2A37E82: 0F 44 C6                 -  cmove eax,esi
+// ---------- DONE INJECTING  ----------
+"FIFA18.exe"+2A37E85: EB 02                    -  jmp FIFA18.exe+2A37E89
+"FIFA18.exe"+2A37E87: 8B C6                    -  mov eax,esi
+"FIFA18.exe"+2A37E89: 48 8B 9C 24 78 01 00 00  -  mov rbx,[rsp+00000178]
+"FIFA18.exe"+2A37E91: 48 81 C4 30 01 00 00     -  add rsp,00000130
+"FIFA18.exe"+2A37E98: 41 5F                    -  pop r15
+"FIFA18.exe"+2A37E9A: 41 5E                    -  pop r14
+"FIFA18.exe"+2A37E9C: 41 5D                    -  pop r13
+"FIFA18.exe"+2A37E9E: 41 5C                    -  pop r12
+"FIFA18.exe"+2A37EA0: 5F                       -  pop rdi
+"FIFA18.exe"+2A37EA1: 5E                       -  pop rsi
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1983</ID>
+                  <Description>"Weather_id"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Weather</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1982</ID>
+              <Description>"Half Length"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_Match_Half_Length,FIFA18.exe,45 8B 84 24 08 14 00 00) // should be unique
+alloc(newmem_Match_Half_Length,$1000,"FIFA18.exe"+2C712E9)
+
+label(code_Match_Half_Length)
+label(ret_Match_Half_Length)
+
+alloc(HalfLength, 4)
+registersymbol(HalfLength)
+HalfLength:
+dd (int)1
+
+newmem_Match_Half_Length:
+  mov r8d, [HalfLength]
+  mov [r12+00001408], r8d
+
+code_Match_Half_Length:
+  mov r8d,[r12+00001408]
+  jmp ret_Match_Half_Length
+
+INJECT_Match_Half_Length:
+  jmp newmem_Match_Half_Length
+  nop
+  nop
+  nop
+ret_Match_Half_Length:
+registersymbol(INJECT_Match_Half_Length)
+
+[DISABLE]
+//code_Match_Half_Length from here till the end of the code_Match_Half_Length will be used to disable the cheat
+INJECT_Match_Half_Length:
+  db 45 8B 84 24 08 14 00 00
+
+unregistersymbol(INJECT_Match_Half_Length)
+dealloc(newmem_Match_Half_Length)
+unregistersymbol(HalfLength)
+dealloc(HalfLength)
+
+{
+// ORIGINAL code_Match_Half_Length - INJECTION POINT: "FIFA18.exe"+2C712E9
+
+"FIFA18.exe"+2C712B0: 45 8B 84 24 10 14 00 00        -  mov r8d,[r12+00001410]
+"FIFA18.exe"+2C712B8: 8B 55 77                       -  mov edx,[rbp+77]
+"FIFA18.exe"+2C712BB: 48 8B CF                       -  mov rcx,rdi
+"FIFA18.exe"+2C712BE: FF 50 20                       -  call qword ptr [rax+20]
+"FIFA18.exe"+2C712C1: 41 89 85 B0 0C 00 00           -  mov [r13+00000CB0],eax
+"FIFA18.exe"+2C712C8: 41 8B 84 24 10 14 00 00        -  mov eax,[r12+00001410]
+"FIFA18.exe"+2C712D0: 41 89 85 18 16 00 00           -  mov [r13+00001618],eax
+"FIFA18.exe"+2C712D7: 41 8B 84 24 04 14 00 00        -  mov eax,[r12+00001404]
+"FIFA18.exe"+2C712DF: 41 89 85 40 16 00 00           -  mov [r13+00001640],eax
+"FIFA18.exe"+2C712E6: 49 8B 06                       -  mov rax,[r14]
+// ---------- INJECTING HERE ----------
+"FIFA18.exe"+2C712E9: 45 8B 84 24 08 14 00 00        -  mov r8d,[r12+00001408]
+// ---------- DONE INJECTING  ----------
+"FIFA18.exe"+2C712F1: 33 D2                          -  xor edx,edx
+"FIFA18.exe"+2C712F3: 49 8B CE                       -  mov rcx,r14
+"FIFA18.exe"+2C712F6: FF 50 58                       -  call qword ptr [rax+58]
+"FIFA18.exe"+2C712F9: 49 8B 06                       -  mov rax,[r14]
+"FIFA18.exe"+2C712FC: 45 8B 84 24 0C 14 00 00        -  mov r8d,[r12+0000140C]
+"FIFA18.exe"+2C71304: BA 02 00 00 00                 -  mov edx,00000002
+"FIFA18.exe"+2C71309: 49 8B CE                       -  mov rcx,r14
+"FIFA18.exe"+2C7130C: FF 50 58                       -  call qword ptr [rax+58]
+"FIFA18.exe"+2C7130F: E8 3C CE EA FE                 -  call FIFA18.exe+1B1E150
+"FIFA18.exe"+2C71314: 48 8B C8                       -  mov rcx,rax
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1985</ID>
+                  <Description>"Half Length"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>HalfLength</Address>
                 </CheatEntry>
               </CheatEntries>
             </CheatEntry>
@@ -7131,6 +7456,77 @@ dealloc(ptr_YA_NatID)
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_DisableSubstitutions,FIFA18.exe,41 8B BC 1D A0 96 00 00 45) // should be unique
+alloc(newmem_DisableSubstitutions,$1000,"FIFA18.exe"+14E956A)
+
+label(code_DisableSubstitutions)
+label(ret_DisableSubstitutions)
+
+alloc(bHomeTeam_NoSubs, 1)
+registersymbol(bHomeTeam_NoSubs)
+bHomeTeam_NoSubs:
+db 00
+
+alloc(bHomeTeam_UnlimitedSubs, 1)
+registersymbol(bHomeTeam_UnlimitedSubs)
+bHomeTeam_UnlimitedSubs:
+db 00
+
+alloc(bAwayTeam_NoSubs, 1)
+registersymbol(bAwayTeam_NoSubs)
+bAwayTeam_NoSubs:
+db 00
+
+alloc(bAwayTeam_UnlimitedSubs, 1)
+registersymbol(bAwayTeam_UnlimitedSubs)
+bAwayTeam_UnlimitedSubs:
+db 00
+
+
+newmem_DisableSubstitutions:
+  pushf
+  cmp rsi, 0 // HomeTeam
+  je HomeTeam_Substitutions
+  cmp rsi, 1 // AwayTeam
+  je AwayTeam_Substitutions
+  jmp code_DisableSubstitutions
+
+HomeTeam_Substitutions:
+  cmp byte ptr [bHomeTeam_NoSubs], 1
+  je code_DisableSubs
+  cmp byte ptr [bHomeTeam_UnlimitedSubs], 1
+  je code_UnlimitedSubs
+  jmp code_DisableSubstitutions
+
+AwayTeam_Substitutions:
+  cmp byte ptr [bAwayTeam_NoSubs], 1
+  je code_DisableSubs
+  cmp byte ptr [bAwayTeam_UnlimitedSubs], 1
+  je code_UnlimitedSubs
+  jmp code_DisableSubstitutions
+
+
+code_DisableSubs:
+  mov [r13+rbx+000096A0], #0
+  jmp code_DisableSubstitutions
+
+code_UnlimitedSubs:
+  mov [r13+rbx+000096A0], #7
+  jmp code_DisableSubstitutions
+
+code_DisableSubstitutions:
+  mov edi,[r13+rbx+000096A0]
+  popf
+  jmp ret_DisableSubstitutions
+
+INJECT_DisableSubstitutions:
+  jmp newmem_DisableSubstitutions
+  nop
+  nop
+  nop
+ret_DisableSubstitutions:
+registersymbol(INJECT_DisableSubstitutions)
+
 aobscanmodule(INJECT_ingame_stamina,FIFA18.exe,F3 0F 10 B1 A4 00 00 00 48) // should be unique
 alloc(cave_ingame_stamina,$1000,"FIFA18.exe"+1BA9F4D)
 
@@ -7371,6 +7767,21 @@ registersymbol(INJECT_ingame_fivestarskillmoves)
 
 [DISABLE]
 //code from here till the end of the code will be used to disable the cheat
+//code_DisableSubstitutions from here till the end of the code_DisableSubstitutions will be used to disable the cheat
+INJECT_DisableSubstitutions:
+  db 41 8B BC 1D A0 96 00 00
+
+unregistersymbol(INJECT_DisableSubstitutions)
+dealloc(newmem_DisableSubstitutions)
+unregistersymbol(bHomeTeam_NoSubs)
+dealloc(bHomeTeam_NoSubs)
+unregistersymbol(bHomeTeam_UnlimitedSubs)
+dealloc(bHomeTeam_UnlimitedSubs)
+unregistersymbol(bAwayTeam_NoSubs)
+dealloc(bAwayTeam_NoSubs)
+unregistersymbol(bAwayTeam_UnlimitedSubs)
+dealloc(bAwayTeam_UnlimitedSubs)
+
 INJECT_ingame_stamina:
   db F3 0F 10 B1 A4 00 00 00
 
@@ -7412,6 +7823,34 @@ unregistersymbol(bHomeTeam_FiveStars)
 dealloc(bHomeTeam_FiveStars)
 unregistersymbol(bAwayTeam_FiveStars)
 dealloc(bAwayTeam_FiveStars)
+
+{
+// ORIGINAL code_DisableSubstitutions - INJECTION POINT: "FIFA18.exe"+14E956A
+
+"FIFA18.exe"+14E9548: 03 D1                    -  add edx,ecx
+"FIFA18.exe"+14E954A: C1 FA 05                 -  sar edx,05
+"FIFA18.exe"+14E954D: 8B C2                    -  mov eax,edx
+"FIFA18.exe"+14E954F: C1 E8 1F                 -  shr eax,1F
+"FIFA18.exe"+14E9552: 03 D0                    -  add edx,eax
+"FIFA18.exe"+14E9554: 41 3B D0                 -  cmp edx,r8d
+"FIFA18.exe"+14E9557: C6 44 24 70 01           -  mov byte ptr [rsp+70],01
+"FIFA18.exe"+14E955C: 7C 05                    -  jl FIFA18.exe+14E9563
+"FIFA18.exe"+14E955E: C6 44 24 70 00           -  mov byte ptr [rsp+70],00
+"FIFA18.exe"+14E9563: 4C 69 EE AC 04 00 00     -  imul r13,rsi,000004AC
+// ---------- INJECTING HERE ----------
+"FIFA18.exe"+14E956A: 41 8B BC 1D A0 96 00 00  -  mov edi,[r13+rbx+000096A0]
+// ---------- DONE INJECTING  ----------
+"FIFA18.exe"+14E9572: 45 8B B4 1D 48 8D 00 00  -  mov r14d,[r13+rbx+00008D48]
+"FIFA18.exe"+14E957A: 44 2B F7                 -  sub r14d,edi
+"FIFA18.exe"+14E957D: 85 FF                    -  test edi,edi
+"FIFA18.exe"+14E957F: 0F 84 84 01 00 00        -  je FIFA18.exe+14E9709
+"FIFA18.exe"+14E9585: 4C 8B FE                 -  mov r15,rsi
+"FIFA18.exe"+14E9588: 49 C1 E7 05              -  shl r15,05
+"FIFA18.exe"+14E958C: 0F 1F 40 00              -  nop [rax+00]
+"FIFA18.exe"+14E9590: 41 83 FE 02              -  cmp r14d,02
+"FIFA18.exe"+14E9594: 0F 8F 6F 01 00 00        -  jg FIFA18.exe+14E9709
+"FIFA18.exe"+14E959A: 83 FD 01                 -  cmp ebp,01
+}
 
 {
 // ORIGINAL CODE - INJECTION POINT: "FIFA17.exe"+5516FDD
@@ -7623,18 +8062,11 @@ getAddressList().getMemoryRecordByDescription("TIME").Value=0
               </CheatEntries>
             </CheatEntry>
             <CheatEntry>
-              <ID>1879</ID>
-              <Description>"Substitutions"</Description>
-              <Options moHideChildren="1"/>
-              <LastState Value="" RealAddress="00000000"/>
-              <GroupHeader>1</GroupHeader>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>18</ID>
-                  <Description>"Unlimited Substitutions"</Description>
-                  <LastState/>
-                  <VariableType>Auto Assembler Script</VariableType>
-                  <AssemblerScript>[ENABLE]
+              <ID>18</ID>
+              <Description>"Unlimited Substitutions"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
 aobscanmodule(INJECT_UnlimitedSubstitutions,FIFA18.exe,48 69 D0 AC 04 00 00 8B 84 0A 48) // should be unique
 alloc(newmem_UnlimitedSubstitutions,$1000,"FIFA18.exe"+14EDC73)
 
@@ -7691,71 +8123,6 @@ dealloc(newmem_UnlimitedSubstitutions)
 "FIFA18.exe"+14EDC89: CC                    -  int 3
 }
 </AssemblerScript>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>17</ID>
-                  <Description>"Disable Substitutions"</Description>
-                  <LastState/>
-                  <VariableType>Auto Assembler Script</VariableType>
-                  <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_DisableSubstitutions,FIFA18.exe,41 8B BC 1D A0 96 00 00 45) // should be unique
-alloc(newmem_DisableSubstitutions,$1000,"FIFA18.exe"+14E956A)
-
-label(code_DisableSubstitutions)
-label(ret_DisableSubstitutions)
-
-newmem_DisableSubstitutions:
-  mov [r13+rbx+000096A0], #0
-code_DisableSubstitutions:
-  mov edi,[r13+rbx+000096A0]
-  jmp ret_DisableSubstitutions
-
-INJECT_DisableSubstitutions:
-  jmp newmem_DisableSubstitutions
-  nop
-  nop
-  nop
-ret_DisableSubstitutions:
-registersymbol(INJECT_DisableSubstitutions)
-
-[DISABLE]
-//code_DisableSubstitutions from here till the end of the code_DisableSubstitutions will be used to disable the cheat
-INJECT_DisableSubstitutions:
-  db 41 8B BC 1D A0 96 00 00
-
-unregistersymbol(INJECT_DisableSubstitutions)
-dealloc(newmem_DisableSubstitutions)
-
-{
-// ORIGINAL code_DisableSubstitutions - INJECTION POINT: "FIFA18.exe"+14E956A
-
-"FIFA18.exe"+14E9548: 03 D1                    -  add edx,ecx
-"FIFA18.exe"+14E954A: C1 FA 05                 -  sar edx,05
-"FIFA18.exe"+14E954D: 8B C2                    -  mov eax,edx
-"FIFA18.exe"+14E954F: C1 E8 1F                 -  shr eax,1F
-"FIFA18.exe"+14E9552: 03 D0                    -  add edx,eax
-"FIFA18.exe"+14E9554: 41 3B D0                 -  cmp edx,r8d
-"FIFA18.exe"+14E9557: C6 44 24 70 01           -  mov byte ptr [rsp+70],01
-"FIFA18.exe"+14E955C: 7C 05                    -  jl FIFA18.exe+14E9563
-"FIFA18.exe"+14E955E: C6 44 24 70 00           -  mov byte ptr [rsp+70],00
-"FIFA18.exe"+14E9563: 4C 69 EE AC 04 00 00     -  imul r13,rsi,000004AC
-// ---------- INJECTING HERE ----------
-"FIFA18.exe"+14E956A: 41 8B BC 1D A0 96 00 00  -  mov edi,[r13+rbx+000096A0]
-// ---------- DONE INJECTING  ----------
-"FIFA18.exe"+14E9572: 45 8B B4 1D 48 8D 00 00  -  mov r14d,[r13+rbx+00008D48]
-"FIFA18.exe"+14E957A: 44 2B F7                 -  sub r14d,edi
-"FIFA18.exe"+14E957D: 85 FF                    -  test edi,edi
-"FIFA18.exe"+14E957F: 0F 84 84 01 00 00        -  je FIFA18.exe+14E9709
-"FIFA18.exe"+14E9585: 4C 8B FE                 -  mov r15,rsi
-"FIFA18.exe"+14E9588: 49 C1 E7 05              -  shl r15,05
-"FIFA18.exe"+14E958C: 0F 1F 40 00              -  nop [rax+00]
-"FIFA18.exe"+14E9590: 41 83 FE 02              -  cmp r14d,02
-"FIFA18.exe"+14E9594: 0F 8F 6F 01 00 00        -  jg FIFA18.exe+14E9709
-"FIFA18.exe"+14E959A: 83 FD 01                 -  cmp ebp,01
-}
-</AssemblerScript>
-                </CheatEntry>
-              </CheatEntries>
             </CheatEntry>
             <CheatEntry>
               <ID>596</ID>
@@ -7764,6 +8131,32 @@ dealloc(newmem_DisableSubstitutions)
               <LastState Value="" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
+                <CheatEntry>
+                  <ID>1989</ID>
+                  <Description>"Away - Disable Substitutions"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+bAwayTeam_NoSubs:
+  db 1
+[DISABLE]
+bAwayTeam_NoSubs:
+  db 0
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1991</ID>
+                  <Description>"Away - Unlimited Substitutions"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+bAwayTeam_UnlimitedSubs:
+  db 1
+[DISABLE]
+bAwayTeam_UnlimitedSubs:
+  db 0
+</AssemblerScript>
+                </CheatEntry>
                 <CheatEntry>
                   <ID>598</ID>
                   <Description>"Away - 5 stars skill moves"</Description>
@@ -7855,6 +8248,32 @@ bAwayTeam_Tired:
               <LastState Value="" RealAddress="00000000"/>
               <GroupHeader>1</GroupHeader>
               <CheatEntries>
+                <CheatEntry>
+                  <ID>1990</ID>
+                  <Description>"Home - Disable Substitutions"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+bHomeTeam_NoSubs:
+  db 1
+[DISABLE]
+bHomeTeam_NoSubs:
+  db 0
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1992</ID>
+                  <Description>"Home - Unlimited Substitutions"</Description>
+                  <LastState/>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+bHomeTeam_UnlimitedSubs:
+  db 1
+[DISABLE]
+bHomeTeam_UnlimitedSubs:
+  db 0
+</AssemblerScript>
+                </CheatEntry>
                 <CheatEntry>
                   <ID>603</ID>
                   <Description>"Home - 5 stars skill moves"</Description>
