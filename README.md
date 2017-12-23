@@ -59,6 +59,11 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
 * **How to use "Send scout to any country"?**
   - Choose scout -> Set up a Scouting Network -> In CE activate "Send scout to any country" and change "Nationality ID" -> Back to FIFA window and send scout on a mission (doesn't matter which country you pick). Nationality ID's list is available [here](#nationalities)
 
+* **How to assign commentary name to a player?**
+  - To add or change commentary name go to "Player_Data"->"Player info" and edit "LastNameID".
+    Example:
+    ![Example commentary change](https://i.imgur.com/5n3Mzon.jpg)
+    I've changed my youth player (Fausto Hurtado) "LastNameID" from '0' to '17830' and now he is recognized as Messi. :) 
 
 
 ## Getting Started
