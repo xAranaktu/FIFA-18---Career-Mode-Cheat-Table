@@ -393,3 +393,6 @@ Oceania
 ```
 ## Tattoo's
 ![Tattoo](https://i.imgur.com/N1eLzGg.png)
+
+## Free Kick IDs
+![Free Kick IDs](https://i.imgur.com/utMPuK1.png)
