@@ -14,6 +14,8 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
    * [Editing Player](#editing-player)
    * [Traits list](#traits)
    * [Nationalities list](#nationalities)
+   * [Free Kick IDs](#free-kick-ids)
+   * [Position Ids](#position-ids)
 
 
 ## F.A.Q
@@ -396,3 +398,6 @@ Oceania
 
 ## Free Kick IDs
 ![Free Kick IDs](https://i.imgur.com/utMPuK1.png)
+
+## Position Ids
+![Position Ids](http://puu.sh/z59KC/ca5bbeb90b.png)
