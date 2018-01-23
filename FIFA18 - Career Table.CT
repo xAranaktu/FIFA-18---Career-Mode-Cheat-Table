@@ -63,602 +63,6 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>1279</ID>
-          <Description>"The Journey"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>1278</ID>
-              <Description>"99 Skill Points"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
-//code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem_hunterskillpoints,2048,"FIFA18.exe"+31DAE20)
-label(returnhere)
-label(originalcode)
-label(exit)
-
-newmem_hunterskillpoints: //this is allocated memory, you have read,write,execute access
-mov [rdx+50], #99
-
-originalcode:
-mov eax,[rdx+50]
-ret
-int 3
-
-exit:
-jmp returnhere
-
-"FIFA18.exe"+31DAE20:
-jmp newmem_hunterskillpoints
-returnhere:
-
-
-
-
-[DISABLE]
-//code from here till the end of the code will be used to disable the cheat
-dealloc(newmem_hunterskillpoints)
-"FIFA18.exe"+31DAE20:
-mov eax,[rdx+50]
-ret
-int 3
-{
-// 48 89 D9 41 FF 90 F8 00 00 00
-"FIFA18.exe"+9E2545E: 48 85 DB                                   -  test rbx,rbx
-"FIFA18.exe"+9E25461: 74 2E                                      -  je FIFA18.exe+9E25491
-"FIFA18.exe"+9E25463: 48 8B 4F 20                                -  mov rcx,[rdi+20]
-"FIFA18.exe"+9E25467: 48 8B 01                                   -  mov rax,[rcx]
-"FIFA18.exe"+9E2546A: FF 50 40                                   -  call qword ptr [rax+40]
-"FIFA18.exe"+9E2546D: 48 8B 10                                   -  mov rdx,[rax]
-"FIFA18.exe"+9E25470: 48 89 C1                                   -  mov rcx,rax
-"FIFA18.exe"+9E25473: FF 92 C8 00 00 00                          -  call qword ptr [rdx+000000C8]
-"FIFA18.exe"+9E25479: 4C 8B 03                                   -  mov r8,[rbx]
-"FIFA18.exe"+9E2547C: 48 89 C2                                   -  mov rdx,rax
-// ---------- INJECTING HERE ----------
-"FIFA18.exe"+9E2547F: 48 89 D9                                   -  mov rcx,rbx
-"FIFA18.exe"+9E25482: 41 FF 90 F8 00 00 00                       -  call qword ptr [r8+000000F8]
-// ---------- DONE INJECTING  ----------
-"FIFA18.exe"+9E25489: 89 C7                                      -  mov edi,eax
-"FIFA18.exe"+9E2548B: EB 06                                      -  jmp FIFA18.exe+9E25493
-"FIFA18.exe"+9E2548D: 21 0E                                      -  and [rsi],ecx
-"FIFA18.exe"+9E2548F: AC                                         -  lodsb
-"FIFA18.exe"+9E25490: 00 31                                      -  add [rcx],dh
-"FIFA18.exe"+9E25492: FF 48 85                                   -  dec [rax-7B]
-"FIFA18.exe"+9E25495: DB                                         -
-"FIFA18.exe"+9E25496: 74 0A                                      -  je FIFA18.exe+9E254A2
-"FIFA18.exe"+9E25498: 48 8B 03                                   -  mov rax,[rbx]
-"FIFA18.exe"+9E2549B: 48 89 D9                                   -  mov rcx,rbx
-}
-</AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1409</ID>
-              <Description>"Edit Attributes"</Description>
-              <Options moHideChildren="1"/>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
- aobscanmodule(INJECT_huntercheat,FIFA18.exe,48 8B 42 60 41 8B C8) // should be unique
-alloc(newmem_huntercheat,$1000,"FIFA18.exe"+31DAB10)
-
-label(code_huntercheat)
-label(ret_huntercheat)
-alloc(ptrHunterCheat, 8)
-registersymbol(ptrHunterCheat)
-ptrHunterCheat:
-dq 00
-
-newmem_huntercheat:
-  mov rax,[rdx+60]
-  pushf
-  cmp r8d, 0
-  jne code_huntercheat
-  mov [ptrHunterCheat], rax
-  jmp code_huntercheat
-
-code_huntercheat:
-  popf
-  mov ecx,r8d
-  jmp ret_huntercheat
-
-INJECT_huntercheat:
-  jmp newmem_huntercheat
-  nop
-  nop
-ret_huntercheat:
-registersymbol(INJECT_huntercheat)
-
-[DISABLE]
-//code_huntercheat from here till the end of the code_huntercheat will be used to disable the cheat
-INJECT_huntercheat:
-  db 48 8B 42 60 41 8B C8
-
-unregistersymbol(INJECT_huntercheat)
-dealloc(newmem_huntercheat)
-unregistersymbol(ptrHunterCheat)
-dealloc(ptrHunterCheat)
-
-{
-// ORIGINAL code_huntercheat - INJECTION POINT: "FIFA18.exe"+31DAB10
-
-"FIFA18.exe"+31DAB06: CC                    -  int 3
-"FIFA18.exe"+31DAB07: CC                    -  int 3
-"FIFA18.exe"+31DAB08: CC                    -  int 3
-"FIFA18.exe"+31DAB09: CC                    -  int 3
-"FIFA18.exe"+31DAB0A: CC                    -  int 3
-"FIFA18.exe"+31DAB0B: CC                    -  int 3
-"FIFA18.exe"+31DAB0C: CC                    -  int 3
-"FIFA18.exe"+31DAB0D: CC                    -  int 3
-"FIFA18.exe"+31DAB0E: CC                    -  int 3
-"FIFA18.exe"+31DAB0F: CC                    -  int 3
-// ---------- INJECTING HERE ----------
-"FIFA18.exe"+31DAB10: 48 8B 42 60           -  mov rax,[rdx+60]
-"FIFA18.exe"+31DAB14: 41 8B C8              -  mov ecx,r8d
-// ---------- DONE INJECTING  ----------
-"FIFA18.exe"+31DAB17: 8B 04 88              -  mov eax,[rax+rcx*4]
-"FIFA18.exe"+31DAB1A: C3                    -  ret
-"FIFA18.exe"+31DAB1B: CC                    -  int 3
-"FIFA18.exe"+31DAB1C: CC                    -  int 3
-"FIFA18.exe"+31DAB1D: CC                    -  int 3
-"FIFA18.exe"+31DAB1E: CC                    -  int 3
-"FIFA18.exe"+31DAB1F: CC                    -  int 3
-"FIFA18.exe"+31DAB20: 41 8B C0              -  mov eax,r8d
-"FIFA18.exe"+31DAB23: 8B 84 82 80 00 00 00  -  mov eax,[rdx+rax*4+00000080]
-"FIFA18.exe"+31DAB2A: C3                    -  ret
-}
-</AssemblerScript>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>1445</ID>
-                  <Description>"Shooting"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1426</ID>
-                      <Description>"Finishing"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>40</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1427</ID>
-                      <Description>"FK Acc."</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>44</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1428</ID>
-                      <Description>"Heading Acc."</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>48</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1432</ID>
-                      <Description>"Shot Power"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1433</ID>
-                      <Description>"Long Shots"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>5C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1436</ID>
-                      <Description>"Volleys"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>68</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1438</ID>
-                      <Description>"Penalties"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>70</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1446</ID>
-                  <Description>"Passing"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1422</ID>
-                      <Description>"Vision"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>30</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1424</ID>
-                      <Description>"Crossing"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>38</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1429</ID>
-                      <Description>"Long Pass"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>4C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1430</ID>
-                      <Description>"Short Pass"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>50</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1437</ID>
-                      <Description>"Curve"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>6C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1447</ID>
-                  <Description>"Dribbling"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1412</ID>
-                      <Description>"Agility"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>8</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1413</ID>
-                      <Description>"Balance"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1421</ID>
-                      <Description>"Att. Position"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>2C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1423</ID>
-                      <Description>"Ball Control"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>34</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1425</ID>
-                      <Description>"Dribbling"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>3C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1448</ID>
-                  <Description>"Defending"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1420</ID>
-                      <Description>"Interceptions"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>28</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1431</ID>
-                      <Description>"Marking"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>54</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1434</ID>
-                      <Description>"Stand Tackle"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>60</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1435</ID>
-                      <Description>"Slide Tackle"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>64</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1449</ID>
-                  <Description>"Physical"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1414</ID>
-                      <Description>"Jumping"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>10</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1415</ID>
-                      <Description>"Stamina"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>14</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1416</ID>
-                      <Description>"Strength"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>18</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1417</ID>
-                      <Description>"Reactions"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>1C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1418</ID>
-                      <Description>"Aggression"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>20</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1450</ID>
-                  <Description>"Pace"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1410</ID>
-                      <Description>"Acceleration"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>0</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1411</ID>
-                      <Description>"Sprint Speed"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>4</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1451</ID>
-                  <Description>"Unknown"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1419</ID>
-                      <Description>"Composure (?)"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>24</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1439</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>74</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1440</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>78</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1441</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>7C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1442</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>80</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1443</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>84</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1444</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>84</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1472</ID>
-              <Description>"999,999 Followers"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_followerCount,FIFA18.exe,44 8B 00 48 8D 55 D0 49) // should be unique
-alloc(newmem_followerCount,$1000,"FIFA18.exe"+2E06E4C)
-
-label(code_followerCount)
-label(ret_followerCount)
-
-newmem_followerCount:
-  mov [rax], #999999
-code_followerCount:
-  mov r8d,[rax]
-  lea rdx,[rbp-30]
-  jmp ret_followerCount
-
-INJECT_followerCount:
-  jmp newmem_followerCount
-  nop
-  nop
-ret_followerCount:
-registersymbol(INJECT_followerCount)
-
-[DISABLE]
-//code_followerCount from here till the end of the code_followerCount will be used to disable the cheat
-INJECT_followerCount:
-  db 44 8B 00 48 8D 55 D0
-
-unregistersymbol(INJECT_followerCount)
-dealloc(newmem_followerCount)
-
-{
-// ORIGINAL code_followerCount - INJECTION POINT: "FIFA18.exe"+2E06E4C
-// followerCount
-"FIFA18.exe"+2E06E22: 4C 8D 05 AF CE 3E 01  -  lea r8,[FIFA18.exe+41F3CD8]
-"FIFA18.exe"+2E06E29: BA 08 00 00 00        -  mov edx,00000008
-"FIFA18.exe"+2E06E2E: 49 8B CD              -  mov rcx,r13
-"FIFA18.exe"+2E06E31: FF 50 78              -  call qword ptr [rax+78]
-"FIFA18.exe"+2E06E34: E8 67 12 42 FE        -  call FIFA18.exe+12280A0
-"FIFA18.exe"+2E06E39: 4C 8B F0              -  mov r14,rax
-"FIFA18.exe"+2E06E3C: 4C 8B 38              -  mov r15,[rax]
-"FIFA18.exe"+2E06E3F: 4C 8B 0B              -  mov r9,[rbx]
-"FIFA18.exe"+2E06E42: 48 8B CB              -  mov rcx,rbx
-"FIFA18.exe"+2E06E45: 41 FF 91 70 02 00 00  -  call qword ptr [r9+00000270]
-// ---------- INJECTING HERE ----------
-"FIFA18.exe"+2E06E4C: 44 8B 00              -  mov r8d,[rax]
-"FIFA18.exe"+2E06E4F: 48 8D 55 D0           -  lea rdx,[rbp-30]
-// ---------- DONE INJECTING  ----------
-"FIFA18.exe"+2E06E53: 49 8B CE              -  mov rcx,r14
-"FIFA18.exe"+2E06E56: 41 FF 97 B8 00 00 00  -  call qword ptr [r15+000000B8]
-"FIFA18.exe"+2E06E5D: 49 8B 45 00           -  mov rax,[r13+00]
-"FIFA18.exe"+2E06E61: 4C 8B 4D D0           -  mov r9,[rbp-30]
-"FIFA18.exe"+2E06E65: 4C 8D 05 8C 8A 85 01  -  lea r8,[FIFA18.exe+465F8F8]
-"FIFA18.exe"+2E06E6C: BA 08 00 00 00        -  mov edx,00000008
-"FIFA18.exe"+2E06E71: 49 8B CD              -  mov rcx,r13
-"FIFA18.exe"+2E06E74: FF 50 78              -  call qword ptr [rax+78]
-"FIFA18.exe"+2E06E77: 90                    -  nop
-"FIFA18.exe"+2E06E78: 48 8D 8D A0 04 00 00  -  lea rcx,[rbp+000004A0]
-}
-</AssemblerScript>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
           <ID>1292</ID>
           <Description>"Editing Player"</Description>
           <Options moHideChildren="1"/>
@@ -1923,6 +1327,11 @@ registersymbol(ptrTeamplayerlinks)
 ptrTeamplayerlinks:
 dq 0
 
+alloc(ptrTeamkits, 8)
+registersymbol(ptrTeamkits)
+ptrTeamkits:
+dq 0
+
 playerDataPtrCave:
 
 playerDataPtrCode:
@@ -1933,6 +1342,14 @@ playerDataPtrCode:
   je players_table
   cmp r10d, 53
   je teamplayerlinks_table
+  cmp r10d, 152
+  je teamkits_table
+  jmp playerDataPtrOrg
+
+teamkits_table:
+  cmp r9d, 5
+  jne playerDataPtrOrg
+  mov [ptrTeamkits], r8
   jmp playerDataPtrOrg
 
 teamplayerlinks_table:
@@ -1967,10 +1384,12 @@ playerDataPtrInject:
 
 unregistersymbol(playerDataPtr)
 unregistersymbol(ptrTeamplayerlinks)
+unregistersymbol(ptrTeamkits)
 unregistersymbol(playerDataPtrInject)
 dealloc(playerDataPtrCave)
 dealloc(playerDataPtr)
 dealloc(ptrTeamplayerlinks)
+dealloc(ptrTeamkits)
 
 
 {
@@ -4125,6 +3544,75 @@ dealloc(ptrTeamplayerlinks)
                               <Address>playerDataPtr</Address>
                               <Offsets>
                                 <Offset>40</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1993</ID>
+                          <Description>"teamkits"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>1994</ID>
+                              <Description>"teamkitid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>14</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>2D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1998</ID>
+                              <Description>"jerseynamefonttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>10</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1997</ID>
+                              <Description>"numberfonttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1996</ID>
+                              <Description>"shortsnumberfonttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>24</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1995</ID>
+                              <Description>"year"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>30</Offset>
                               </Offsets>
                             </CheatEntry>
                           </CheatEntries>
@@ -8374,6 +7862,47 @@ bHomeTeam_Tired:
       <Options moHideChildren="1"/>
       <LastState Value="" RealAddress="00000000"/>
       <Color>0000FF</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1999</ID>
+      <Description>"------------------------"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2001</ID>
+      <Description>"FIFA TRACKER"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>2002</ID>
+          <Description>"https://fifatracker.net"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2003</ID>
+          <Description>"More Info:"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2004</ID>
+              <Description>"https://www.reddit.com/r/FifaCareers/comments/7sgywq/fifa_tracker_youth_players_database/"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2000</ID>
+      <Description>"------------------------"</Description>
+      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>

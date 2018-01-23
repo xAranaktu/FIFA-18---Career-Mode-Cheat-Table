@@ -63,602 +63,6 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>1279</ID>
-          <Description>"The Journey"</Description>
-          <Options moHideChildren="1"/>
-          <LastState Value="" RealAddress="00000000"/>
-          <GroupHeader>1</GroupHeader>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>1278</ID>
-              <Description>"99 Skill Points"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
-//code from here to '[DISABLE]' will be used to enable the cheat
-alloc(newmem_hunterskillpoints,2048,"FIFA18_TRIAL.exe"+31DAE20)
-label(returnhere)
-label(originalcode)
-label(exit)
-
-newmem_hunterskillpoints: //this is allocated memory, you have read,write,execute access
-mov [rdx+50], #99
-
-originalcode:
-mov eax,[rdx+50]
-ret
-int 3
-
-exit:
-jmp returnhere
-
-"FIFA18_TRIAL.exe"+31DAE20:
-jmp newmem_hunterskillpoints
-returnhere:
-
-
-
-
-[DISABLE]
-//code from here till the end of the code will be used to disable the cheat
-dealloc(newmem_hunterskillpoints)
-"FIFA18_TRIAL.exe"+31DAE20:
-mov eax,[rdx+50]
-ret
-int 3
-{
-// 48 89 D9 41 FF 90 F8 00 00 00
-"FIFA18_TRIAL.exe"+9E2545E: 48 85 DB                                   -  test rbx,rbx
-"FIFA18_TRIAL.exe"+9E25461: 74 2E                                      -  je FIFA18.exe+9E25491
-"FIFA18_TRIAL.exe"+9E25463: 48 8B 4F 20                                -  mov rcx,[rdi+20]
-"FIFA18_TRIAL.exe"+9E25467: 48 8B 01                                   -  mov rax,[rcx]
-"FIFA18_TRIAL.exe"+9E2546A: FF 50 40                                   -  call qword ptr [rax+40]
-"FIFA18_TRIAL.exe"+9E2546D: 48 8B 10                                   -  mov rdx,[rax]
-"FIFA18_TRIAL.exe"+9E25470: 48 89 C1                                   -  mov rcx,rax
-"FIFA18_TRIAL.exe"+9E25473: FF 92 C8 00 00 00                          -  call qword ptr [rdx+000000C8]
-"FIFA18_TRIAL.exe"+9E25479: 4C 8B 03                                   -  mov r8,[rbx]
-"FIFA18_TRIAL.exe"+9E2547C: 48 89 C2                                   -  mov rdx,rax
-// ---------- INJECTING HERE ----------
-"FIFA18_TRIAL.exe"+9E2547F: 48 89 D9                                   -  mov rcx,rbx
-"FIFA18_TRIAL.exe"+9E25482: 41 FF 90 F8 00 00 00                       -  call qword ptr [r8+000000F8]
-// ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+9E25489: 89 C7                                      -  mov edi,eax
-"FIFA18_TRIAL.exe"+9E2548B: EB 06                                      -  jmp FIFA18.exe+9E25493
-"FIFA18_TRIAL.exe"+9E2548D: 21 0E                                      -  and [rsi],ecx
-"FIFA18_TRIAL.exe"+9E2548F: AC                                         -  lodsb
-"FIFA18_TRIAL.exe"+9E25490: 00 31                                      -  add [rcx],dh
-"FIFA18_TRIAL.exe"+9E25492: FF 48 85                                   -  dec [rax-7B]
-"FIFA18_TRIAL.exe"+9E25495: DB                                         -
-"FIFA18_TRIAL.exe"+9E25496: 74 0A                                      -  je FIFA18.exe+9E254A2
-"FIFA18_TRIAL.exe"+9E25498: 48 8B 03                                   -  mov rax,[rbx]
-"FIFA18_TRIAL.exe"+9E2549B: 48 89 D9                                   -  mov rcx,rbx
-}
-</AssemblerScript>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1409</ID>
-              <Description>"Edit Attributes"</Description>
-              <Options moHideChildren="1"/>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
- aobscanmodule(INJECT_huntercheat,FIFA18.exe,48 8B 42 60 41 8B C8) // should be unique
-alloc(newmem_huntercheat,$1000,"FIFA18_TRIAL.exe"+31DAB10)
-
-label(code_huntercheat)
-label(ret_huntercheat)
-alloc(ptrHunterCheat, 8)
-registersymbol(ptrHunterCheat)
-ptrHunterCheat:
-dq 00
-
-newmem_huntercheat:
-  mov rax,[rdx+60]
-  pushf
-  cmp r8d, 0
-  jne code_huntercheat
-  mov [ptrHunterCheat], rax
-  jmp code_huntercheat
-
-code_huntercheat:
-  popf
-  mov ecx,r8d
-  jmp ret_huntercheat
-
-INJECT_huntercheat:
-  jmp newmem_huntercheat
-  nop
-  nop
-ret_huntercheat:
-registersymbol(INJECT_huntercheat)
-
-[DISABLE]
-//code_huntercheat from here till the end of the code_huntercheat will be used to disable the cheat
-INJECT_huntercheat:
-  db 48 8B 42 60 41 8B C8
-
-unregistersymbol(INJECT_huntercheat)
-dealloc(newmem_huntercheat)
-unregistersymbol(ptrHunterCheat)
-dealloc(ptrHunterCheat)
-
-{
-// ORIGINAL code_huntercheat - INJECTION POINT: "FIFA18_TRIAL.exe"+31DAB10
-
-"FIFA18_TRIAL.exe"+31DAB06: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB07: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB08: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB09: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB0A: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB0B: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB0C: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB0D: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB0E: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB0F: CC                    -  int 3
-// ---------- INJECTING HERE ----------
-"FIFA18_TRIAL.exe"+31DAB10: 48 8B 42 60           -  mov rax,[rdx+60]
-"FIFA18_TRIAL.exe"+31DAB14: 41 8B C8              -  mov ecx,r8d
-// ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+31DAB17: 8B 04 88              -  mov eax,[rax+rcx*4]
-"FIFA18_TRIAL.exe"+31DAB1A: C3                    -  ret
-"FIFA18_TRIAL.exe"+31DAB1B: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB1C: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB1D: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB1E: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB1F: CC                    -  int 3
-"FIFA18_TRIAL.exe"+31DAB20: 41 8B C0              -  mov eax,r8d
-"FIFA18_TRIAL.exe"+31DAB23: 8B 84 82 80 00 00 00  -  mov eax,[rdx+rax*4+00000080]
-"FIFA18_TRIAL.exe"+31DAB2A: C3                    -  ret
-}
-</AssemblerScript>
-              <CheatEntries>
-                <CheatEntry>
-                  <ID>1445</ID>
-                  <Description>"Shooting"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1426</ID>
-                      <Description>"Finishing"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>40</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1427</ID>
-                      <Description>"FK Acc."</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>44</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1428</ID>
-                      <Description>"Heading Acc."</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>48</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1432</ID>
-                      <Description>"Shot Power"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>58</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1433</ID>
-                      <Description>"Long Shots"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>5C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1436</ID>
-                      <Description>"Volleys"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>68</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1438</ID>
-                      <Description>"Penalties"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>70</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1446</ID>
-                  <Description>"Passing"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1422</ID>
-                      <Description>"Vision"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>30</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1424</ID>
-                      <Description>"Crossing"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>38</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1429</ID>
-                      <Description>"Long Pass"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>4C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1430</ID>
-                      <Description>"Short Pass"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>50</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1437</ID>
-                      <Description>"Curve"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>6C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1447</ID>
-                  <Description>"Dribbling"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1412</ID>
-                      <Description>"Agility"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>8</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1413</ID>
-                      <Description>"Balance"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1421</ID>
-                      <Description>"Att. Position"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>2C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1423</ID>
-                      <Description>"Ball Control"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>34</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1425</ID>
-                      <Description>"Dribbling"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>3C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1448</ID>
-                  <Description>"Defending"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1420</ID>
-                      <Description>"Interceptions"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>28</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1431</ID>
-                      <Description>"Marking"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>54</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1434</ID>
-                      <Description>"Stand Tackle"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>60</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1435</ID>
-                      <Description>"Slide Tackle"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>64</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1449</ID>
-                  <Description>"Physical"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1414</ID>
-                      <Description>"Jumping"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>10</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1415</ID>
-                      <Description>"Stamina"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>14</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1416</ID>
-                      <Description>"Strength"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>18</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1417</ID>
-                      <Description>"Reactions"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>1C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1418</ID>
-                      <Description>"Aggression"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>20</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1450</ID>
-                  <Description>"Pace"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1410</ID>
-                      <Description>"Acceleration"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>0</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1411</ID>
-                      <Description>"Sprint Speed"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>4</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-                <CheatEntry>
-                  <ID>1451</ID>
-                  <Description>"Unknown"</Description>
-                  <Options moHideChildren="1"/>
-                  <LastState Value="" RealAddress="00000000"/>
-                  <GroupHeader>1</GroupHeader>
-                  <CheatEntries>
-                    <CheatEntry>
-                      <ID>1419</ID>
-                      <Description>"Composure (?)"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>24</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1439</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>74</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1440</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>78</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1441</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>7C</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1442</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>80</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1443</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>84</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>1444</ID>
-                      <Description>"Unknown"</Description>
-                      <VariableType>4 Bytes</VariableType>
-                      <Address>ptrHunterCheat</Address>
-                      <Offsets>
-                        <Offset>84</Offset>
-                      </Offsets>
-                    </CheatEntry>
-                  </CheatEntries>
-                </CheatEntry>
-              </CheatEntries>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1472</ID>
-              <Description>"999,999 Followers"</Description>
-              <LastState/>
-              <VariableType>Auto Assembler Script</VariableType>
-              <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_followerCount,FIFA18.exe,44 8B 00 48 8D 55 D0 49) // should be unique
-alloc(newmem_followerCount,$1000,"FIFA18_TRIAL.exe"+2E06E4C)
-
-label(code_followerCount)
-label(ret_followerCount)
-
-newmem_followerCount:
-  mov [rax], #999999
-code_followerCount:
-  mov r8d,[rax]
-  lea rdx,[rbp-30]
-  jmp ret_followerCount
-
-INJECT_followerCount:
-  jmp newmem_followerCount
-  nop
-  nop
-ret_followerCount:
-registersymbol(INJECT_followerCount)
-
-[DISABLE]
-//code_followerCount from here till the end of the code_followerCount will be used to disable the cheat
-INJECT_followerCount:
-  db 44 8B 00 48 8D 55 D0
-
-unregistersymbol(INJECT_followerCount)
-dealloc(newmem_followerCount)
-
-{
-// ORIGINAL code_followerCount - INJECTION POINT: "FIFA18_TRIAL.exe"+2E06E4C
-// followerCount
-"FIFA18_TRIAL.exe"+2E06E22: 4C 8D 05 AF CE 3E 01  -  lea r8,[FIFA18.exe+41F3CD8]
-"FIFA18_TRIAL.exe"+2E06E29: BA 08 00 00 00        -  mov edx,00000008
-"FIFA18_TRIAL.exe"+2E06E2E: 49 8B CD              -  mov rcx,r13
-"FIFA18_TRIAL.exe"+2E06E31: FF 50 78              -  call qword ptr [rax+78]
-"FIFA18_TRIAL.exe"+2E06E34: E8 67 12 42 FE        -  call FIFA18.exe+12280A0
-"FIFA18_TRIAL.exe"+2E06E39: 4C 8B F0              -  mov r14,rax
-"FIFA18_TRIAL.exe"+2E06E3C: 4C 8B 38              -  mov r15,[rax]
-"FIFA18_TRIAL.exe"+2E06E3F: 4C 8B 0B              -  mov r9,[rbx]
-"FIFA18_TRIAL.exe"+2E06E42: 48 8B CB              -  mov rcx,rbx
-"FIFA18_TRIAL.exe"+2E06E45: 41 FF 91 70 02 00 00  -  call qword ptr [r9+00000270]
-// ---------- INJECTING HERE ----------
-"FIFA18_TRIAL.exe"+2E06E4C: 44 8B 00              -  mov r8d,[rax]
-"FIFA18_TRIAL.exe"+2E06E4F: 48 8D 55 D0           -  lea rdx,[rbp-30]
-// ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+2E06E53: 49 8B CE              -  mov rcx,r14
-"FIFA18_TRIAL.exe"+2E06E56: 41 FF 97 B8 00 00 00  -  call qword ptr [r15+000000B8]
-"FIFA18_TRIAL.exe"+2E06E5D: 49 8B 45 00           -  mov rax,[r13+00]
-"FIFA18_TRIAL.exe"+2E06E61: 4C 8B 4D D0           -  mov r9,[rbp-30]
-"FIFA18_TRIAL.exe"+2E06E65: 4C 8D 05 8C 8A 85 01  -  lea r8,[FIFA18.exe+465F8F8]
-"FIFA18_TRIAL.exe"+2E06E6C: BA 08 00 00 00        -  mov edx,00000008
-"FIFA18_TRIAL.exe"+2E06E71: 49 8B CD              -  mov rcx,r13
-"FIFA18_TRIAL.exe"+2E06E74: FF 50 78              -  call qword ptr [rax+78]
-"FIFA18_TRIAL.exe"+2E06E77: 90                    -  nop
-"FIFA18_TRIAL.exe"+2E06E78: 48 8D 8D A0 04 00 00  -  lea rcx,[rbp+000004A0]
-}
-</AssemblerScript>
-            </CheatEntry>
-          </CheatEntries>
-        </CheatEntry>
-        <CheatEntry>
           <ID>1292</ID>
           <Description>"Editing Player"</Description>
           <Options moHideChildren="1"/>
@@ -671,7 +75,7 @@ dealloc(newmem_followerCount)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_ISEDITPLAYERUNLOCKED,FIFA18.exe,41 FF 50 20 85 C0 0F 95 C0 BA 30) // should be unique
+aobscanmodule(INJECT_ISEDITPLAYERUNLOCKED,FIFA18_TRIAL.exe,41 FF 50 20 85 C0 0F 95 C0 BA 30) // should be unique
 alloc(newmem_iseditplayerunlocked,$1000,"FIFA18_TRIAL.exe"+2E7A9C3)
 
 label(code)
@@ -703,14 +107,14 @@ dealloc(newmem_iseditplayerunlocked)
 // ORIGINAL CODE - INJECTION POINT: "FIFA18_TRIAL.exe"+2E7A9C3
 
 "FIFA18_TRIAL.exe"+2E7A99D: 48 85 C0              -  test rax,rax
-"FIFA18_TRIAL.exe"+2E7A9A0: 74 45                 -  je FIFA18.exe+2E7A9E7
+"FIFA18_TRIAL.exe"+2E7A9A0: 74 45                 -  je FIFA18_TRIAL.exe+2E7A9E7
 "FIFA18_TRIAL.exe"+2E7A9A2: 48 8D 48 79           -  lea rcx,[rax+79]
-"FIFA18_TRIAL.exe"+2E7A9A6: 48 8D 15 F3 74 7F 01  -  lea rdx,[FIFA18.exe+4671EA0]
-"FIFA18_TRIAL.exe"+2E7A9AD: E8 0E 86 39 FD        -  call FIFA18.exe+212FC0
+"FIFA18_TRIAL.exe"+2E7A9A6: 48 8D 15 F3 74 7F 01  -  lea rdx,[FIFA18_TRIAL.exe+4671EA0]
+"FIFA18_TRIAL.exe"+2E7A9AD: E8 0E 86 39 FD        -  call FIFA18_TRIAL.exe+212FC0
 "FIFA18_TRIAL.exe"+2E7A9B2: 85 C0                 -  test eax,eax
-"FIFA18_TRIAL.exe"+2E7A9B4: 75 31                 -  jne FIFA18.exe+2E7A9E7
+"FIFA18_TRIAL.exe"+2E7A9B4: 75 31                 -  jne FIFA18_TRIAL.exe+2E7A9E7
 "FIFA18_TRIAL.exe"+2E7A9B6: 4D 8B 06              -  mov r8,[r14]
-"FIFA18_TRIAL.exe"+2E7A9B9: 48 8D 15 18 31 83 01  -  lea rdx,[FIFA18.exe+46ADAD8]
+"FIFA18_TRIAL.exe"+2E7A9B9: 48 8D 15 18 31 83 01  -  lea rdx,[FIFA18_TRIAL.exe+46ADAD8]
 "FIFA18_TRIAL.exe"+2E7A9C0: 49 8B CE              -  mov rcx,r14
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+2E7A9C3: 41 FF 50 20           -  call qword ptr [r8+20]
@@ -721,9 +125,9 @@ dealloc(newmem_iseditplayerunlocked)
 "FIFA18_TRIAL.exe"+2E7A9D1: 48 8B CE              -  mov rcx,rsi
 "FIFA18_TRIAL.exe"+2E7A9D4: 84 C0                 -  test al,al
 "FIFA18_TRIAL.exe"+2E7A9D6: 48 8B 06              -  mov rax,[rsi]
-"FIFA18_TRIAL.exe"+2E7A9D9: 74 05                 -  je FIFA18.exe+2E7A9E0
+"FIFA18_TRIAL.exe"+2E7A9D9: 74 05                 -  je FIFA18_TRIAL.exe+2E7A9E0
 "FIFA18_TRIAL.exe"+2E7A9DB: 45 33 C0              -  xor r8d,r8d
-"FIFA18_TRIAL.exe"+2E7A9DE: EB 03                 -  jmp FIFA18.exe+2E7A9E3
+"FIFA18_TRIAL.exe"+2E7A9DE: EB 03                 -  jmp FIFA18_TRIAL.exe+2E7A9E3
 "FIFA18_TRIAL.exe"+2E7A9E0: 44 8B C5              -  mov r8d,ebp
 "FIFA18_TRIAL.exe"+2E7A9E3: FF 50 50              -  call qword ptr [rax+50]
 }
@@ -736,7 +140,7 @@ dealloc(newmem_iseditplayerunlocked)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_EasyPlayerEdit,FIFA18.exe,48 8B 01 48 63 D2 48 8B 04 D0) // should be unique
+aobscanmodule(INJECT_EasyPlayerEdit,FIFA18_TRIAL.exe,48 8B 01 48 63 D2 48 8B 04 D0) // should be unique
 alloc(newmem_EasyPlayerEdit,$1000,"FIFA18_TRIAL.exe"+2B8BB69)
 
 label(code_EasyPlayerEdit)
@@ -760,7 +164,7 @@ INJECT_EasyPlayerEdit:
 ret_EasyPlayerEdit:
 registersymbol(INJECT_EasyPlayerEdit)
 
-aobscanmodule(INJECT_EasyEditPosition,FIFA18.exe,44 8B 20 45 89 A7 6C 0A 00 00) // should be unique
+aobscanmodule(INJECT_EasyEditPosition,FIFA18_TRIAL.exe,44 8B 20 45 89 A7 6C 0A 00 00) // should be unique
 alloc(newmem_EasyEditPosition,$1000,"FIFA18_TRIAL.exe"+3449B5C)
 
 label(code_EasyEditPosition)
@@ -817,9 +221,9 @@ dealloc(ptrEasyEditPosID)
 "FIFA18_TRIAL.exe"+2B8BB5E: CC                          -  int 3
 "FIFA18_TRIAL.exe"+2B8BB5F: CC                          -  int 3
 "FIFA18_TRIAL.exe"+2B8BB60: 85 D2                       -  test edx,edx
-"FIFA18_TRIAL.exe"+2B8BB62: 78 10                       -  js FIFA18.exe+2B8BB74
+"FIFA18_TRIAL.exe"+2B8BB62: 78 10                       -  js FIFA18_TRIAL.exe+2B8BB74
 "FIFA18_TRIAL.exe"+2B8BB64: 3B 51 08                    -  cmp edx,[rcx+08]
-"FIFA18_TRIAL.exe"+2B8BB67: 7D 0B                       -  jnl FIFA18.exe+2B8BB74
+"FIFA18_TRIAL.exe"+2B8BB67: 7D 0B                       -  jnl FIFA18_TRIAL.exe+2B8BB74
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+2B8BB69: 48 8B 01                    -  mov rax,[rcx]
 "FIFA18_TRIAL.exe"+2B8BB6C: 48 63 D2                    -  movsxd  rdx,edx
@@ -844,22 +248,22 @@ dealloc(ptrEasyEditPosID)
 "FIFA18_TRIAL.exe"+3449B38: 45 33 C0              -  xor r8d,r8d
 "FIFA18_TRIAL.exe"+3449B3B: 48 8D 95 F0 0A 00 00  -  lea rdx,[rbp+00000AF0]
 "FIFA18_TRIAL.exe"+3449B42: 48 8D 4C 24 40        -  lea rcx,[rsp+40]
-"FIFA18_TRIAL.exe"+3449B47: E8 54 49 07 FE        -  call FIFA18.exe+14BE4A0
+"FIFA18_TRIAL.exe"+3449B47: E8 54 49 07 FE        -  call FIFA18_TRIAL.exe+14BE4A0
 "FIFA18_TRIAL.exe"+3449B4C: 90                    -  nop
-"FIFA18_TRIAL.exe"+3449B4D: 48 8B 15 9C B7 E6 01  -  mov rdx,[FIFA18.exe+52B52F0]
+"FIFA18_TRIAL.exe"+3449B4D: 48 8B 15 9C B7 E6 01  -  mov rdx,[FIFA18_TRIAL.exe+52B52F0]
 "FIFA18_TRIAL.exe"+3449B54: 48 8B C8              -  mov rcx,rax
-"FIFA18_TRIAL.exe"+3449B57: E8 14 49 07 FE        -  call FIFA18.exe+14BE470
+"FIFA18_TRIAL.exe"+3449B57: E8 14 49 07 FE        -  call FIFA18_TRIAL.exe+14BE470
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+3449B5C: 44 8B 20              -  mov r12d,[rax]
 "FIFA18_TRIAL.exe"+3449B5F: 45 89 A7 6C 0A 00 00  -  mov [r15+00000A6C],r12d
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+3449B66: 48 8D 8D F0 0A 00 00  -  lea rcx,[rbp+00000AF0]
-"FIFA18_TRIAL.exe"+3449B6D: E8 8E C7 06 FE        -  call FIFA18.exe+14B6300
+"FIFA18_TRIAL.exe"+3449B6D: E8 8E C7 06 FE        -  call FIFA18_TRIAL.exe+14B6300
 "FIFA18_TRIAL.exe"+3449B72: BA 47 00 00 00        -  mov edx,00000047
 "FIFA18_TRIAL.exe"+3449B77: 49 8B 4F 20           -  mov rcx,[r15+20]
-"FIFA18_TRIAL.exe"+3449B7B: E8 D0 1F 74 FF        -  call FIFA18.exe+2B8BB50
+"FIFA18_TRIAL.exe"+3449B7B: E8 D0 1F 74 FF        -  call FIFA18_TRIAL.exe+2B8BB50
 "FIFA18_TRIAL.exe"+3449B80: 41 8B CC              -  mov ecx,r12d
-"FIFA18_TRIAL.exe"+3449B83: E8 48 AC A0 FF        -  call FIFA18.exe+2E547D0
+"FIFA18_TRIAL.exe"+3449B83: E8 48 AC A0 FF        -  call FIFA18_TRIAL.exe+2E547D0
 "FIFA18_TRIAL.exe"+3449B88: 8B D8                 -  mov ebx,eax
 "FIFA18_TRIAL.exe"+3449B8A: BA 47 00 00 00        -  mov edx,00000047
 "FIFA18_TRIAL.exe"+3449B8F: 49 8B 4F 20           -  mov rcx,[r15+20]
@@ -880,7 +284,7 @@ dealloc(ptrEasyEditPosID)
                       <LastState/>
                       <VariableType>Auto Assembler Script</VariableType>
                       <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_EasyEditFirstName,FIFA18.exe,0F 57 C0 F3 0F 7F 85 B0 01 00 00 48) // should be unique
+aobscanmodule(INJECT_EasyEditFirstName,FIFA18_TRIAL.exe,0F 57 C0 F3 0F 7F 85 B0 01 00 00 48) // should be unique
 alloc(newmem_EasyEditFirstName,$1000,"FIFA18_TRIAL.exe"+344FADA)
 
 label(code_EasyEditFirstName)
@@ -909,7 +313,7 @@ INJECT_EasyEditFirstName:
 ret_EasyEditFirstName:
 registersymbol(INJECT_EasyEditFirstName)
 
-aobscanmodule(INJECT_EasyEditLastName,FIFA18.exe,0F 57 C0 F3 0F 7F 85 A0 03 00 00 48 89 BD) // should be unique
+aobscanmodule(INJECT_EasyEditLastName,FIFA18_TRIAL.exe,0F 57 C0 F3 0F 7F 85 A0 03 00 00 48 89 BD) // should be unique
 alloc(newmem_EasyEditLastName,$1000,"FIFA18_TRIAL.exe"+344FA54)
 
 label(code_EasyEditLastName)
@@ -938,7 +342,7 @@ INJECT_EasyEditLastName:
 ret_EasyEditLastName:
 registersymbol(INJECT_EasyEditLastName)
 
-aobscanmodule(INJECT_EasyEditShirtName,FIFA18.exe,0F 57 C0 F3 0F 7F 85 00 0F 00 00 48) // should be unique
+aobscanmodule(INJECT_EasyEditShirtName,FIFA18_TRIAL.exe,0F 57 C0 F3 0F 7F 85 00 0F 00 00 48) // should be unique
 alloc(newmem_EasyEditShirtName,$1000,"FIFA18_TRIAL.exe"+344F940)
 
 label(code_EasyEditShirtName)
@@ -967,7 +371,7 @@ INJECT_EasyEditShirtName:
 ret_EasyEditShirtName:
 registersymbol(INJECT_EasyEditShirtName)
 
-aobscanmodule(INJECT_EasyEditKnownAs,FIFA18.exe,0F 57 C0 F3 0F 7F 85 00 04 00 00 33) // should be unique
+aobscanmodule(INJECT_EasyEditKnownAs,FIFA18_TRIAL.exe,0F 57 C0 F3 0F 7F 85 00 04 00 00 33) // should be unique
 alloc(newmem_EasyEditKnownAs,$1000,"FIFA18_TRIAL.exe"+344F9C8)
 
 label(code_EasyEditKnownAs)
@@ -1034,16 +438,16 @@ dealloc(ptrEasyEditKnownAs)
 {
 // ORIGINAL code_EasyEditFirstName - INJECT_EasyEditFirstNameION POINT: "FIFA18_TRIAL.exe"+344FADA
 
-"FIFA18_TRIAL.exe"+344FAAF: E8 9C 71 06 FE           -  call FIFA18.exe+14B6C50
+"FIFA18_TRIAL.exe"+344FAAF: E8 9C 71 06 FE           -  call FIFA18_TRIAL.exe+14B6C50
 "FIFA18_TRIAL.exe"+344FAB4: 48 89 44 24 70           -  mov [rsp+70],rax
 "FIFA18_TRIAL.exe"+344FAB9: 4D 8B 45 00              -  mov r8,[r13+00]
 "FIFA18_TRIAL.exe"+344FABD: 33 D2                    -  xor edx,edx
 "FIFA18_TRIAL.exe"+344FABF: 49 8B CD                 -  mov rcx,r13
 "FIFA18_TRIAL.exe"+344FAC2: 41 FF 50 38              -  call qword ptr [r8+38]
 "FIFA18_TRIAL.exe"+344FAC6: 48 8B 58 08              -  mov rbx,[rax+08]
-"FIFA18_TRIAL.exe"+344FACA: 48 8D 15 5F 30 AD 00     -  lea rdx,[FIFA18.exe+3F22B30]
+"FIFA18_TRIAL.exe"+344FACA: 48 8D 15 5F 30 AD 00     -  lea rdx,[FIFA18_TRIAL.exe+3F22B30]
 "FIFA18_TRIAL.exe"+344FAD1: 48 8D 4D C0              -  lea rcx,[rbp-40]
-"FIFA18_TRIAL.exe"+344FAD5: E8 36 B7 41 00           -  call FIFA18.exe+386B210
+"FIFA18_TRIAL.exe"+344FAD5: E8 36 B7 41 00           -  call FIFA18_TRIAL.exe+386B210
 // ---------- INJECT_EasyEditFirstNameING HERE ----------
 "FIFA18_TRIAL.exe"+344FADA: 0F 57 C0                 -  xorps xmm0,xmm0
 "FIFA18_TRIAL.exe"+344FADD: F3 0F 7F 85 B0 01 00 00  -  movdqu [rbp+000001B0],xmm0
@@ -1055,7 +459,7 @@ dealloc(ptrEasyEditKnownAs)
 "FIFA18_TRIAL.exe"+344FAFA: 66 0F 1F 44 00 00        -  nop [rax+rax+00]
 "FIFA18_TRIAL.exe"+344FB00: 49 FF C0                 -  inc r8
 "FIFA18_TRIAL.exe"+344FB03: 42 80 3C 03 00           -  cmp byte ptr [rbx+r8],00
-"FIFA18_TRIAL.exe"+344FB08: 75 F6                    -  jne FIFA18.exe+344FB00
+"FIFA18_TRIAL.exe"+344FB08: 75 F6                    -  jne FIFA18_TRIAL.exe+344FB00
 "FIFA18_TRIAL.exe"+344FB0A: 4C 03 C3                 -  add r8,rbx
 "FIFA18_TRIAL.exe"+344FB0D: 48 8B D3                 -  mov rdx,rbx
 }
@@ -1063,16 +467,16 @@ dealloc(ptrEasyEditKnownAs)
 {
 // ORIGINAL code_EasyEditLastName - INJECT_EasyEditLastNameION POINT: "FIFA18_TRIAL.exe"+344FA54
 
-"FIFA18_TRIAL.exe"+344FA2A: E8 21 72 06 FE           -  call FIFA18.exe+14B6C50
+"FIFA18_TRIAL.exe"+344FA2A: E8 21 72 06 FE           -  call FIFA18_TRIAL.exe+14B6C50
 "FIFA18_TRIAL.exe"+344FA2F: 48 89 44 24 78           -  mov [rsp+78],rax
 "FIFA18_TRIAL.exe"+344FA34: 4D 8B 06                 -  mov r8,[r14]
 "FIFA18_TRIAL.exe"+344FA37: 33 D2                    -  xor edx,edx
 "FIFA18_TRIAL.exe"+344FA39: 49 8B CE                 -  mov rcx,r14
 "FIFA18_TRIAL.exe"+344FA3C: 41 FF 50 38              -  call qword ptr [r8+38]
 "FIFA18_TRIAL.exe"+344FA40: 48 8B 58 08              -  mov rbx,[rax+08]
-"FIFA18_TRIAL.exe"+344FA44: 48 8D 15 E5 30 AD 00     -  lea rdx,[FIFA18.exe+3F22B30]
+"FIFA18_TRIAL.exe"+344FA44: 48 8D 15 E5 30 AD 00     -  lea rdx,[FIFA18_TRIAL.exe+3F22B30]
 "FIFA18_TRIAL.exe"+344FA4B: 48 8D 4D 98              -  lea rcx,[rbp-68]
-"FIFA18_TRIAL.exe"+344FA4F: E8 BC B7 41 00           -  call FIFA18.exe+386B210
+"FIFA18_TRIAL.exe"+344FA4F: E8 BC B7 41 00           -  call FIFA18_TRIAL.exe+386B210
 // ---------- INJECT_EasyEditLastNameING HERE ----------
 "FIFA18_TRIAL.exe"+344FA54: 0F 57 C0                 -  xorps xmm0,xmm0
 "FIFA18_TRIAL.exe"+344FA57: F3 0F 7F 85 A0 03 00 00  -  movdqu [rbp+000003A0],xmm0
@@ -1083,7 +487,7 @@ dealloc(ptrEasyEditKnownAs)
 "FIFA18_TRIAL.exe"+344FA70: 49 83 C8 FF              -  or r8,-01
 "FIFA18_TRIAL.exe"+344FA74: 49 FF C0                 -  inc r8
 "FIFA18_TRIAL.exe"+344FA77: 42 80 3C 03 00           -  cmp byte ptr [rbx+r8],00
-"FIFA18_TRIAL.exe"+344FA7C: 75 F6                    -  jne FIFA18.exe+344FA74
+"FIFA18_TRIAL.exe"+344FA7C: 75 F6                    -  jne FIFA18_TRIAL.exe+344FA74
 "FIFA18_TRIAL.exe"+344FA7E: 4C 03 C3                 -  add r8,rbx
 "FIFA18_TRIAL.exe"+344FA81: 48 8B D3                 -  mov rdx,rbx
 "FIFA18_TRIAL.exe"+344FA84: 48 8D 8D A0 03 00 00     -  lea rcx,[rbp+000003A0]
@@ -1092,16 +496,16 @@ dealloc(ptrEasyEditKnownAs)
 {
 // ORIGINAL code_EasyEditShirtName - INJECT_EasyEditShirtNameION POINT: "FIFA18_TRIAL.exe"+344F940
 
-"FIFA18_TRIAL.exe"+344F918: E8 33 C2 73 FF                    -  call FIFA18.exe+2B8BB50
+"FIFA18_TRIAL.exe"+344F918: E8 33 C2 73 FF                    -  call FIFA18_TRIAL.exe+2B8BB50
 "FIFA18_TRIAL.exe"+344F91D: 4C 8B E8                          -  mov r13,rax
 "FIFA18_TRIAL.exe"+344F920: 4C 8B 03                          -  mov r8,[rbx]
 "FIFA18_TRIAL.exe"+344F923: 33 D2                             -  xor edx,edx
 "FIFA18_TRIAL.exe"+344F925: 48 8B CB                          -  mov rcx,rbx
 "FIFA18_TRIAL.exe"+344F928: 41 FF 50 38                       -  call qword ptr [r8+38]
 "FIFA18_TRIAL.exe"+344F92C: 48 8B 58 08                       -  mov rbx,[rax+08]
-"FIFA18_TRIAL.exe"+344F930: 48 8D 15 F9 31 AD 00              -  lea rdx,[FIFA18.exe+3F22B30]
+"FIFA18_TRIAL.exe"+344F930: 48 8D 15 F9 31 AD 00              -  lea rdx,[FIFA18_TRIAL.exe+3F22B30]
 "FIFA18_TRIAL.exe"+344F937: 48 8D 4D A0                       -  lea rcx,[rbp-60]
-"FIFA18_TRIAL.exe"+344F93B: E8 D0 B8 41 00                    -  call FIFA18.exe+386B210
+"FIFA18_TRIAL.exe"+344F93B: E8 D0 B8 41 00                    -  call FIFA18_TRIAL.exe+386B210
 // ---------- INJECT_EasyEditShirtNameING HERE ----------
 "FIFA18_TRIAL.exe"+344F940: 0F 57 C0                          -  xorps xmm0,xmm0
 "FIFA18_TRIAL.exe"+344F943: F3 0F 7F 85 00 0F 00 00           -  movdqu [rbp+00000F00],xmm0
@@ -1112,7 +516,7 @@ dealloc(ptrEasyEditKnownAs)
 "FIFA18_TRIAL.exe"+344F960: 49 83 C8 FF                       -  or r8,-01
 "FIFA18_TRIAL.exe"+344F964: 49 FF C0                          -  inc r8
 "FIFA18_TRIAL.exe"+344F967: 42 80 3C 03 00                    -  cmp byte ptr [rbx+r8],00
-"FIFA18_TRIAL.exe"+344F96C: 75 F6                             -  jne FIFA18.exe+344F964
+"FIFA18_TRIAL.exe"+344F96C: 75 F6                             -  jne FIFA18_TRIAL.exe+344F964
 "FIFA18_TRIAL.exe"+344F96E: 4C 03 C3                          -  add r8,rbx
 "FIFA18_TRIAL.exe"+344F971: 48 8B D3                          -  mov rdx,rbx
 "FIFA18_TRIAL.exe"+344F974: 48 8D 8D 00 0F 00 00              -  lea rcx,[rbp+00000F00]
@@ -1121,16 +525,16 @@ dealloc(ptrEasyEditKnownAs)
 {
 // ORIGINAL code_EasyEditKnownAs - INJECT_EasyEditKnownAsION POINT: "FIFA18_TRIAL.exe"+344F9C8
 
-"FIFA18_TRIAL.exe"+344F99F: E8 AC 72 06 FE                    -  call FIFA18.exe+14B6C50
+"FIFA18_TRIAL.exe"+344F99F: E8 AC 72 06 FE                    -  call FIFA18_TRIAL.exe+14B6C50
 "FIFA18_TRIAL.exe"+344F9A4: 48 89 45 80                       -  mov [rbp-80],rax
 "FIFA18_TRIAL.exe"+344F9A8: 4C 8B 07                          -  mov r8,[rdi]
 "FIFA18_TRIAL.exe"+344F9AB: 33 D2                             -  xor edx,edx
 "FIFA18_TRIAL.exe"+344F9AD: 48 8B CF                          -  mov rcx,rdi
 "FIFA18_TRIAL.exe"+344F9B0: 41 FF 50 38                       -  call qword ptr [r8+38]
 "FIFA18_TRIAL.exe"+344F9B4: 48 8B 58 08                       -  mov rbx,[rax+08]
-"FIFA18_TRIAL.exe"+344F9B8: 48 8D 15 71 31 AD 00              -  lea rdx,[FIFA18.exe+3F22B30]
+"FIFA18_TRIAL.exe"+344F9B8: 48 8D 15 71 31 AD 00              -  lea rdx,[FIFA18_TRIAL.exe+3F22B30]
 "FIFA18_TRIAL.exe"+344F9BF: 48 8D 4D 90                       -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+344F9C3: E8 48 B8 41 00                    -  call FIFA18.exe+386B210
+"FIFA18_TRIAL.exe"+344F9C3: E8 48 B8 41 00                    -  call FIFA18_TRIAL.exe+386B210
 // ---------- INJECT_EasyEditKnownAsING HERE ----------
 "FIFA18_TRIAL.exe"+344F9C8: 0F 57 C0                          -  xorps xmm0,xmm0
 "FIFA18_TRIAL.exe"+344F9CB: F3 0F 7F 85 00 04 00 00           -  movdqu [rbp+00000400],xmm0
@@ -1143,7 +547,7 @@ dealloc(ptrEasyEditKnownAs)
 "FIFA18_TRIAL.exe"+344F9EA: 66 0F 1F 44 00 00                 -  nop [rax+rax+00]
 "FIFA18_TRIAL.exe"+344F9F0: 49 FF C0                          -  inc r8
 "FIFA18_TRIAL.exe"+344F9F3: 42 38 3C 03                       -  cmp [rbx+r8],dil
-"FIFA18_TRIAL.exe"+344F9F7: 75 F7                             -  jne FIFA18.exe+344F9F0
+"FIFA18_TRIAL.exe"+344F9F7: 75 F7                             -  jne FIFA18_TRIAL.exe+344F9F0
 "FIFA18_TRIAL.exe"+344F9F9: 4C 03 C3                          -  add r8,rbx
 }
 </AssemblerScript>
@@ -1894,7 +1298,7 @@ dealloc(ptrEasyEditKnownAs)
                       <Options moHideChildren="1"/>
                       <LastState/>
                       <VariableType>Auto Assembler Script</VariableType>
-                      <AssemblerScript>{ Game   : FIFA18.exe
+                      <AssemblerScript>{ Game   : FIFA18_TRIAL.exe
   Version:
   Date   : 2017-07-16
   Author : Howard
@@ -1905,7 +1309,7 @@ dealloc(ptrEasyEditKnownAs)
 [ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
 
-aobscanmodule(playerDataPtrInject,FIFA18.exe,41 8B C2 48 C1 E8 03 83) // should be unique
+aobscanmodule(playerDataPtrInject,FIFA18_TRIAL.exe,41 8B C2 48 C1 E8 03 83) // should be unique
 alloc(playerDataPtrCave,$300,"FIFA18_TRIAL.exe"+14CD014)
 label(playerDataPtrCode)
 label(playerDataPtrOrg)
@@ -1923,6 +1327,11 @@ registersymbol(ptrTeamplayerlinks)
 ptrTeamplayerlinks:
 dq 0
 
+alloc(ptrTeamkits, 8)
+registersymbol(ptrTeamkits)
+ptrTeamkits:
+dq 0
+
 playerDataPtrCave:
 
 playerDataPtrCode:
@@ -1933,6 +1342,14 @@ playerDataPtrCode:
   je players_table
   cmp r10d, 53
   je teamplayerlinks_table
+  cmp r10d, 152
+  je teamkits_table
+  jmp playerDataPtrOrg
+
+teamkits_table:
+  cmp r9d, 5
+  jne playerDataPtrOrg
+  mov [ptrTeamkits], r8
   jmp playerDataPtrOrg
 
 teamplayerlinks_table:
@@ -1967,10 +1384,12 @@ playerDataPtrInject:
 
 unregistersymbol(playerDataPtr)
 unregistersymbol(ptrTeamplayerlinks)
+unregistersymbol(ptrTeamkits)
 unregistersymbol(playerDataPtrInject)
 dealloc(playerDataPtrCave)
 dealloc(playerDataPtr)
 dealloc(ptrTeamplayerlinks)
+dealloc(ptrTeamkits)
 
 
 {
@@ -4129,6 +3548,75 @@ dealloc(ptrTeamplayerlinks)
                             </CheatEntry>
                           </CheatEntries>
                         </CheatEntry>
+                        <CheatEntry>
+                          <ID>1993</ID>
+                          <Description>"teamkits"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>1994</ID>
+                              <Description>"teamkitid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>14</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>2D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1998</ID>
+                              <Description>"jerseynamefonttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>10</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1997</ID>
+                              <Description>"numberfonttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1996</ID>
+                              <Description>"shortsnumberfonttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>24</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1995</ID>
+                              <Description>"year"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>30</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
                   </CheatEntries>
@@ -4151,7 +3639,7 @@ dealloc(ptrTeamplayerlinks)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_remove_countdown,FIFA18.exe,48 8D 8D 20 01 00 00 E8 ?? ?? ?? ?? 41 B8 05 00 00 00) // should be unique
+aobscanmodule(INJECT_remove_countdown,FIFA18_TRIAL.exe,48 8D 8D 20 01 00 00 E8 ?? ?? ?? ?? 41 B8 05 00 00 00) // should be unique
 alloc(newmem_remove_countdown,$1000,"FIFA18_TRIAL.exe"+80FA755)
 
 label(code)
@@ -4212,7 +3700,7 @@ dealloc(newmem_remove_countdown)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_more_efficient_training,FIFA18.exe,F3 0F 59 8C 83 44 03 00 00) // should be unique
+aobscanmodule(INJECT_more_efficient_training,FIFA18_TRIAL.exe,F3 0F 59 8C 83 44 03 00 00) // should be unique
 alloc(cave_more_efficient_training,$1000,"FIFA18_TRIAL.exe"+2A11A72)
 
 label(code_more_efficient_training)
@@ -4251,7 +3739,7 @@ dealloc(cave_more_efficient_training)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_UnlimitedTraining,FIFA18.exe,8B 76 44 48 8B 5F 08) // should be unique
+aobscanmodule(INJECT_UnlimitedTraining,FIFA18_TRIAL.exe,8B 76 44 48 8B 5F 08) // should be unique
 alloc(newmem_UnlimitedTraining,$1000,"FIFA18_TRIAL.exe"+36351A0)
 
 label(code_UnlimitedTraining)
@@ -4313,12 +3801,12 @@ dealloc(newmem_UnlimitedTraining)
 
 "FIFA18_TRIAL.exe"+3635174: 4C 89 AD 48 02 00 00           -  mov [rbp+00000248],r13
 "FIFA18_TRIAL.exe"+363517B: 45 33 C0                       -  xor r8d,r8d
-"FIFA18_TRIAL.exe"+363517E: 48 8D 15 B4 BA 8E 00           -  lea rdx,[FIFA18.exe+3F20C39]
+"FIFA18_TRIAL.exe"+363517E: 48 8D 15 B4 BA 8E 00           -  lea rdx,[FIFA18_TRIAL.exe+3F20C39]
 "FIFA18_TRIAL.exe"+3635185: 48 8B CB                       -  mov rcx,rbx
-"FIFA18_TRIAL.exe"+3635188: FF 15 42 3A 8B 00              -  call qword ptr [FIFA18.exe+3EE8BD0]
+"FIFA18_TRIAL.exe"+3635188: FF 15 42 3A 8B 00              -  call qword ptr [FIFA18_TRIAL.exe+3EE8BD0]
 "FIFA18_TRIAL.exe"+363518E: 90                             -  nop
 "FIFA18_TRIAL.exe"+363518F: 48 85 F6                       -  test rsi,rsi
-"FIFA18_TRIAL.exe"+3635192: 0F 84 64 17 00 00              -  je FIFA18.exe+36368FC
+"FIFA18_TRIAL.exe"+3635192: 0F 84 64 17 00 00              -  je FIFA18_TRIAL.exe+36368FC
 "FIFA18_TRIAL.exe"+3635198: 44 8B 66 40                    -  mov r12d,[rsi+40]
 "FIFA18_TRIAL.exe"+363519C: 44 89 65 A8                    -  mov [rbp-58],r12d
 // ---------- INJECTING HERE ----------
@@ -4326,12 +3814,12 @@ dealloc(newmem_UnlimitedTraining)
 "FIFA18_TRIAL.exe"+36351A3: 48 8B 5F 08                    -  mov rbx,[rdi+08]
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+36351A7: 48 8D 8D A0 01 00 00           -  lea rcx,[rbp+000001A0]
-"FIFA18_TRIAL.exe"+36351AE: E8 AD B0 A3 FF                 -  call FIFA18.exe+3070260
+"FIFA18_TRIAL.exe"+36351AE: E8 AD B0 A3 FF                 -  call FIFA18_TRIAL.exe+3070260
 "FIFA18_TRIAL.exe"+36351B3: 48 63 85 A0 01 00 00           -  movsxd  rax,dword ptr [rbp+000001A0]
 "FIFA18_TRIAL.exe"+36351BA: 48 C1 E0 05                    -  shl rax,05
 "FIFA18_TRIAL.exe"+36351BE: 48 8B 44 18 18                 -  mov rax,[rax+rbx+18]
 "FIFA18_TRIAL.exe"+36351C3: 48 8B 08                       -  mov rcx,[rax]
-"FIFA18_TRIAL.exe"+36351C6: E8 C5 6F 15 00                 -  call FIFA18.exe+378C190
+"FIFA18_TRIAL.exe"+36351C6: E8 C5 6F 15 00                 -  call FIFA18_TRIAL.exe+378C190
 "FIFA18_TRIAL.exe"+36351CB: 48 8B D8                       -  mov rbx,rax
 "FIFA18_TRIAL.exe"+36351CE: 48 89 85 A0 01 00 00           -  mov [rbp+000001A0],rax
 "FIFA18_TRIAL.exe"+36351D5: 4D 85 F6                       -  test r14,r14
@@ -4344,7 +3832,7 @@ dealloc(newmem_UnlimitedTraining)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_TrainingEveryDay,FIFA18.exe,83 6F 44 01 ?? ?? ?? ?? ?? ?? C7 47 44 07 00 00 00) // should be unique
+aobscanmodule(INJECT_TrainingEveryDay,FIFA18_TRIAL.exe,83 6F 44 01 ?? ?? ?? ?? ?? ?? C7 47 44 07 00 00 00) // should be unique
 alloc(newmem_TrainingEveryDay,$1000,"FIFA18_TRIAL.exe"+37B7281)
 
 label(code_TrainingEveryDay)
@@ -4401,16 +3889,16 @@ dealloc(newmem_TrainingEveryDay)
 "FIFA18_TRIAL.exe"+37B725C: 8B 47 14                 -  mov eax,[rdi+14]
 "FIFA18_TRIAL.exe"+37B725F: 48 8B CF                 -  mov rcx,rdi
 "FIFA18_TRIAL.exe"+37B7262: 89 47 40                 -  mov [rdi+40],eax
-"FIFA18_TRIAL.exe"+37B7265: E8 36 3D 05 00           -  call FIFA18.exe+380AFA0
+"FIFA18_TRIAL.exe"+37B7265: E8 36 3D 05 00           -  call FIFA18_TRIAL.exe+380AFA0
 "FIFA18_TRIAL.exe"+37B726A: 48 8B CF                 -  mov rcx,rdi
 "FIFA18_TRIAL.exe"+37B726D: 48 8B 5C 24 30           -  mov rbx,[rsp+30]
 "FIFA18_TRIAL.exe"+37B7272: 48 8B 74 24 38           -  mov rsi,[rsp+38]
 "FIFA18_TRIAL.exe"+37B7277: 48 83 C4 20              -  add rsp,20
 "FIFA18_TRIAL.exe"+37B727B: 5F                       -  pop rdi
-"FIFA18_TRIAL.exe"+37B727C: E9 8F 44 F2 FF           -  jmp FIFA18.exe+36DB710
+"FIFA18_TRIAL.exe"+37B727C: E9 8F 44 F2 FF           -  jmp FIFA18_TRIAL.exe+36DB710
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+37B7281: 83 6F 44 01              -  sub dword ptr [rdi+44],01
-"FIFA18_TRIAL.exe"+37B7285: 0F 89 D5 01 00 00        -  jns FIFA18.exe+37B7460
+"FIFA18_TRIAL.exe"+37B7285: 0F 89 D5 01 00 00        -  jns FIFA18_TRIAL.exe+37B7460
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+37B728B: C7 47 44 07 00 00 00     -  mov [rdi+44],00000007
 "FIFA18_TRIAL.exe"+37B7292: 48 8B 5C 24 30           -  mov rbx,[rsp+30]
@@ -4433,7 +3921,7 @@ dealloc(newmem_TrainingEveryDay)
               <AssemblerScript>[ENABLE]
 //code from here to '[DISABLE]' will be used to enable the cheat
 
-aobscanmodule(INJECT_SimA,FIFA18.exe,8B D8 4C 8D 44 24 40 8B D0 49 8B CE E8 ?? ?? ?? ?? 41 8B 8E 38 01 00 00 89 8C 24 B0 00 00 00 4D 8B 45 00) // should be unique
+aobscanmodule(INJECT_SimA,FIFA18_TRIAL.exe,8B D8 4C 8D 44 24 40 8B D0 49 8B CE E8 ?? ?? ?? ?? 41 8B 8E 38 01 00 00 89 8C 24 B0 00 00 00 4D 8B 45 00) // should be unique
 alloc(newmem_SimA,$1000,"FIFA18_TRIAL.exe"+2A6442F)
 
 label(code)
@@ -4507,7 +3995,7 @@ dealloc(newmem_SimA)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_ptrTransferBudgetCave,FIFA18.exe,44 8B 48 08 44 8B C7)
+aobscanmodule(INJECT_ptrTransferBudgetCave,FIFA18_TRIAL.exe,44 8B 48 08 44 8B C7)
 alloc(ptrTransferBudgetCave,$1000, "FIFA18_TRIAL.exe"+361B47C)
 label(ptrTransferBudgetCave_ret)
 label(ptrTransferBudgetCave_org)
@@ -4592,7 +4080,7 @@ unregistersymbol(INJECT_ptrTransferBudgetCave)
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_ReleasePlayerFee,FIFA18.exe,48 8D 4C 24 30 89 06 8B) // should be unique
+aobscanmodule(INJECT_ReleasePlayerFee,FIFA18_TRIAL.exe,48 8D 4C 24 30 89 06 8B) // should be unique
 alloc(newmem_ReleasePlayerFee,$1000,"FIFA18_TRIAL.exe"+3931097)
 
 label(code_ReleasePlayerFee)
@@ -4609,7 +4097,7 @@ INJECT_ReleasePlayerFee:
 ret_ReleasePlayerFee:
 registersymbol(INJECT_ReleasePlayerFee)
 
-aobscanmodule(INJECT_UnlimitedPlayerRelease,FIFA18.exe,44 8B E8 8B 46 14) // should be unique
+aobscanmodule(INJECT_UnlimitedPlayerRelease,FIFA18_TRIAL.exe,44 8B E8 8B 46 14) // should be unique
 alloc(newmem_UnlimitedPlayerRelease,$1000,"FIFA18_TRIAL.exe"+36D6D1C)
 
 label(code_UnlimitedPlayerRelease)
@@ -4650,11 +4138,11 @@ dealloc(newmem_ReleasePlayerFee)
 "FIFA18_TRIAL.exe"+36D6CFC: 89 84 24 F8 00 00 00              -  mov [rsp+000000F8],eax
 "FIFA18_TRIAL.exe"+36D6D03: 41 8B D6                          -  mov edx,r14d
 "FIFA18_TRIAL.exe"+36D6D06: 48 8B CF                          -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+36D6D09: E8 32 E3 20 00                    -  call FIFA18.exe+38E5040
+"FIFA18_TRIAL.exe"+36D6D09: E8 32 E3 20 00                    -  call FIFA18_TRIAL.exe+38E5040
 "FIFA18_TRIAL.exe"+36D6D0E: 44 8B E0                          -  mov r12d,eax
 "FIFA18_TRIAL.exe"+36D6D11: 41 8B D5                          -  mov edx,r13d
 "FIFA18_TRIAL.exe"+36D6D14: 48 8B CE                          -  mov rcx,rsi
-"FIFA18_TRIAL.exe"+36D6D17: E8 04 59 1A 00                    -  call FIFA18.exe+387C620
+"FIFA18_TRIAL.exe"+36D6D17: E8 04 59 1A 00                    -  call FIFA18_TRIAL.exe+387C620
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+36D6D1C: 44 8B E8                          -  mov r13d,eax
 "FIFA18_TRIAL.exe"+36D6D1F: 8B 46 14                          -  mov eax,[rsi+14]
@@ -4664,7 +4152,7 @@ dealloc(newmem_ReleasePlayerFee)
 "FIFA18_TRIAL.exe"+36D6D29: 49 8B 1F                          -  mov rbx,[r15]
 "FIFA18_TRIAL.exe"+36D6D2C: 48 89 5C 24 70                    -  mov [rsp+70],rbx
 "FIFA18_TRIAL.exe"+36D6D31: C7 84 24 98 00 00 00 FF FF FF FF  -  mov [rsp+00000098],FFFFFFFF
-"FIFA18_TRIAL.exe"+36D6D3C: E8 FF 7A 9A FF                    -  call FIFA18.exe+307E840
+"FIFA18_TRIAL.exe"+36D6D3C: E8 FF 7A 9A FF                    -  call FIFA18_TRIAL.exe+307E840
 "FIFA18_TRIAL.exe"+36D6D41: 48 8B C8                          -  mov rcx,rax
 "FIFA18_TRIAL.exe"+36D6D44: 48 89 44 24 50                    -  mov [rsp+50],rax
 "FIFA18_TRIAL.exe"+36D6D49: 33 C0                             -  xor eax,eax
@@ -4674,25 +4162,25 @@ dealloc(newmem_ReleasePlayerFee)
 {
 // ORIGINAL code_ReleasePlayerFee - INJECTION POINT: "FIFA18_TRIAL.exe"+3931097
 
-"FIFA18_TRIAL.exe"+3931069: E8 02 36 00 00        -  call FIFA18.exe+3934670
+"FIFA18_TRIAL.exe"+3931069: E8 02 36 00 00        -  call FIFA18_TRIAL.exe+3934670
 "FIFA18_TRIAL.exe"+393106E: 8B 95 88 00 00 00     -  mov edx,[rbp+00000088]
 "FIFA18_TRIAL.exe"+3931074: 4C 8D 45 D0           -  lea r8,[rbp-30]
 "FIFA18_TRIAL.exe"+3931078: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+393107B: E8 90 12 F8 FF        -  call FIFA18.exe+38B2310
+"FIFA18_TRIAL.exe"+393107B: E8 90 12 F8 FF        -  call FIFA18_TRIAL.exe+38B2310
 "FIFA18_TRIAL.exe"+3931080: 8B 45 D8              -  mov eax,[rbp-28]
 "FIFA18_TRIAL.exe"+3931083: 49 8B CE              -  mov rcx,r14
 "FIFA18_TRIAL.exe"+3931086: 8B 95 88 00 00 00     -  mov edx,[rbp+00000088]
 "FIFA18_TRIAL.exe"+393108C: 89 85 90 00 00 00     -  mov [rbp+00000090],eax
-"FIFA18_TRIAL.exe"+3931092: E8 89 B5 F4 FF        -  call FIFA18.exe+387C620
+"FIFA18_TRIAL.exe"+3931092: E8 89 B5 F4 FF        -  call FIFA18_TRIAL.exe+387C620
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+3931097: 48 8D 4C 24 30        -  lea rcx,[rsp+30]
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+393109C: 89 06                 -  mov [rsi],eax
 "FIFA18_TRIAL.exe"+393109E: 8B F8                 -  mov edi,eax
-"FIFA18_TRIAL.exe"+39310A0: E8 3B E7 73 FF        -  call FIFA18.exe+306F7E0
+"FIFA18_TRIAL.exe"+39310A0: E8 3B E7 73 FF        -  call FIFA18_TRIAL.exe+306F7E0
 "FIFA18_TRIAL.exe"+39310A5: 49 8B 5E 08           -  mov rbx,[r14+08]
 "FIFA18_TRIAL.exe"+39310A9: 48 8D 4C 24 30        -  lea rcx,[rsp+30]
-"FIFA18_TRIAL.exe"+39310AE: E8 AD E8 73 FF        -  call FIFA18.exe+306F960
+"FIFA18_TRIAL.exe"+39310AE: E8 AD E8 73 FF        -  call FIFA18_TRIAL.exe+306F960
 "FIFA18_TRIAL.exe"+39310B3: 48 63 4C 24 30        -  movsxd  rcx,dword ptr [rsp+30]
 "FIFA18_TRIAL.exe"+39310B8: 41 8B 46 14           -  mov eax,[r14+14]
 "FIFA18_TRIAL.exe"+39310BC: 48 C1 E1 05           -  shl rcx,05
@@ -4708,7 +4196,7 @@ dealloc(newmem_ReleasePlayerFee)
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
 
-aobscanmodule(INJECT_ContractNeg,FIFA18.exe,89 08 48 8B 43 18) // should be unique
+aobscanmodule(INJECT_ContractNeg,FIFA18_TRIAL.exe,89 08 48 8B 43 18) // should be unique
 alloc(newmem_ContractNeg,$1000,"FIFA18_TRIAL.exe"+AD12CC8)
 
 label(code_ContractNeg)
@@ -4829,7 +4317,7 @@ unregistersymbol(ContractNeg_BonusType_Sum)
 "FIFA18_TRIAL.exe"+AD12CB4: 89 48 04                       -  mov [rax+04],ecx
 "FIFA18_TRIAL.exe"+AD12CB7: 48 8B 4B 20                    -  mov rcx,[rbx+20]
 "FIFA18_TRIAL.exe"+AD12CBB: 48 83 C1 30                    -  add rcx,30
-"FIFA18_TRIAL.exe"+AD12CBF: E8 AC C6 D2 F8                 -  call FIFA18.exe+3A3F370
+"FIFA18_TRIAL.exe"+AD12CBF: E8 AC C6 D2 F8                 -  call FIFA18_TRIAL.exe+3A3F370
 "FIFA18_TRIAL.exe"+AD12CC4: 48 8B 4B 18                    -  mov rcx,[rbx+18]
 // ---------- INJECT_ContractNegING HERE ----------
 "FIFA18_TRIAL.exe"+AD12CC8: 0F 10 00                       -  movups xmm0,[rax]
@@ -4905,7 +4393,7 @@ unregistersymbol(ContractNeg_BonusType_Sum)
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_IntJobOffer,FIFA18.exe, 48 8B 80 90 01 00 00 48 2B 81 88 01 00 00 48 C1 F8 06 85 C0) // should be unique
+aobscanmodule(INJECT_IntJobOffer,FIFA18_TRIAL.exe, 48 8B 80 90 01 00 00 48 2B 81 88 01 00 00 48 C1 F8 06 85 C0) // should be unique
 alloc(cave_IntJobOffer,$1000,"FIFA18_TRIAL.exe"+823922E)
 alloc(NationalTeamID, 4)
 registersymbol(NationalTeamID)
@@ -4935,7 +4423,7 @@ INJECT_IntJobOffer:
 return_IntJobOffer:
 registersymbol(INJECT_IntJobOffer)
 
-aobscanmodule(INJECT_ClubJobOffer,FIFA18.exe,48 8B 01 FF 50 20 48 8D 5B 08 48 83 EE) // should be unique
+aobscanmodule(INJECT_ClubJobOffer,FIFA18_TRIAL.exe,48 8B 01 FF 50 20 48 8D 5B 08 48 83 EE) // should be unique
 alloc(cave_ClubJobOffer,$1000,"FIFA18_TRIAL.exe"+38F691D)
 alloc(ClubID, 8)
 registersymbol(ClubID)
@@ -5028,7 +4516,7 @@ dealloc(ClubID)
 // ORIGINAL CODE - INJECT_ClubJobOfferION POINT: "FIFA18_TRIAL.exe"+38F691D
 
 "FIFA18_TRIAL.exe"+38F68FC: 85 C0                       -  test eax,eax
-"FIFA18_TRIAL.exe"+38F68FE: 7E 32                       -  jle FIFA18.exe+38F6932
+"FIFA18_TRIAL.exe"+38F68FE: 7E 32                       -  jle FIFA18_TRIAL.exe+38F6932
 "FIFA18_TRIAL.exe"+38F6900: 48 89 74 24 50              -  mov [rsp+50],rsi
 "FIFA18_TRIAL.exe"+38F6905: 33 DB                       -  xor ebx,ebx
 "FIFA18_TRIAL.exe"+38F6907: 8B F0                       -  mov esi,eax
@@ -5043,7 +4531,7 @@ dealloc(ClubID)
 // ---------- DONE INJECT_ClubJobOfferING  ----------
 "FIFA18_TRIAL.exe"+38F6923: 48 8D 5B 08                 -  lea rbx,[rbx+08]
 "FIFA18_TRIAL.exe"+38F6927: 48 83 EE 01                 -  sub rsi,01
-"FIFA18_TRIAL.exe"+38F692B: 75 E3                       -  jne FIFA18.exe+38F6910
+"FIFA18_TRIAL.exe"+38F692B: 75 E3                       -  jne FIFA18_TRIAL.exe+38F6910
 "FIFA18_TRIAL.exe"+38F692D: 48 8B 74 24 50              -  mov rsi,[rsp+50]
 "FIFA18_TRIAL.exe"+38F6932: 48 8B 5C 24 58              -  mov rbx,[rsp+58]
 "FIFA18_TRIAL.exe"+38F6937: B0 01                       -  mov al,01
@@ -5084,7 +4572,7 @@ dealloc(ClubID)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_EditReleaseClause,FIFA18.exe,8B 48 08 83 F9 FF 74 06) // should be unique
+aobscanmodule(INJECT_EditReleaseClause,FIFA18_TRIAL.exe,8B 48 08 83 F9 FF 74 06) // should be unique
 alloc(newmem_EditReleaseClause,$1000,"FIFA18_TRIAL.exe"+356B9D7)
 
 label(code_EditReleaseClause)
@@ -5117,19 +4605,19 @@ dealloc(newmem_EditReleaseClause)
 
 "FIFA18_TRIAL.exe"+356B9BC: 0F 1F 40 00              -  nop [rax+00]
 "FIFA18_TRIAL.exe"+356B9C0: 39 30                    -  cmp [rax],esi
-"FIFA18_TRIAL.exe"+356B9C2: 75 05                    -  jne FIFA18.exe+356B9C9
+"FIFA18_TRIAL.exe"+356B9C2: 75 05                    -  jne FIFA18_TRIAL.exe+356B9C9
 "FIFA18_TRIAL.exe"+356B9C4: 39 68 04                 -  cmp [rax+04],ebp
-"FIFA18_TRIAL.exe"+356B9C7: 74 09                    -  je FIFA18.exe+356B9D2
+"FIFA18_TRIAL.exe"+356B9C7: 74 09                    -  je FIFA18_TRIAL.exe+356B9D2
 "FIFA18_TRIAL.exe"+356B9C9: 48 83 C0 0C              -  add rax,0C
 "FIFA18_TRIAL.exe"+356B9CD: 48 3B C1                 -  cmp rax,rcx
-"FIFA18_TRIAL.exe"+356B9D0: 75 EE                    -  jne FIFA18.exe+356B9C0
+"FIFA18_TRIAL.exe"+356B9D0: 75 EE                    -  jne FIFA18_TRIAL.exe+356B9C0
 "FIFA18_TRIAL.exe"+356B9D2: 48 3B C1                 -  cmp rax,rcx
-"FIFA18_TRIAL.exe"+356B9D5: 74 0E                    -  je FIFA18.exe+356B9E5
+"FIFA18_TRIAL.exe"+356B9D5: 74 0E                    -  je FIFA18_TRIAL.exe+356B9E5
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+356B9D7: 8B 48 08                 -  mov ecx,[rax+08]
 "FIFA18_TRIAL.exe"+356B9DA: 83 F9 FF                 -  cmp ecx,-01
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+356B9DD: 74 06                    -  je FIFA18.exe+356B9E5
+"FIFA18_TRIAL.exe"+356B9DD: 74 06                    -  je FIFA18_TRIAL.exe+356B9E5
 "FIFA18_TRIAL.exe"+356B9DF: 89 8F C0 00 00 00        -  mov [rdi+000000C0],ecx
 "FIFA18_TRIAL.exe"+356B9E5: 48 8B 5C 24 60           -  mov rbx,[rsp+60]
 "FIFA18_TRIAL.exe"+356B9EA: 48 8B 6C 24 68           -  mov rbp,[rsp+68]
@@ -5157,7 +4645,7 @@ dealloc(newmem_EditReleaseClause)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_transferini,FIFA18.exe,41 89 87 F0 01 00 00) // should be unique
+aobscanmodule(INJECT_transferini,FIFA18_TRIAL.exe,41 89 87 F0 01 00 00) // should be unique
 alloc(newmem_transferini,$1000,"FIFA18_TRIAL.exe"+392C698)
 
 label(code_transferini)
@@ -5222,7 +4710,7 @@ INJECT_transferini:
 ret_transferini:
 registersymbol(INJECT_transferini)
 
-aobscanmodule(INJECT_transferini2,FIFA18.exe,89 85 C8 04 00 00 33 D2) // should be unique
+aobscanmodule(INJECT_transferini2,FIFA18_TRIAL.exe,89 85 C8 04 00 00 33 D2) // should be unique
 alloc(newmem_transferini2,$1000,"FIFA18_TRIAL.exe"+392CC5D)
 
 label(code_transferini2)
@@ -5263,7 +4751,7 @@ INJECT_transferini2:
 ret_transferini2:
 registersymbol(INJECT_transferini2)
 
-aobscanmodule(INJECT_transferini3,FIFA18.exe,89 43 54 33 D2) // should be unique
+aobscanmodule(INJECT_transferini3,FIFA18_TRIAL.exe,89 43 54 33 D2) // should be unique
 alloc(newmem_transferini3,$1000,"FIFA18_TRIAL.exe"+392D672)
 
 label(code_transferini3)
@@ -5314,27 +4802,27 @@ dealloc(newmem_transferini3)
 // ORIGINAL code_transferini - INJECTION POINT: "FIFA18_TRIAL.exe"+392C698
 
 "FIFA18_TRIAL.exe"+392C664: 41 B8 55 00 00 00        -  mov r8d,00000055
-"FIFA18_TRIAL.exe"+392C66A: 48 8D 15 AF E9 05 01     -  lea rdx,[FIFA18.exe+498B020]
+"FIFA18_TRIAL.exe"+392C66A: 48 8D 15 AF E9 05 01     -  lea rdx,[FIFA18_TRIAL.exe+498B020]
 "FIFA18_TRIAL.exe"+392C671: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+392C674: E8 67 34 1F FE           -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+392C674: E8 67 34 1F FE           -  call FIFA18_TRIAL.exe+1B1FAE0
 "FIFA18_TRIAL.exe"+392C679: 41 89 87 EC 01 00 00     -  mov [r15+000001EC],eax
 "FIFA18_TRIAL.exe"+392C680: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+392C683: 41 B8 4F 00 00 00        -  mov r8d,0000004F
-"FIFA18_TRIAL.exe"+392C689: 48 8D 15 C0 E9 05 01     -  lea rdx,[FIFA18.exe+498B050]
+"FIFA18_TRIAL.exe"+392C689: 48 8D 15 C0 E9 05 01     -  lea rdx,[FIFA18_TRIAL.exe+498B050]
 "FIFA18_TRIAL.exe"+392C690: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+392C693: E8 48 34 1F FE           -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+392C693: E8 48 34 1F FE           -  call FIFA18_TRIAL.exe+1B1FAE0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+392C698: 41 89 87 F0 01 00 00     -  mov [r15+000001F0],eax
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+392C69F: 33 D2                    -  xor edx,edx
 "FIFA18_TRIAL.exe"+392C6A1: 44 8D 42 64              -  lea r8d,[rdx+64]
 "FIFA18_TRIAL.exe"+392C6A5: 48 8D 8D 20 07 00 00     -  lea rcx,[rbp+00000720]
-"FIFA18_TRIAL.exe"+392C6AC: E8 65 16 1C FE           -  call FIFA18.exe+1AEDD16
+"FIFA18_TRIAL.exe"+392C6AC: E8 65 16 1C FE           -  call FIFA18_TRIAL.exe+1AEDD16
 "FIFA18_TRIAL.exe"+392C6B1: 8B DE                    -  mov ebx,esi
 "FIFA18_TRIAL.exe"+392C6B3: 4D 8D B7 E8 00 00 00     -  lea r14,[r15+000000E8]
 "FIFA18_TRIAL.exe"+392C6BA: 66 0F 1F 44 00 00        -  nop [rax+rax+00]
 "FIFA18_TRIAL.exe"+392C6C0: 44 8B CB                 -  mov r9d,ebx
-"FIFA18_TRIAL.exe"+392C6C3: 4C 8D 05 BE E9 05 01     -  lea r8,[FIFA18.exe+498B088]
+"FIFA18_TRIAL.exe"+392C6C3: 4C 8D 05 BE E9 05 01     -  lea r8,[FIFA18_TRIAL.exe+498B088]
 "FIFA18_TRIAL.exe"+392C6CA: BA 64 00 00 00           -  mov edx,00000064
 }
 
@@ -5342,22 +4830,22 @@ dealloc(newmem_transferini3)
 // ORIGINAL code_transferini2 - INJECTION POINT: "FIFA18_TRIAL.exe"+392CC5D
 
 "FIFA18_TRIAL.exe"+392CC2E: 41 83 C8 FF           -  or r8d,-01
-"FIFA18_TRIAL.exe"+392CC32: 48 8D 15 B7 E9 05 01  -  lea rdx,[FIFA18.exe+498B5F0]
+"FIFA18_TRIAL.exe"+392CC32: 48 8D 15 B7 E9 05 01  -  lea rdx,[FIFA18_TRIAL.exe+498B5F0]
 "FIFA18_TRIAL.exe"+392CC39: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+392CC3C: E8 9F 2E 1F FE        -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+392CC3C: E8 9F 2E 1F FE        -  call FIFA18_TRIAL.exe+1B1FAE0
 "FIFA18_TRIAL.exe"+392CC41: 89 85 C4 04 00 00     -  mov [rbp+000004C4],eax
 "FIFA18_TRIAL.exe"+392CC47: 41 B1 01              -  mov r9l,01
 "FIFA18_TRIAL.exe"+392CC4A: 41 83 C8 FF           -  or r8d,-01
-"FIFA18_TRIAL.exe"+392CC4E: 48 8D 15 CB E9 05 01  -  lea rdx,[FIFA18.exe+498B620]
+"FIFA18_TRIAL.exe"+392CC4E: 48 8D 15 CB E9 05 01  -  lea rdx,[FIFA18_TRIAL.exe+498B620]
 "FIFA18_TRIAL.exe"+392CC55: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+392CC58: E8 83 2E 1F FE        -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+392CC58: E8 83 2E 1F FE        -  call FIFA18_TRIAL.exe+1B1FAE0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+392CC5D: 89 85 C8 04 00 00     -  mov [rbp+000004C8],eax
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+392CC63: 33 D2                 -  xor edx,edx
 "FIFA18_TRIAL.exe"+392CC65: 44 8D 42 64           -  lea r8d,[rdx+64]
 "FIFA18_TRIAL.exe"+392CC69: 48 8D 8D 90 07 00 00  -  lea rcx,[rbp+00000790]
-"FIFA18_TRIAL.exe"+392CC70: E8 A1 10 1C FE        -  call FIFA18.exe+1AEDD16
+"FIFA18_TRIAL.exe"+392CC70: E8 A1 10 1C FE        -  call FIFA18_TRIAL.exe+1AEDD16
 "FIFA18_TRIAL.exe"+392CC75: 44 8B E6              -  mov r12d,esi
 "FIFA18_TRIAL.exe"+392CC78: 4C 8D B5 84 00 00 00  -  lea r14,[rbp+00000084]
 "FIFA18_TRIAL.exe"+392CC7F: 90                    -  nop
@@ -5370,29 +4858,29 @@ dealloc(newmem_transferini3)
 // ORIGINAL code_transferini3 - INJECTION POINT: "FIFA18_TRIAL.exe"+392D672
 
 "FIFA18_TRIAL.exe"+392D646: 41 83 C8 FF           -  or r8d,-01
-"FIFA18_TRIAL.exe"+392D64A: 48 8D 15 67 EC 05 01  -  lea rdx,[FIFA18.exe+498C2B8]
+"FIFA18_TRIAL.exe"+392D64A: 48 8D 15 67 EC 05 01  -  lea rdx,[FIFA18_TRIAL.exe+498C2B8]
 "FIFA18_TRIAL.exe"+392D651: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+392D654: E8 87 24 1F FE        -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+392D654: E8 87 24 1F FE        -  call FIFA18_TRIAL.exe+1B1FAE0
 "FIFA18_TRIAL.exe"+392D659: 89 43 50              -  mov [rbx+50],eax
 "FIFA18_TRIAL.exe"+392D65C: 41 B1 01              -  mov r9l,01
 "FIFA18_TRIAL.exe"+392D65F: 41 83 C8 FF           -  or r8d,-01
-"FIFA18_TRIAL.exe"+392D663: 48 8D 15 7E EC 05 01  -  lea rdx,[FIFA18.exe+498C2E8]
+"FIFA18_TRIAL.exe"+392D663: 48 8D 15 7E EC 05 01  -  lea rdx,[FIFA18_TRIAL.exe+498C2E8]
 "FIFA18_TRIAL.exe"+392D66A: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+392D66D: E8 6E 24 1F FE        -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+392D66D: E8 6E 24 1F FE        -  call FIFA18_TRIAL.exe+1B1FAE0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+392D672: 89 43 54              -  mov [rbx+54],eax
 "FIFA18_TRIAL.exe"+392D675: 33 D2                 -  xor edx,edx
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+392D677: 44 8D 42 64           -  lea r8d,[rdx+64]
 "FIFA18_TRIAL.exe"+392D67B: 48 8D 8D 90 07 00 00  -  lea rcx,[rbp+00000790]
-"FIFA18_TRIAL.exe"+392D682: E8 8F 06 1C FE        -  call FIFA18.exe+1AEDD16
+"FIFA18_TRIAL.exe"+392D682: E8 8F 06 1C FE        -  call FIFA18_TRIAL.exe+1AEDD16
 "FIFA18_TRIAL.exe"+392D687: 4C 8D B3 80 00 00 00  -  lea r14,[rbx+00000080]
 "FIFA18_TRIAL.exe"+392D68E: 66 90                 -  nop
 "FIFA18_TRIAL.exe"+392D690: 44 8B CE              -  mov r9d,esi
-"FIFA18_TRIAL.exe"+392D693: 4C 8D 05 7E EC 05 01  -  lea r8,[FIFA18.exe+498C318]
+"FIFA18_TRIAL.exe"+392D693: 4C 8D 05 7E EC 05 01  -  lea r8,[FIFA18_TRIAL.exe+498C318]
 "FIFA18_TRIAL.exe"+392D69A: BA 64 00 00 00        -  mov edx,00000064
 "FIFA18_TRIAL.exe"+392D69F: 48 8D 8D 90 07 00 00  -  lea rcx,[rbp+00000790]
-"FIFA18_TRIAL.exe"+392D6A6: E8 95 53 8E FC        -  call FIFA18.exe+212A40
+"FIFA18_TRIAL.exe"+392D6A6: E8 95 53 8E FC        -  call FIFA18_TRIAL.exe+212A40
 }
 </AssemblerScript>
             </CheatEntry>
@@ -5418,7 +4906,7 @@ dealloc(newmem_transferini3)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_sim_maxCards,FIFA18.exe,41 83 C8 FF E8 ?? ?? ?? ?? 89 86 5C 01 00 00 E8 ??) // should be unique
+aobscanmodule(INJECT_sim_maxCards,FIFA18_TRIAL.exe,41 83 C8 FF E8 ?? ?? ?? ?? 89 86 5C 01 00 00 E8 ??) // should be unique
 alloc(newmem_sim_maxCards,$1000,"FIFA18_TRIAL.exe"+34F5799)
 
 label(code_sim_maxCards)
@@ -5451,25 +4939,25 @@ dealloc(newmem_sim_maxCards)
 "FIFA18_TRIAL.exe"+34F5765: 0F 28 B4 24 40 01 00 00  -  movaps xmm6,[rsp+00000140]
 "FIFA18_TRIAL.exe"+34F576D: 4C 8B BC 24 50 01 00 00  -  mov r15,[rsp+00000150]
 "FIFA18_TRIAL.exe"+34F5775: 4C 8B A4 24 90 01 00 00  -  mov r12,[rsp+00000190]
-"FIFA18_TRIAL.exe"+34F577D: E8 4E A3 62 FE           -  call FIFA18.exe+1B1FAD0
+"FIFA18_TRIAL.exe"+34F577D: E8 4E A3 62 FE           -  call FIFA18_TRIAL.exe+1B1FAD0
 "FIFA18_TRIAL.exe"+34F5782: 48 8B C8                 -  mov rcx,rax
-"FIFA18_TRIAL.exe"+34F5785: 48 8D 15 5C FE 3F 01     -  lea rdx,[FIFA18.exe+48F55E8]
+"FIFA18_TRIAL.exe"+34F5785: 48 8D 15 5C FE 3F 01     -  lea rdx,[FIFA18_TRIAL.exe+48F55E8]
 "FIFA18_TRIAL.exe"+34F578C: 45 0F B6 CD              -  movzx r9d,r13l
 "FIFA18_TRIAL.exe"+34F5790: 41 83 C8 FF              -  or r8d,-01
-"FIFA18_TRIAL.exe"+34F5794: E8 47 A3 62 FE           -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+34F5794: E8 47 A3 62 FE           -  call FIFA18_TRIAL.exe+1B1FAE0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+34F5799: 89 86 5C 01 00 00        -  mov [rsi+0000015C],eax
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+34F579F: E8 2C A3 62 FE           -  call FIFA18.exe+1B1FAD0
+"FIFA18_TRIAL.exe"+34F579F: E8 2C A3 62 FE           -  call FIFA18_TRIAL.exe+1B1FAD0
 "FIFA18_TRIAL.exe"+34F57A4: 48 8B C8                 -  mov rcx,rax
-"FIFA18_TRIAL.exe"+34F57A7: 48 8D 15 4A FE 3F 01     -  lea rdx,[FIFA18.exe+48F55F8]
+"FIFA18_TRIAL.exe"+34F57A7: 48 8D 15 4A FE 3F 01     -  lea rdx,[FIFA18_TRIAL.exe+48F55F8]
 "FIFA18_TRIAL.exe"+34F57AE: 45 0F B6 CD              -  movzx r9d,r13l
 "FIFA18_TRIAL.exe"+34F57B2: 41 83 C8 FF              -  or r8d,-01
-"FIFA18_TRIAL.exe"+34F57B6: E8 25 A3 62 FE           -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+34F57B6: E8 25 A3 62 FE           -  call FIFA18_TRIAL.exe+1B1FAE0
 "FIFA18_TRIAL.exe"+34F57BB: 89 86 60 01 00 00        -  mov [rsi+00000160],eax
-"FIFA18_TRIAL.exe"+34F57C1: E8 0A A3 62 FE           -  call FIFA18.exe+1B1FAD0
+"FIFA18_TRIAL.exe"+34F57C1: E8 0A A3 62 FE           -  call FIFA18_TRIAL.exe+1B1FAD0
 "FIFA18_TRIAL.exe"+34F57C6: 48 8B C8                 -  mov rcx,rax
-"FIFA18_TRIAL.exe"+34F57C9: 48 8D 15 40 FE 3F 01     -  lea rdx,[FIFA18.exe+48F5610]
+"FIFA18_TRIAL.exe"+34F57C9: 48 8D 15 40 FE 3F 01     -  lea rdx,[FIFA18_TRIAL.exe+48F5610]
 }
 </AssemblerScript>
                 </CheatEntry>
@@ -5479,7 +4967,7 @@ dealloc(newmem_sim_maxCards)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_MAX_INJURIES,FIFA18.exe,89 86 24 01 00 00 E8 ?? ?? ?? ?? 48 8B C8 45 0F B6 CD 41 83 C8 FF 48 8D 15 ?? ?? ?? ?? E8 ?? ?? ?? ?? 89 86 28 01 00 00) // should be unique
+aobscanmodule(INJECT_MAX_INJURIES,FIFA18_TRIAL.exe,89 86 24 01 00 00 E8 ?? ?? ?? ?? 48 8B C8 45 0F B6 CD 41 83 C8 FF 48 8D 15 ?? ?? ?? ?? E8 ?? ?? ?? ?? 89 86 28 01 00 00) // should be unique
 alloc(newmem,$1000,"FIFA18_TRIAL.exe"+34F58ED)
 
 label(code)
@@ -5510,27 +4998,27 @@ dealloc(newmem)
 
 "FIFA18_TRIAL.exe"+34F58BE: 45 0F B6 CD                 -  movzx r9d,r13l
 "FIFA18_TRIAL.exe"+34F58C2: 41 83 C8 FF                 -  or r8d,-01
-"FIFA18_TRIAL.exe"+34F58C6: E8 15 A2 62 FE              -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+34F58C6: E8 15 A2 62 FE              -  call FIFA18_TRIAL.exe+1B1FAE0
 "FIFA18_TRIAL.exe"+34F58CB: 89 86 F0 00 00 00           -  mov [rsi+000000F0],eax
-"FIFA18_TRIAL.exe"+34F58D1: E8 FA A1 62 FE              -  call FIFA18.exe+1B1FAD0
+"FIFA18_TRIAL.exe"+34F58D1: E8 FA A1 62 FE              -  call FIFA18_TRIAL.exe+1B1FAD0
 "FIFA18_TRIAL.exe"+34F58D6: 48 8B C8                    -  mov rcx,rax
-"FIFA18_TRIAL.exe"+34F58D9: 48 8D 15 E0 FD 3F 01        -  lea rdx,[FIFA18.exe+48F56C0]
+"FIFA18_TRIAL.exe"+34F58D9: 48 8D 15 E0 FD 3F 01        -  lea rdx,[FIFA18_TRIAL.exe+48F56C0]
 "FIFA18_TRIAL.exe"+34F58E0: 45 0F B6 CD                 -  movzx r9d,r13l
 "FIFA18_TRIAL.exe"+34F58E4: 41 83 C8 FF                 -  or r8d,-01
-"FIFA18_TRIAL.exe"+34F58E8: E8 F3 A1 62 FE              -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+34F58E8: E8 F3 A1 62 FE              -  call FIFA18_TRIAL.exe+1B1FAE0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+34F58ED: 89 86 24 01 00 00           -  mov [rsi+00000124],eax
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+34F58F3: E8 D8 A1 62 FE              -  call FIFA18.exe+1B1FAD0
+"FIFA18_TRIAL.exe"+34F58F3: E8 D8 A1 62 FE              -  call FIFA18_TRIAL.exe+1B1FAD0
 "FIFA18_TRIAL.exe"+34F58F8: 48 8B C8                    -  mov rcx,rax
 "FIFA18_TRIAL.exe"+34F58FB: 45 0F B6 CD                 -  movzx r9d,r13l
 "FIFA18_TRIAL.exe"+34F58FF: 41 83 C8 FF                 -  or r8d,-01
-"FIFA18_TRIAL.exe"+34F5903: 48 8D 15 CE FD 3F 01        -  lea rdx,[FIFA18.exe+48F56D8]
-"FIFA18_TRIAL.exe"+34F590A: E8 D1 A1 62 FE              -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+34F5903: 48 8D 15 CE FD 3F 01        -  lea rdx,[FIFA18_TRIAL.exe+48F56D8]
+"FIFA18_TRIAL.exe"+34F590A: E8 D1 A1 62 FE              -  call FIFA18_TRIAL.exe+1B1FAE0
 "FIFA18_TRIAL.exe"+34F590F: 89 86 28 01 00 00           -  mov [rsi+00000128],eax
-"FIFA18_TRIAL.exe"+34F5915: E8 B6 A1 62 FE              -  call FIFA18.exe+1B1FAD0
+"FIFA18_TRIAL.exe"+34F5915: E8 B6 A1 62 FE              -  call FIFA18_TRIAL.exe+1B1FAD0
 "FIFA18_TRIAL.exe"+34F591A: 48 8B C8                    -  mov rcx,rax
-"FIFA18_TRIAL.exe"+34F591D: 48 8D 15 CC FD 3F 01        -  lea rdx,[FIFA18.exe+48F56F0]
+"FIFA18_TRIAL.exe"+34F591D: 48 8D 15 CC FD 3F 01        -  lea rdx,[FIFA18_TRIAL.exe+48F56F0]
 }
 </AssemblerScript>
                 </CheatEntry>
@@ -5540,7 +5028,7 @@ dealloc(newmem)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_FatigueBase,FIFA18.exe,89 83 F0 00 00 00 48 8D 5B) // should be unique
+aobscanmodule(INJECT_FatigueBase,FIFA18_TRIAL.exe,89 83 F0 00 00 00 48 8D 5B) // should be unique
 alloc(newmem_FatigueBase,$1000,"FIFA18_TRIAL.exe"+34F65F5)
 
 label(code_FatigueBase)
@@ -5570,15 +5058,15 @@ dealloc(newmem_FatigueBase)
 // ORIGINAL code_FatigueBase - INJECT_FatigueBaseION POINT: "FIFA18_TRIAL.exe"+34F65F5
 
 "FIFA18_TRIAL.exe"+34F65C7: 89 83 A0 00 00 00     -  mov [rbx+000000A0],eax
-"FIFA18_TRIAL.exe"+34F65CD: 48 8D 15 0C FA 3F 01  -  lea rdx,[FIFA18.exe+48F5FE0]
+"FIFA18_TRIAL.exe"+34F65CD: 48 8D 15 0C FA 3F 01  -  lea rdx,[FIFA18_TRIAL.exe+48F5FE0]
 "FIFA18_TRIAL.exe"+34F65D4: 48 8D 4D 88           -  lea rcx,[rbp-78]
-"FIFA18_TRIAL.exe"+34F65D8: E8 43 C7 D1 FC        -  call FIFA18.exe+212D20
-"FIFA18_TRIAL.exe"+34F65DD: E8 EE 94 62 FE        -  call FIFA18.exe+1B1FAD0
+"FIFA18_TRIAL.exe"+34F65D8: E8 43 C7 D1 FC        -  call FIFA18_TRIAL.exe+212D20
+"FIFA18_TRIAL.exe"+34F65DD: E8 EE 94 62 FE        -  call FIFA18_TRIAL.exe+1B1FAD0
 "FIFA18_TRIAL.exe"+34F65E2: 48 8B C8              -  mov rcx,rax
 "FIFA18_TRIAL.exe"+34F65E5: 48 8D 55 88           -  lea rdx,[rbp-78]
 "FIFA18_TRIAL.exe"+34F65E9: 41 B1 01              -  mov r9l,01
 "FIFA18_TRIAL.exe"+34F65EC: 41 83 C8 FF           -  or r8d,-01
-"FIFA18_TRIAL.exe"+34F65F0: E8 EB 94 62 FE        -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+34F65F0: E8 EB 94 62 FE        -  call FIFA18_TRIAL.exe+1B1FAE0
 // ---------- INJECT_FatigueBaseING HERE ----------
 "FIFA18_TRIAL.exe"+34F65F5: 89 83 F0 00 00 00     -  mov [rbx+000000F0],eax
 // ---------- DONE INJECT_FatigueBaseING  ----------
@@ -5586,10 +5074,10 @@ dealloc(newmem_FatigueBase)
 "FIFA18_TRIAL.exe"+34F65FF: 41 FF C5              -  inc r13d
 "FIFA18_TRIAL.exe"+34F6602: 41 8D 45 FF           -  lea eax,[r13-01]
 "FIFA18_TRIAL.exe"+34F6606: 3B 06                 -  cmp eax,[rsi]
-"FIFA18_TRIAL.exe"+34F6608: 0F 8C 02 FF FF FF     -  jl FIFA18.exe+34F6510
+"FIFA18_TRIAL.exe"+34F6608: 0F 8C 02 FF FF FF     -  jl FIFA18_TRIAL.exe+34F6510
 "FIFA18_TRIAL.exe"+34F660E: 48 8B 4D 30           -  mov rcx,[rbp+30]
 "FIFA18_TRIAL.exe"+34F6612: 48 33 CC              -  xor rcx,rsp
-"FIFA18_TRIAL.exe"+34F6615: E8 66 16 5F FE        -  call FIFA18.exe+1AE7C80
+"FIFA18_TRIAL.exe"+34F6615: E8 66 16 5F FE        -  call FIFA18_TRIAL.exe+1AE7C80
 "FIFA18_TRIAL.exe"+34F661A: 48 81 C4 58 01 00 00  -  add rsp,00000158
 "FIFA18_TRIAL.exe"+34F6621: 41 5D                 -  pop r13
 }
@@ -5612,7 +5100,7 @@ dealloc(newmem_FatigueBase)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_UltimateDifficulty1,FIFA18.exe,44 8B FE C6 45 50 00) // should be unique
+aobscanmodule(INJECT_UltimateDifficulty1,FIFA18_TRIAL.exe,44 8B FE C6 45 50 00) // should be unique
 alloc(newmem_UltimateDifficulty1,$1000,"FIFA18_TRIAL.exe"+2E4B6B5)
 
 label(code_UltimateDifficulty1)
@@ -5632,7 +5120,7 @@ INJECT_UltimateDifficulty1:
 ret_UltimateDifficulty1:
 registersymbol(INJECT_UltimateDifficulty1)
 
-aobscanmodule(INJECT_UltimateDifficulty2,FIFA18.exe,8B F8 83 F8 FF 0F 44) // should be unique
+aobscanmodule(INJECT_UltimateDifficulty2,FIFA18_TRIAL.exe,8B F8 83 F8 FF 0F 44) // should be unique
 alloc(newmem_UltimateDifficulty2,$1000,"FIFA18_TRIAL.exe"+2A36B07)
 
 label(code_UltimateDifficulty2)
@@ -5650,7 +5138,7 @@ INJECT_UltimateDifficulty2:
 ret_UltimateDifficulty2:
 registersymbol(INJECT_UltimateDifficulty2)
 
-aobscanmodule(INJECT_UltimateDifficulty3,FIFA18.exe,B8 05 00 00 00 3B F8 0F 4F F8 48) // should be unique
+aobscanmodule(INJECT_UltimateDifficulty3,FIFA18_TRIAL.exe,B8 05 00 00 00 3B F8 0F 4F F8 48) // should be unique
 alloc(newmem_UltimateDifficulty3,$1000,"FIFA18_TRIAL.exe"+2A36B3A)
 
 label(code_UltimateDifficulty3)
@@ -5704,14 +5192,14 @@ dealloc(newmem_UltimateDifficulty3)
 "FIFA18_TRIAL.exe"+2E4B6B5: 44 8B FE                 -  mov r15d,esi
 "FIFA18_TRIAL.exe"+2E4B6B8: C6 45 50 00              -  mov byte ptr [rbp+50],00
 // ---------- DONE INJECT_UltimateDifficulty1ING  ----------
-"FIFA18_TRIAL.exe"+2E4B6BC: E8 AF 4D 21 FE           -  call FIFA18.exe+1060470
+"FIFA18_TRIAL.exe"+2E4B6BC: E8 AF 4D 21 FE           -  call FIFA18_TRIAL.exe+1060470
 "FIFA18_TRIAL.exe"+2E4B6C1: 48 8B D0                 -  mov rdx,rax
 "FIFA18_TRIAL.exe"+2E4B6C4: 48 8D 4D 58              -  lea rcx,[rbp+58]
-"FIFA18_TRIAL.exe"+2E4B6C8: E8 93 E0 05 FE           -  call FIFA18.exe+EA9760
+"FIFA18_TRIAL.exe"+2E4B6C8: E8 93 E0 05 FE           -  call FIFA18_TRIAL.exe+EA9760
 "FIFA18_TRIAL.exe"+2E4B6CD: 90                       -  nop
 "FIFA18_TRIAL.exe"+2E4B6CE: 48 8B 7D 58              -  mov rdi,[rbp+58]
 "FIFA18_TRIAL.exe"+2E4B6D2: 48 85 FF                 -  test rdi,rdi
-"FIFA18_TRIAL.exe"+2E4B6D5: 74 0D                    -  je FIFA18.exe+2E4B6E4
+"FIFA18_TRIAL.exe"+2E4B6D5: 74 0D                    -  je FIFA18_TRIAL.exe+2E4B6E4
 "FIFA18_TRIAL.exe"+2E4B6D7: 48 8B 07                 -  mov rax,[rdi]
 "FIFA18_TRIAL.exe"+2E4B6DA: 48 8D 55 50              -  lea rdx,[rbp+50]
 FUT_UltimateDifficulty
@@ -5722,57 +5210,57 @@ Unknown!
 // ORIGINAL code_UltimateDifficulty2 - INJECT_UltimateDifficulty2ION POINT: "FIFA18_TRIAL.exe"+2A36B07
 
 "FIFA18_TRIAL.exe"+2A36AE0: 49 8B CF              -  mov rcx,r15
-"FIFA18_TRIAL.exe"+2A36AE3: E8 70 72 0B FF        -  call FIFA18.exe+1AEDD58
+"FIFA18_TRIAL.exe"+2A36AE3: E8 70 72 0B FF        -  call FIFA18_TRIAL.exe+1AEDD58
 "FIFA18_TRIAL.exe"+2A36AE8: 85 C0                 -  test eax,eax
-"FIFA18_TRIAL.exe"+2A36AEA: 75 6B                 -  jne FIFA18.exe+2A36B57
-"FIFA18_TRIAL.exe"+2A36AEC: E8 DF 8F 0E FF        -  call FIFA18.exe+1B1FAD0
+"FIFA18_TRIAL.exe"+2A36AEA: 75 6B                 -  jne FIFA18_TRIAL.exe+2A36B57
+"FIFA18_TRIAL.exe"+2A36AEC: E8 DF 8F 0E FF        -  call FIFA18_TRIAL.exe+1B1FAD0
 "FIFA18_TRIAL.exe"+2A36AF1: 48 8B C8              -  mov rcx,rax
 "FIFA18_TRIAL.exe"+2A36AF4: 41 B1 01              -  mov r9l,01
 "FIFA18_TRIAL.exe"+2A36AF7: 41 83 C8 FF           -  or r8d,-01
-"FIFA18_TRIAL.exe"+2A36AFB: 48 8D 15 EE 13 C0 01  -  lea rdx,[FIFA18.exe+4637EF0]
-"FIFA18_TRIAL.exe"+2A36B02: E8 D9 8F 0E FF        -  call FIFA18.exe+1B1FAE0
+"FIFA18_TRIAL.exe"+2A36AFB: 48 8D 15 EE 13 C0 01  -  lea rdx,[FIFA18_TRIAL.exe+4637EF0]
+"FIFA18_TRIAL.exe"+2A36B02: E8 D9 8F 0E FF        -  call FIFA18_TRIAL.exe+1B1FAE0
 // ---------- INJECT_UltimateDifficulty2ING HERE ----------
 "FIFA18_TRIAL.exe"+2A36B07: 8B F8                 -  mov edi,eax
 "FIFA18_TRIAL.exe"+2A36B09: 83 F8 FF              -  cmp eax,-01
 // ---------- DONE INJECT_UltimateDifficulty2ING  ----------
 "FIFA18_TRIAL.exe"+2A36B0C: 0F 44 FE              -  cmove edi,esi
-"FIFA18_TRIAL.exe"+2A36B0F: E8 8C 3F 49 FE        -  call FIFA18.exe+ECAAA0
+"FIFA18_TRIAL.exe"+2A36B0F: E8 8C 3F 49 FE        -  call FIFA18_TRIAL.exe+ECAAA0
 "FIFA18_TRIAL.exe"+2A36B14: 48 8B D0              -  mov rdx,rax
 "FIFA18_TRIAL.exe"+2A36B17: 48 8D 4D 70           -  lea rcx,[rbp+70]
-"FIFA18_TRIAL.exe"+2A36B1B: E8 50 B3 49 FE        -  call FIFA18.exe+ED1E70
+"FIFA18_TRIAL.exe"+2A36B1B: E8 50 B3 49 FE        -  call FIFA18_TRIAL.exe+ED1E70
 "FIFA18_TRIAL.exe"+2A36B20: 90                    -  nop
 "FIFA18_TRIAL.exe"+2A36B21: 48 8B 5D 70           -  mov rbx,[rbp+70]
 "FIFA18_TRIAL.exe"+2A36B25: 48 85 DB              -  test rbx,rbx
-"FIFA18_TRIAL.exe"+2A36B28: 74 1A                 -  je FIFA18.exe+2A36B44
+"FIFA18_TRIAL.exe"+2A36B28: 74 1A                 -  je FIFA18_TRIAL.exe+2A36B44
 "FIFA18_TRIAL.exe"+2A36B2A: 48 8B 03              -  mov rax,[rbx]
 }
 
 {
 // ORIGINAL code_UltimateDifficulty3 - INJECT_UltimateDifficulty3ION POINT: "FIFA18_TRIAL.exe"+2A36B3A
 
-"FIFA18_TRIAL.exe"+2A36B1B: E8 50 B3 49 FE           -  call FIFA18.exe+ED1E70
+"FIFA18_TRIAL.exe"+2A36B1B: E8 50 B3 49 FE           -  call FIFA18_TRIAL.exe+ED1E70
 "FIFA18_TRIAL.exe"+2A36B20: 90                       -  nop
 "FIFA18_TRIAL.exe"+2A36B21: 48 8B 5D 70              -  mov rbx,[rbp+70]
 "FIFA18_TRIAL.exe"+2A36B25: 48 85 DB                 -  test rbx,rbx
-"FIFA18_TRIAL.exe"+2A36B28: 74 1A                    -  je FIFA18.exe+2A36B44
+"FIFA18_TRIAL.exe"+2A36B28: 74 1A                    -  je FIFA18_TRIAL.exe+2A36B44
 "FIFA18_TRIAL.exe"+2A36B2A: 48 8B 03                 -  mov rax,[rbx]
 "FIFA18_TRIAL.exe"+2A36B2D: 48 8B CB                 -  mov rcx,rbx
 "FIFA18_TRIAL.exe"+2A36B30: FF 90 08 05 00 00        -  call qword ptr [rax+00000508]
 "FIFA18_TRIAL.exe"+2A36B36: 84 C0                    -  test al,al
-"FIFA18_TRIAL.exe"+2A36B38: 75 0A                    -  jne FIFA18.exe+2A36B44
+"FIFA18_TRIAL.exe"+2A36B38: 75 0A                    -  jne FIFA18_TRIAL.exe+2A36B44
 // ---------- INJECT_UltimateDifficulty3ING HERE ----------
 "FIFA18_TRIAL.exe"+2A36B3A: B8 05 00 00 00           -  mov eax,00000005
 // ---------- DONE INJECT_UltimateDifficulty3ING  ----------
 "FIFA18_TRIAL.exe"+2A36B3F: 3B F8                    -  cmp edi,eax
 "FIFA18_TRIAL.exe"+2A36B41: 0F 4F F8                 -  cmovg edi,eax
 "FIFA18_TRIAL.exe"+2A36B44: 48 85 DB                 -  test rbx,rbx
-"FIFA18_TRIAL.exe"+2A36B47: 74 0A                    -  je FIFA18.exe+2A36B53
+"FIFA18_TRIAL.exe"+2A36B47: 74 0A                    -  je FIFA18_TRIAL.exe+2A36B53
 "FIFA18_TRIAL.exe"+2A36B49: 48 8B 13                 -  mov rdx,[rbx]
 "FIFA18_TRIAL.exe"+2A36B4C: 48 8B CB                 -  mov rcx,rbx
 "FIFA18_TRIAL.exe"+2A36B4F: FF 52 08                 -  call qword ptr [rdx+08]
 "FIFA18_TRIAL.exe"+2A36B52: 90                       -  nop
 "FIFA18_TRIAL.exe"+2A36B53: 8B C7                    -  mov eax,edi
-"FIFA18_TRIAL.exe"+2A36B55: EB 42                    -  jmp FIFA18.exe+2A36B99
+"FIFA18_TRIAL.exe"+2A36B55: EB 42                    -  jmp FIFA18_TRIAL.exe+2A36B99
 }
 </AssemblerScript>
             </CheatEntry>
@@ -5783,7 +5271,7 @@ Unknown!
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_ChangeStadium,FIFA18.exe,41 8B 84 24 E0 13 00 00) // should be unique
+aobscanmodule(INJECT_ChangeStadium,FIFA18_TRIAL.exe,41 8B 84 24 E0 13 00 00) // should be unique
 alloc(newmem_ChangeStadium,$1000,"FIFA18_TRIAL.exe"+2C6F2BC)
 
 label(code_ChangeStadium)
@@ -5823,27 +5311,27 @@ dealloc(StadiumID)
 {
 // ORIGINAL code_ChangeStadium - INJECT_ChangeStadiumION POINT: "FIFA18_TRIAL.exe"+2C6F2BC
 
-"FIFA18_TRIAL.exe"+2C6F29A: E8 31 5F F9 FF           -  call FIFA18.exe+2C051D0
+"FIFA18_TRIAL.exe"+2C6F29A: E8 31 5F F9 FF           -  call FIFA18_TRIAL.exe+2C051D0
 "FIFA18_TRIAL.exe"+2C6F29F: 44 0F B6 4B 0C           -  movzx r9d,byte ptr [rbx+0C]
 "FIFA18_TRIAL.exe"+2C6F2A4: 44 8B 03                 -  mov r8d,[rbx]
 "FIFA18_TRIAL.exe"+2C6F2A7: 33 D2                    -  xor edx,edx
 "FIFA18_TRIAL.exe"+2C6F2A9: 49 8B CD                 -  mov rcx,r13
-"FIFA18_TRIAL.exe"+2C6F2AC: E8 3F 60 F9 FF           -  call FIFA18.exe+2C052F0
+"FIFA18_TRIAL.exe"+2C6F2AC: E8 3F 60 F9 FF           -  call FIFA18_TRIAL.exe+2C052F0
 "FIFA18_TRIAL.exe"+2C6F2B1: FF C7                    -  inc edi
 "FIFA18_TRIAL.exe"+2C6F2B3: 41 3B FF                 -  cmp edi,r15d
-"FIFA18_TRIAL.exe"+2C6F2B6: 7C B8                    -  jl FIFA18.exe+2C6F270
+"FIFA18_TRIAL.exe"+2C6F2B6: 7C B8                    -  jl FIFA18_TRIAL.exe+2C6F270
 "FIFA18_TRIAL.exe"+2C6F2B8: 4C 8B 7D C7              -  mov r15,[rbp-39]
 // ---------- INJECT_ChangeStadiumING HERE ----------
 "FIFA18_TRIAL.exe"+2C6F2BC: 41 8B 84 24 E0 13 00 00  -  mov eax,[r12+000013E0]
 // ---------- DONE INJECT_ChangeStadiumING  ----------
 "FIFA18_TRIAL.exe"+2C6F2C4: 41 89 85 14 0D 00 00     -  mov [r13+00000D14],eax
 "FIFA18_TRIAL.exe"+2C6F2CB: 48 8B 4D 67              -  mov rcx,[rbp+67]
-"FIFA18_TRIAL.exe"+2C6F2CF: E8 8C 24 FC FF           -  call FIFA18.exe+2C31760
+"FIFA18_TRIAL.exe"+2C6F2CF: E8 8C 24 FC FF           -  call FIFA18_TRIAL.exe+2C31760
 "FIFA18_TRIAL.exe"+2C6F2D4: 41 89 85 18 0D 00 00     -  mov [r13+00000D18],eax
 "FIFA18_TRIAL.exe"+2C6F2DB: 45 8B 44 24 2C           -  mov r8d,[r12+2C]
 "FIFA18_TRIAL.exe"+2C6F2E0: B2 01                    -  mov dl,01
 "FIFA18_TRIAL.exe"+2C6F2E2: 49 8B CD                 -  mov rcx,r13
-"FIFA18_TRIAL.exe"+2C6F2E5: E8 B6 60 F9 FF           -  call FIFA18.exe+2C053A0
+"FIFA18_TRIAL.exe"+2C6F2E5: E8 B6 60 F9 FF           -  call FIFA18_TRIAL.exe+2C053A0
 "FIFA18_TRIAL.exe"+2C6F2EA: 44 8B 46 08              -  mov r8d,[rsi+08]
 "FIFA18_TRIAL.exe"+2C6F2EE: 33 D2                    -  xor edx,edx
 }
@@ -5864,7 +5352,7 @@ dealloc(StadiumID)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_TimeOfDay,FIFA18.exe,8B 55 77 48 8B 4D 67) // should be unique
+aobscanmodule(INJECT_TimeOfDay,FIFA18_TRIAL.exe,8B 55 77 48 8B 4D 67) // should be unique
 alloc(newmem_TimeOfDay,$1000,"FIFA18_TRIAL.exe"+2C713F4)
 
 label(code_TimeOfDay)
@@ -5903,29 +5391,29 @@ dealloc(TimeOfDay)
 // ORIGINAL code_TimeOfDay - INJECT_TimeOfDayION POINT: "FIFA18_TRIAL.exe"+2C713F4
 
 "FIFA18_TRIAL.exe"+2C713CB: 84 C0                    -  test al,al
-"FIFA18_TRIAL.exe"+2C713CD: 74 6D                    -  je FIFA18.exe+2C7143C
+"FIFA18_TRIAL.exe"+2C713CD: 74 6D                    -  je FIFA18_TRIAL.exe+2C7143C
 "FIFA18_TRIAL.exe"+2C713CF: C7 45 77 00 00 00 00     -  mov [rbp+77],00000000
-"FIFA18_TRIAL.exe"+2C713D6: E8 75 B5 F2 FF           -  call FIFA18.exe+2B9C950
+"FIFA18_TRIAL.exe"+2C713D6: E8 75 B5 F2 FF           -  call FIFA18_TRIAL.exe+2B9C950
 "FIFA18_TRIAL.exe"+2C713DB: 48 8B C8                 -  mov rcx,rax
-"FIFA18_TRIAL.exe"+2C713DE: E8 3D 78 2C 00           -  call FIFA18.exe+2F38C20
+"FIFA18_TRIAL.exe"+2C713DE: E8 3D 78 2C 00           -  call FIFA18_TRIAL.exe+2F38C20
 "FIFA18_TRIAL.exe"+2C713E3: 48 8B C8                 -  mov rcx,rax
 "FIFA18_TRIAL.exe"+2C713E6: 4C 8D 45 77              -  lea r8,[rbp+77]
 "FIFA18_TRIAL.exe"+2C713EA: BA 40 01 00 00           -  mov edx,00000140
-"FIFA18_TRIAL.exe"+2C713EF: E8 CC 90 DC FF           -  call FIFA18.exe+2A3A4C0
+"FIFA18_TRIAL.exe"+2C713EF: E8 CC 90 DC FF           -  call FIFA18_TRIAL.exe+2A3A4C0
 // ---------- INJECT_TimeOfDayING HERE ----------
 "FIFA18_TRIAL.exe"+2C713F4: 8B 55 77                 -  mov edx,[rbp+77]
 "FIFA18_TRIAL.exe"+2C713F7: 48 8B 4D 67              -  mov rcx,[rbp+67]
 // ---------- DONE INJECT_TimeOfDayING  ----------
-"FIFA18_TRIAL.exe"+2C713FB: E8 90 F2 FF FF           -  call FIFA18.exe+2C70690
+"FIFA18_TRIAL.exe"+2C713FB: E8 90 F2 FF FF           -  call FIFA18_TRIAL.exe+2C70690
 "FIFA18_TRIAL.exe"+2C71400: 48 C7 45 CF FF FF FF FF  -  mov [rbp-31],FFFFFFFF
 "FIFA18_TRIAL.exe"+2C71408: C7 45 D7 FF FF FF FF     -  mov [rbp-29],FFFFFFFF
-"FIFA18_TRIAL.exe"+2C7140F: E8 3C B5 F2 FF           -  call FIFA18.exe+2B9C950
+"FIFA18_TRIAL.exe"+2C7140F: E8 3C B5 F2 FF           -  call FIFA18_TRIAL.exe+2B9C950
 "FIFA18_TRIAL.exe"+2C71414: 48 8B C8                 -  mov rcx,rax
-"FIFA18_TRIAL.exe"+2C71417: E8 04 78 2C 00           -  call FIFA18.exe+2F38C20
+"FIFA18_TRIAL.exe"+2C71417: E8 04 78 2C 00           -  call FIFA18_TRIAL.exe+2F38C20
 "FIFA18_TRIAL.exe"+2C7141C: 48 8B C8                 -  mov rcx,rax
 "FIFA18_TRIAL.exe"+2C7141F: 4C 8D 45 CF              -  lea r8,[rbp-31]
 "FIFA18_TRIAL.exe"+2C71423: BA 78 00 00 00           -  mov edx,00000078
-"FIFA18_TRIAL.exe"+2C71428: E8 B3 12 DD FF           -  call FIFA18.exe+2A426E0
+"FIFA18_TRIAL.exe"+2C71428: E8 B3 12 DD FF           -  call FIFA18_TRIAL.exe+2A426E0
 }
 </AssemblerScript>
               <CheatEntries>
@@ -5944,7 +5432,7 @@ dealloc(TimeOfDay)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_Match_Weather,FIFA18.exe,83 F8 FF 0F 44 C6 EB) // should be unique
+aobscanmodule(INJECT_Match_Weather,FIFA18_TRIAL.exe,83 F8 FF 0F 44 C6 EB) // should be unique
 alloc(newmem_Match_Weather,$1000,"FIFA18_TRIAL.exe"+2A37E7F)
 
 label(code_Match_Weather)
@@ -5994,20 +5482,20 @@ dealloc(Weather)
 // ORIGINAL code_Match_Weather - INJECTION POINT: "FIFA18_TRIAL.exe"+2A37E7F
 
 "FIFA18_TRIAL.exe"+2A37E58: 3A 44 39 FF              -  cmp al,[rcx+rdi-01]
-"FIFA18_TRIAL.exe"+2A37E5C: 75 29                    -  jne FIFA18.exe+2A37E87
+"FIFA18_TRIAL.exe"+2A37E5C: 75 29                    -  jne FIFA18_TRIAL.exe+2A37E87
 "FIFA18_TRIAL.exe"+2A37E5E: 48 83 FF 08              -  cmp rdi,08
-"FIFA18_TRIAL.exe"+2A37E62: 75 EC                    -  jne FIFA18.exe+2A37E50
-"FIFA18_TRIAL.exe"+2A37E64: E8 E7 62 0E FF           -  call FIFA18.exe+1B1E150
+"FIFA18_TRIAL.exe"+2A37E62: 75 EC                    -  jne FIFA18_TRIAL.exe+2A37E50
+"FIFA18_TRIAL.exe"+2A37E64: E8 E7 62 0E FF           -  call FIFA18_TRIAL.exe+1B1E150
 "FIFA18_TRIAL.exe"+2A37E69: 48 8B C8                 -  mov rcx,rax
 "FIFA18_TRIAL.exe"+2A37E6C: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+2A37E6F: 41 83 C8 FF              -  or r8d,-01
-"FIFA18_TRIAL.exe"+2A37E73: 48 8D 15 E6 C0 BF 01     -  lea rdx,[FIFA18.exe+4633F60]
-"FIFA18_TRIAL.exe"+2A37E7A: E8 E1 62 0E FF           -  call FIFA18.exe+1B1E160
+"FIFA18_TRIAL.exe"+2A37E73: 48 8D 15 E6 C0 BF 01     -  lea rdx,[FIFA18_TRIAL.exe+4633F60]
+"FIFA18_TRIAL.exe"+2A37E7A: E8 E1 62 0E FF           -  call FIFA18_TRIAL.exe+1B1E160
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+2A37E7F: 83 F8 FF                 -  cmp eax,-01
 "FIFA18_TRIAL.exe"+2A37E82: 0F 44 C6                 -  cmove eax,esi
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+2A37E85: EB 02                    -  jmp FIFA18.exe+2A37E89
+"FIFA18_TRIAL.exe"+2A37E85: EB 02                    -  jmp FIFA18_TRIAL.exe+2A37E89
 "FIFA18_TRIAL.exe"+2A37E87: 8B C6                    -  mov eax,esi
 "FIFA18_TRIAL.exe"+2A37E89: 48 8B 9C 24 78 01 00 00  -  mov rbx,[rsp+00000178]
 "FIFA18_TRIAL.exe"+2A37E91: 48 81 C4 30 01 00 00     -  add rsp,00000130
@@ -6035,7 +5523,7 @@ dealloc(Weather)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_Match_Half_Length,FIFA18.exe,45 8B 84 24 08 14 00 00) // should be unique
+aobscanmodule(INJECT_Match_Half_Length,FIFA18_TRIAL.exe,45 8B 84 24 08 14 00 00) // should be unique
 alloc(newmem_Match_Half_Length,$1000,"FIFA18_TRIAL.exe"+2C712E9)
 
 label(code_Match_Half_Length)
@@ -6096,7 +5584,7 @@ dealloc(HalfLength)
 "FIFA18_TRIAL.exe"+2C71304: BA 02 00 00 00                 -  mov edx,00000002
 "FIFA18_TRIAL.exe"+2C71309: 49 8B CE                       -  mov rcx,r14
 "FIFA18_TRIAL.exe"+2C7130C: FF 50 58                       -  call qword ptr [rax+58]
-"FIFA18_TRIAL.exe"+2C7130F: E8 3C CE EA FE                 -  call FIFA18.exe+1B1E150
+"FIFA18_TRIAL.exe"+2C7130F: E8 3C CE EA FE                 -  call FIFA18_TRIAL.exe+1B1E150
 "FIFA18_TRIAL.exe"+2C71314: 48 8B C8                       -  mov rcx,rax
 }
 </AssemblerScript>
@@ -6118,7 +5606,7 @@ dealloc(HalfLength)
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_SideManipulator,FIFA18.exe,48 8B 84 CD 48 01 00 00 83) // should be unique
+aobscanmodule(INJECT_SideManipulator,FIFA18_TRIAL.exe,48 8B 84 CD 48 01 00 00 83) // should be unique
 alloc(newmem_SideManipulator,$1000,"FIFA18_TRIAL.exe"+1E89607)
 
 label(code_SideManipulator)
@@ -6214,7 +5702,7 @@ dealloc(intControllerID)
 "FIFA18_TRIAL.exe"+1E895DF: 48 89 46 08                 -  mov [rsi+08],rax
 "FIFA18_TRIAL.exe"+1E895E3: 48 8B 99 88 00 00 00        -  mov rbx,[rcx+00000088]
 "FIFA18_TRIAL.exe"+1E895EA: 48 3B 99 90 00 00 00        -  cmp rbx,[rcx+00000090]
-"FIFA18_TRIAL.exe"+1E895F1: 74 7D                       -  je FIFA18.exe+1E89670
+"FIFA18_TRIAL.exe"+1E895F1: 74 7D                       -  je FIFA18_TRIAL.exe+1E89670
 "FIFA18_TRIAL.exe"+1E895F3: 0F 1F 40 00                 -  nop [rax+00]
 "FIFA18_TRIAL.exe"+1E895F7: 66 0F 1F 84 00 00 00 00 00  -  nop [rax+rax+00000000]
 "FIFA18_TRIAL.exe"+1E89600: 48 8B 03                    -  mov rax,[rbx]
@@ -6223,14 +5711,14 @@ dealloc(intControllerID)
 "FIFA18_TRIAL.exe"+1E89607: 48 8B 84 CD 48 01 00 00     -  mov rax,[rbp+rcx*8+00000148]
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+1E8960F: 83 78 30 FF                 -  cmp dword ptr [rax+30],-01
-"FIFA18_TRIAL.exe"+1E89613: 74 24                       -  je FIFA18.exe+1E89639
+"FIFA18_TRIAL.exe"+1E89613: 74 24                       -  je FIFA18_TRIAL.exe+1E89639
 "FIFA18_TRIAL.exe"+1E89615: 48 8B 4F 08                 -  mov rcx,[rdi+08]
 "FIFA18_TRIAL.exe"+1E89619: 48 3B 4F 10                 -  cmp rcx,[rdi+10]
-"FIFA18_TRIAL.exe"+1E8961D: 73 15                       -  jae FIFA18.exe+1E89634
+"FIFA18_TRIAL.exe"+1E8961D: 73 15                       -  jae FIFA18_TRIAL.exe+1E89634
 "FIFA18_TRIAL.exe"+1E8961F: 48 8D 41 08                 -  lea rax,[rcx+08]
 "FIFA18_TRIAL.exe"+1E89623: 48 89 47 08                 -  mov [rdi+08],rax
 "FIFA18_TRIAL.exe"+1E89627: 48 85 C9                    -  test rcx,rcx
-"FIFA18_TRIAL.exe"+1E8962A: 74 37                       -  je FIFA18.exe+1E89663
+"FIFA18_TRIAL.exe"+1E8962A: 74 37                       -  je FIFA18_TRIAL.exe+1E89663
 "FIFA18_TRIAL.exe"+1E8962C: 48 8B 03                    -  mov rax,[rbx]
 }
 </AssemblerScript>
@@ -6308,7 +5796,7 @@ dd (int)-1
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_disablemorale,FIFA18.exe,0F 95 C0 88 43 10 84 C0 0F 84 05) // should be unique
+aobscanmodule(INJECT_disablemorale,FIFA18_TRIAL.exe,0F 95 C0 88 43 10 84 C0 0F 84 05) // should be unique
 alloc(newmem_disablemorale,$1000,"FIFA18_TRIAL.exe"+39159BD)
 
 label(code)
@@ -6371,7 +5859,7 @@ dealloc(newmem_disablemorale)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_bettermorale,FIFA18.exe,89 43 20 41 83 C8 FF 48 8D 15 ?? ?? ?? ?? 48 8B CF E8 ?? ?? ?? ?? 41 B1 01 89 43 1C 41 83 C8 FF ) // should be unique
+aobscanmodule(INJECT_bettermorale,FIFA18_TRIAL.exe,89 43 20 41 83 C8 FF 48 8D 15 ?? ?? ?? ?? 48 8B CF E8 ?? ?? ?? ?? 41 B1 01 89 43 1C 41 83 C8 FF ) // should be unique
 alloc(newmem_bettermorale,$1000,"FIFA18_TRIAL.exe"+3915AB9)
 
 label(code)
@@ -6409,30 +5897,30 @@ dealloc(newmem_bettermorale)
 {
 // ORIGINAL CODE - INJECTION POINT: "FIFA18_TRIAL.exe"+3915AB9
 
-"FIFA18_TRIAL.exe"+3915A8E: 48 8D 15 7B E2 06 01     -  lea rdx,[FIFA18.exe+4983D10]
+"FIFA18_TRIAL.exe"+3915A8E: 48 8D 15 7B E2 06 01     -  lea rdx,[FIFA18_TRIAL.exe+4983D10]
 "FIFA18_TRIAL.exe"+3915A95: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3915A98: E8 33 98 20 FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3915A98: E8 33 98 20 FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+3915A9D: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+3915AA0: 89 43 20                 -  mov [rbx+20],eax
 "FIFA18_TRIAL.exe"+3915AA3: 41 83 C8 FF              -  or r8d,-01
-"FIFA18_TRIAL.exe"+3915AA7: 48 8D 15 7A E2 06 01     -  lea rdx,[FIFA18.exe+4983D28]
+"FIFA18_TRIAL.exe"+3915AA7: 48 8D 15 7A E2 06 01     -  lea rdx,[FIFA18_TRIAL.exe+4983D28]
 "FIFA18_TRIAL.exe"+3915AAE: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3915AB1: E8 1A 98 20 FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3915AB1: E8 1A 98 20 FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+3915AB6: 41 B1 01                 -  mov r9l,01
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+3915AB9: 89 43 1C                 -  mov [rbx+1C],eax
 "FIFA18_TRIAL.exe"+3915ABC: 41 83 C8 FF              -  or r8d,-01
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+3915AC0: 48 8D 15 79 E2 06 01     -  lea rdx,[FIFA18.exe+4983D40]
+"FIFA18_TRIAL.exe"+3915AC0: 48 8D 15 79 E2 06 01     -  lea rdx,[FIFA18_TRIAL.exe+4983D40]
 "FIFA18_TRIAL.exe"+3915AC7: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3915ACA: E8 01 98 20 FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3915ACA: E8 01 98 20 FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+3915ACF: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+3915AD2: 89 43 30                 -  mov [rbx+30],eax
 "FIFA18_TRIAL.exe"+3915AD5: 41 83 C8 FF              -  or r8d,-01
-"FIFA18_TRIAL.exe"+3915AD9: 48 8D 15 80 E2 06 01     -  lea rdx,[FIFA18.exe+4983D60]
+"FIFA18_TRIAL.exe"+3915AD9: 48 8D 15 80 E2 06 01     -  lea rdx,[FIFA18_TRIAL.exe+4983D60]
 "FIFA18_TRIAL.exe"+3915AE0: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3915AE3: E8 E8 97 20 FE           -  call FIFA18.exe+1B1F2D0
-"FIFA18_TRIAL.exe"+3915AE8: F3 0F 10 35 E8 88 60 00  -  movss xmm6,[FIFA18.exe+3F1E3D8]
+"FIFA18_TRIAL.exe"+3915AE3: E8 E8 97 20 FE           -  call FIFA18_TRIAL.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3915AE8: F3 0F 10 35 E8 88 60 00  -  movss xmm6,[FIFA18_TRIAL.exe+3F1E3D8]
 }
 </AssemblerScript>
                 </CheatEntry>
@@ -6458,7 +5946,7 @@ dealloc(newmem_bettermorale)
 
 
 
-aobscanmodule(INJECT_Scout,FIFA18.exe,41 8B 41 0C 89 45 60) // should be unique
+aobscanmodule(INJECT_Scout,FIFA18_TRIAL.exe,41 8B 41 0C 89 45 60) // should be unique
 alloc(newmem_Scout,$1000,"FIFA18_TRIAL.exe"+3567FEE)
 
 label(code)
@@ -6491,7 +5979,7 @@ dealloc(newmem_Scout)
 // ORIGINAL CODE - INJECTION POINT: "FIFA18_TRIAL.exe"+3567FEE
 
 "FIFA18_TRIAL.exe"+3567FC8: 48 8B 48 10              -  mov rcx,[rax+10]
-"FIFA18_TRIAL.exe"+3567FCC: EB 07                    -  jmp FIFA18.exe+3567FD5
+"FIFA18_TRIAL.exe"+3567FCC: EB 07                    -  jmp FIFA18_TRIAL.exe+3567FD5
 "FIFA18_TRIAL.exe"+3567FCE: 49 8B 8D A0 00 00 00     -  mov rcx,[r13+000000A0]
 "FIFA18_TRIAL.exe"+3567FD5: 8B C3                    -  mov eax,ebx
 "FIFA18_TRIAL.exe"+3567FD7: 4C 69 C8 84 00 00 00     -  imul r9,rax,00000084
@@ -6511,7 +5999,7 @@ dealloc(newmem_Scout)
 "FIFA18_TRIAL.exe"+3568003: 49 8D 41 55              -  lea rax,[r9+55]
 "FIFA18_TRIAL.exe"+3568007: 49 83 C1 28              -  add r9,28
 "FIFA18_TRIAL.exe"+356800B: 48 89 44 24 20           -  mov [rsp+20],rax
-"FIFA18_TRIAL.exe"+3568010: 4C 8D 05 FD DE CC 00     -  lea r8,[FIFA18.exe+4235F14]
+"FIFA18_TRIAL.exe"+3568010: 4C 8D 05 FD DE CC 00     -  lea r8,[FIFA18_TRIAL.exe+4235F14]
 "FIFA18_TRIAL.exe"+3568017: BA 64 00 00 00           -  mov edx,00000064
 "FIFA18_TRIAL.exe"+356801C: 48 8D 4D 90              -  lea rcx,[rbp-70]
 }
@@ -6540,7 +6028,7 @@ dealloc(newmem_Scout)
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
 
-aobscanmodule(INJECT_gtn_reveal,FIFA18.exe,85 C0 75 ?? 4C 8D 86 8C 02 00 00) // should be unique
+aobscanmodule(INJECT_gtn_reveal,FIFA18_TRIAL.exe,85 C0 75 ?? 4C 8D 86 8C 02 00 00) // should be unique
 alloc(newmem_gtn_reveal,$1000,"FIFA18_TRIAL.exe"+37FA6EB)
 
 label(code)
@@ -6577,29 +6065,29 @@ dealloc(newmem_gtn_reveal)
 // ORIGINAL CODE - INJECTION POINT: "FIFA18_TRIAL.exe"+37FA6EB
 
 "FIFA18_TRIAL.exe"+37FA6BD: 85 C0                 -  test eax,eax
-"FIFA18_TRIAL.exe"+37FA6BF: 75 0C                 -  jne FIFA18.exe+37FA6CD
+"FIFA18_TRIAL.exe"+37FA6BF: 75 0C                 -  jne FIFA18_TRIAL.exe+37FA6CD
 "FIFA18_TRIAL.exe"+37FA6C1: 4C 8D 86 88 02 00 00  -  lea r8,[rsi+00000288]
-"FIFA18_TRIAL.exe"+37FA6C8: E9 8C 02 00 00        -  jmp FIFA18.exe+37FA959
-"FIFA18_TRIAL.exe"+37FA6CD: 48 8D 0D A4 E2 15 01  -  lea rcx,[FIFA18.exe+4958978]
-"FIFA18_TRIAL.exe"+37FA6D4: E8 07 AE A1 FC        -  call FIFA18.exe+2154E0
+"FIFA18_TRIAL.exe"+37FA6C8: E9 8C 02 00 00        -  jmp FIFA18_TRIAL.exe+37FA959
+"FIFA18_TRIAL.exe"+37FA6CD: 48 8D 0D A4 E2 15 01  -  lea rcx,[FIFA18_TRIAL.exe+4958978]
+"FIFA18_TRIAL.exe"+37FA6D4: E8 07 AE A1 FC        -  call FIFA18_TRIAL.exe+2154E0
 "FIFA18_TRIAL.exe"+37FA6D9: 4C 8B C0              -  mov r8,rax
-"FIFA18_TRIAL.exe"+37FA6DC: 48 8D 15 95 E2 15 01  -  lea rdx,[FIFA18.exe+4958978]
+"FIFA18_TRIAL.exe"+37FA6DC: 48 8D 15 95 E2 15 01  -  lea rdx,[FIFA18_TRIAL.exe+4958978]
 "FIFA18_TRIAL.exe"+37FA6E3: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+37FA6E6: E8 D5 A5 75 FD        -  call FIFA18.exe+F54CC0
+"FIFA18_TRIAL.exe"+37FA6E6: E8 D5 A5 75 FD        -  call FIFA18_TRIAL.exe+F54CC0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+37FA6EB: 85 C0                 -  test eax,eax
-"FIFA18_TRIAL.exe"+37FA6ED: 75 0C                 -  jne FIFA18.exe+37FA6FB
+"FIFA18_TRIAL.exe"+37FA6ED: 75 0C                 -  jne FIFA18_TRIAL.exe+37FA6FB
 "FIFA18_TRIAL.exe"+37FA6EF: 4C 8D 86 8C 02 00 00  -  lea r8,[rsi+0000028C]
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+37FA6F6: E9 5E 02 00 00        -  jmp FIFA18.exe+37FA959
-"FIFA18_TRIAL.exe"+37FA6FB: 48 8D 0D 8E E2 15 01  -  lea rcx,[FIFA18.exe+4958990]
-"FIFA18_TRIAL.exe"+37FA702: E8 D9 AD A1 FC        -  call FIFA18.exe+2154E0
+"FIFA18_TRIAL.exe"+37FA6F6: E9 5E 02 00 00        -  jmp FIFA18_TRIAL.exe+37FA959
+"FIFA18_TRIAL.exe"+37FA6FB: 48 8D 0D 8E E2 15 01  -  lea rcx,[FIFA18_TRIAL.exe+4958990]
+"FIFA18_TRIAL.exe"+37FA702: E8 D9 AD A1 FC        -  call FIFA18_TRIAL.exe+2154E0
 "FIFA18_TRIAL.exe"+37FA707: 4C 8B C0              -  mov r8,rax
-"FIFA18_TRIAL.exe"+37FA70A: 48 8D 15 7F E2 15 01  -  lea rdx,[FIFA18.exe+4958990]
+"FIFA18_TRIAL.exe"+37FA70A: 48 8D 15 7F E2 15 01  -  lea rdx,[FIFA18_TRIAL.exe+4958990]
 "FIFA18_TRIAL.exe"+37FA711: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+37FA714: E8 A7 A5 75 FD        -  call FIFA18.exe+F54CC0
+"FIFA18_TRIAL.exe"+37FA714: E8 A7 A5 75 FD        -  call FIFA18_TRIAL.exe+F54CC0
 "FIFA18_TRIAL.exe"+37FA719: 85 C0                 -  test eax,eax
-"FIFA18_TRIAL.exe"+37FA71B: 75 28                 -  jne FIFA18.exe+37FA745
+"FIFA18_TRIAL.exe"+37FA71B: 75 28                 -  jne FIFA18_TRIAL.exe+37FA745
 "FIFA18_TRIAL.exe"+37FA71D: 44 8D 48 01           -  lea r9d,[rax+01]
 }
 </AssemblerScript>
@@ -6627,14 +6115,14 @@ dealloc(newmem_gtn_reveal)
                   <Description>"SCOUT_REPORT_PLAYERS = 15"</Description>
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
-                  <AssemblerScript>{ Game   : FIFA18.exe
+                  <AssemblerScript>{ Game   : FIFA18_TRIAL.exe
   Version: 
   Date   : 2017-10-01
   Author : Pawel
 }
 
 [ENABLE]
-aobscanmodule(INJECT_moreyouthplayers,FIFA18.exe,E8 ?? ?? ?? ?? 89 06 FF C3 48 83 C6 04 83 FB 02) // should be unique
+aobscanmodule(INJECT_moreyouthplayers,FIFA18_TRIAL.exe,E8 ?? ?? ?? ?? 89 06 FF C3 48 83 C6 04 83 FB 02) // should be unique
 alloc(newmem_moreyoungplayers,$1000,"FIFA18_TRIAL.exe"+391BA05)
 
 label(code)
@@ -6668,27 +6156,27 @@ dealloc(newmem_moreyoungplayers)
 // ORIGINAL CODE - INJECTION POINT: "FIFA18_TRIAL.exe"+391BA05
 
 "FIFA18_TRIAL.exe"+391B9D3: 89 5C 24 20                    -  mov [rsp+20],ebx
-"FIFA18_TRIAL.exe"+391B9D7: 4C 8D 05 9A 6B 06 01           -  lea r8,[FIFA18.exe+4982578]  //EXPERIENCE_1_PERC_FIND_PLAYERS_RANGE_0
+"FIFA18_TRIAL.exe"+391B9D7: 4C 8D 05 9A 6B 06 01           -  lea r8,[FIFA18_TRIAL.exe+4982578]  //EXPERIENCE_1_PERC_FIND_PLAYERS_RANGE_0
 "FIFA18_TRIAL.exe"+391B9DE: BA 64 00 00 00                 -  mov edx,00000064
 "FIFA18_TRIAL.exe"+391B9E3: 48 8D 8D 80 01 00 00           -  lea rcx,[rbp+00000180]
-"FIFA18_TRIAL.exe"+391B9EA: E8 A1 6E 8F FC                 -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+391B9EA: E8 A1 6E 8F FC                 -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+391B9EF: 41 B1 01                       -  mov r9l,01
 "FIFA18_TRIAL.exe"+391B9F2: 48 8D 95 80 01 00 00           -  lea rdx,[rbp+00000180]
 "FIFA18_TRIAL.exe"+391B9F9: 41 83 C8 FF                    -  or r8d,-01
 "FIFA18_TRIAL.exe"+391B9FD: 48 8B CF                       -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+391BA00: E8 CB 38 20 FE                 -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+391BA00: E8 CB 38 20 FE                 -  call FIFA18_TRIAL.exe+1B1F2D0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+391BA05: 89 06                          -  mov [rsi],eax
 "FIFA18_TRIAL.exe"+391BA07: FF C3                          -  inc ebx
 "FIFA18_TRIAL.exe"+391BA09: 48 83 C6 04                    -  add rsi,04
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+391BA0D: 83 FB 02                       -  cmp ebx,02
-"FIFA18_TRIAL.exe"+391BA10: 7C BE                          -  jl FIFA18.exe+391B9D0
+"FIFA18_TRIAL.exe"+391BA10: 7C BE                          -  jl FIFA18_TRIAL.exe+391B9D0
 "FIFA18_TRIAL.exe"+391BA12: 48 8B 5C 24 30                 -  mov rbx,[rsp+30]
 "FIFA18_TRIAL.exe"+391BA17: 41 FF C7                       -  inc r15d
 "FIFA18_TRIAL.exe"+391BA1A: 49 FF C5                       -  inc r13
 "FIFA18_TRIAL.exe"+391BA1D: 49 83 FD 05                    -  cmp r13,05
-"FIFA18_TRIAL.exe"+391BA21: 0F 8C D9 FE FF FF              -  jl FIFA18.exe+391B900
+"FIFA18_TRIAL.exe"+391BA21: 0F 8C D9 FE FF FF              -  jl FIFA18_TRIAL.exe+391B900
 "FIFA18_TRIAL.exe"+391BA27: 49 8B DC                       -  mov rbx,r12
 "FIFA18_TRIAL.exe"+391BA2A: 48 8D 75 CC                    -  lea rsi,[rbp-34]
 "FIFA18_TRIAL.exe"+391BA2E: 48 89 5C 24 30                 -  mov [rsp+30],rbx
@@ -6701,7 +6189,7 @@ dealloc(newmem_moreyoungplayers)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_YA_REVEAL_POT_AND_OVR,FIFA18.exe,41 B1 01 48 8D 55 90 41 83 C8 FF 48 8B CF E8 ?? ?? ?? ?? 44 8B CB 89 46 E8 ) // should be unique
+aobscanmodule(INJECT_YA_REVEAL_POT_AND_OVR,FIFA18_TRIAL.exe,41 B1 01 48 8D 55 90 41 83 C8 FF 48 8B CF E8 ?? ?? ?? ?? 44 8B CB 89 46 E8 ) // should be unique
 alloc(newmem_YA_REVEAL_POT_AND_OVR,$1000,"FIFA18_TRIAL.exe"+39224DB)
 
 label(code_YA_REVEAL_POT_AND_OVR)
@@ -6733,28 +6221,28 @@ dealloc(newmem_YA_REVEAL_POT_AND_OVR)
 // ORIGINAL code_YA_REVEAL_POT_AND_OVR - INJECTION POINT: "FIFA18_TRIAL.exe"+39224DB
 
 "FIFA18_TRIAL.exe"+39224B0: 44 8B CB                 -  mov r9d,ebx
-"FIFA18_TRIAL.exe"+39224B3: 4C 8D 05 AE 07 06 01     -  lea r8,[FIFA18.exe+4982C68]
+"FIFA18_TRIAL.exe"+39224B3: 4C 8D 05 AE 07 06 01     -  lea r8,[FIFA18_TRIAL.exe+4982C68]
 "FIFA18_TRIAL.exe"+39224BA: BA 64 00 00 00           -  mov edx,00000064
 "FIFA18_TRIAL.exe"+39224BF: 48 8D 4D 90              -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+39224C3: E8 C8 03 8F FC           -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+39224C3: E8 C8 03 8F FC           -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+39224C8: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+39224CB: 48 8D 55 90              -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+39224CF: 41 83 C8 FF              -  or r8d,-01
 "FIFA18_TRIAL.exe"+39224D3: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+39224D6: E8 F5 CD 1F FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+39224D6: E8 F5 CD 1F FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+39224DB: 44 8B CB                 -  mov r9d,ebx
 "FIFA18_TRIAL.exe"+39224DE: 89 46 E8                 -  mov [rsi-18],eax  / POTENTIAL_VARIANCE_PERC
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+39224E1: 4C 8D 05 B0 07 06 01     -  lea r8,[FIFA18.exe+4982C98]
+"FIFA18_TRIAL.exe"+39224E1: 4C 8D 05 B0 07 06 01     -  lea r8,[FIFA18_TRIAL.exe+4982C98]
 "FIFA18_TRIAL.exe"+39224E8: BA 64 00 00 00           -  mov edx,00000064
 "FIFA18_TRIAL.exe"+39224ED: 48 8D 4D 90              -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+39224F1: E8 9A 03 8F FC           -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+39224F1: E8 9A 03 8F FC           -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+39224F6: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+39224F9: 48 8D 55 90              -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+39224FD: 41 83 C8 FF              -  or r8d,-01
 "FIFA18_TRIAL.exe"+3922501: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3922504: E8 C7 CD 1F FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3922504: E8 C7 CD 1F FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+3922509: FF C3                    -  inc ebx
 }
 </AssemblerScript>
@@ -6765,7 +6253,7 @@ dealloc(newmem_YA_REVEAL_POT_AND_OVR)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_PrimAttr_Low,FIFA18.exe,44 8B CB 48 8D 4D 90) // should be unique
+aobscanmodule(INJECT_PrimAttr_Low,FIFA18_TRIAL.exe,44 8B CB 48 8D 4D 90) // should be unique
 alloc(newmem_PrimAttr_Low,$1000,"FIFA18_TRIAL.exe"+39227CD)
 
 label(code_PrimAttr_Low)
@@ -6785,7 +6273,7 @@ INJECT_PrimAttr_Low:
 ret_PrimAttr_Low:
 registersymbol(INJECT_PrimAttr_Low)
 
-aobscanmodule(INJECT_PrimAttr_High,FIFA18.exe,44 8B CB 89 46 04) // should be unique
+aobscanmodule(INJECT_PrimAttr_High,FIFA18_TRIAL.exe,44 8B CB 89 46 04) // should be unique
 alloc(newmem_PrimAttr_High,$1000,"FIFA18_TRIAL.exe"+39227F3)
 
 label(code_PrimAttr_High)
@@ -6824,26 +6312,26 @@ dealloc(newmem_PrimAttr_High)
 
 "FIFA18_TRIAL.exe"+39227A0: BA 64 00 00 00        -  mov edx,00000064
 "FIFA18_TRIAL.exe"+39227A5: 48 8D 4D 90           -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+39227A9: E8 E2 00 8F FC        -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+39227A9: E8 E2 00 8F FC        -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+39227AE: 41 B1 01              -  mov r9l,01
 "FIFA18_TRIAL.exe"+39227B1: 48 8D 55 90           -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+39227B5: 41 83 C8 FF           -  or r8d,-01
 "FIFA18_TRIAL.exe"+39227B9: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+39227BC: E8 0F CB 1F FE        -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+39227BC: E8 0F CB 1F FE        -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+39227C1: 48 8B 74 24 40        -  mov rsi,[rsp+40]
-"FIFA18_TRIAL.exe"+39227C6: 4C 8D 05 BB 06 06 01  -  lea r8,[FIFA18.exe+4982E88]
+"FIFA18_TRIAL.exe"+39227C6: 4C 8D 05 BB 06 06 01  -  lea r8,[FIFA18_TRIAL.exe+4982E88]
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+39227CD: 44 8B CB              -  mov r9d,ebx
 "FIFA18_TRIAL.exe"+39227D0: 48 8D 4D 90           -  lea rcx,[rbp-70]
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+39227D4: BA 64 00 00 00        -  mov edx,00000064
 "FIFA18_TRIAL.exe"+39227D9: 89 06                 -  mov [rsi],eax
-"FIFA18_TRIAL.exe"+39227DB: E8 B0 00 8F FC        -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+39227DB: E8 B0 00 8F FC        -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+39227E0: 41 B1 01              -  mov r9l,01
 "FIFA18_TRIAL.exe"+39227E3: 48 8D 55 90           -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+39227E7: 41 83 C8 FF           -  or r8d,-01
 "FIFA18_TRIAL.exe"+39227EB: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+39227EE: E8 DD CA 1F FE        -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+39227EE: E8 DD CA 1F FE        -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+39227F3: 44 8B CB              -  mov r9d,ebx
 "FIFA18_TRIAL.exe"+39227F6: 89 46 04              -  mov [rsi+04],eax
 }
@@ -6855,7 +6343,7 @@ dealloc(newmem_PrimAttr_High)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_SecAttr_Low,FIFA18.exe,44 8B CB 89 46 38) // should be unique
+aobscanmodule(INJECT_SecAttr_Low,FIFA18_TRIAL.exe,44 8B CB 89 46 38) // should be unique
 alloc(newmem_SecAttr_Low,$1000,"FIFA18_TRIAL.exe"+3922821)
 
 label(code_SecAttr_Low)
@@ -6874,7 +6362,7 @@ INJECT_SecAttr_Low:
 ret_SecAttr_Low:
 registersymbol(INJECT_SecAttr_Low)
 
-aobscanmodule(INJECT_SecAttr_High,FIFA18.exe,89 46 3C 4C 8D 45 00) // should be unique
+aobscanmodule(INJECT_SecAttr_High,FIFA18_TRIAL.exe,89 46 3C 4C 8D 45 00) // should be unique
 alloc(newmem_SecAttr_High,$1000,"FIFA18_TRIAL.exe"+392284F)
 
 label(code_SecAttr_High)
@@ -6913,28 +6401,28 @@ dealloc(newmem_SecAttr_High)
 // ORIGINAL code_SecAttr_Low - INJECTION POINT: "FIFA18_TRIAL.exe"+3922821
 
 "FIFA18_TRIAL.exe"+39227F6: 89 46 04                 -  mov [rsi+04],eax
-"FIFA18_TRIAL.exe"+39227F9: 4C 8D 05 C0 06 06 01     -  lea r8,[FIFA18.exe+4982EC0]
+"FIFA18_TRIAL.exe"+39227F9: 4C 8D 05 C0 06 06 01     -  lea r8,[FIFA18_TRIAL.exe+4982EC0]
 "FIFA18_TRIAL.exe"+3922800: BA 64 00 00 00           -  mov edx,00000064
 "FIFA18_TRIAL.exe"+3922805: 48 8D 4D 90              -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+3922809: E8 82 00 8F FC           -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+3922809: E8 82 00 8F FC           -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+392280E: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+3922811: 48 8D 55 90              -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+3922815: 41 83 C8 FF              -  or r8d,-01
 "FIFA18_TRIAL.exe"+3922819: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+392281C: E8 AF CA 1F FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+392281C: E8 AF CA 1F FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+3922821: 44 8B CB                 -  mov r9d,ebx
 "FIFA18_TRIAL.exe"+3922824: 89 46 38                 -  mov [rsi+38],eax
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+3922827: 4C 8D 05 D2 06 06 01     -  lea r8,[FIFA18.exe+4982F00]
+"FIFA18_TRIAL.exe"+3922827: 4C 8D 05 D2 06 06 01     -  lea r8,[FIFA18_TRIAL.exe+4982F00]
 "FIFA18_TRIAL.exe"+392282E: BA 64 00 00 00           -  mov edx,00000064
 "FIFA18_TRIAL.exe"+3922833: 48 8D 4D 90              -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+3922837: E8 54 00 8F FC           -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+3922837: E8 54 00 8F FC           -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+392283C: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+392283F: 48 8D 55 90              -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+3922843: 41 83 C8 FF              -  or r8d,-01
 "FIFA18_TRIAL.exe"+3922847: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+392284A: E8 81 CA 1F FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+392284A: E8 81 CA 1F FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+392284F: 89 46 3C                 -  mov [rsi+3C],eax
 }
 </AssemblerScript>
@@ -6945,7 +6433,7 @@ dealloc(newmem_SecAttr_High)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_WeakFootChance,FIFA18.exe,FF C3 89 06 48 8D 76 04 83 FB 06 7C C8) // should be unique
+aobscanmodule(INJECT_WeakFootChance,FIFA18_TRIAL.exe,FF C3 89 06 48 8D 76 04 83 FB 06 7C C8) // should be unique
 alloc(newmem_WeakFootChance,$1000,"FIFA18_TRIAL.exe"+3922C0B)
 
 label(code_WeakFootChance)
@@ -6994,28 +6482,28 @@ dealloc(newmem_WeakFootChance)
 // ORIGINAL code_WeakFootChance - INJECTION POINT: "FIFA18_TRIAL.exe"+3922C0B
 
 "FIFA18_TRIAL.exe"+3922BE0: 44 8B CB                       -  mov r9d,ebx
-"FIFA18_TRIAL.exe"+3922BE3: 4C 8D 05 CE 04 06 01           -  lea r8,[FIFA18.exe+49830B8]
+"FIFA18_TRIAL.exe"+3922BE3: 4C 8D 05 CE 04 06 01           -  lea r8,[FIFA18_TRIAL.exe+49830B8]
 "FIFA18_TRIAL.exe"+3922BEA: BA 64 00 00 00                 -  mov edx,00000064
 "FIFA18_TRIAL.exe"+3922BEF: 48 8D 4D 90                    -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+3922BF3: E8 98 FC 8E FC                 -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+3922BF3: E8 98 FC 8E FC                 -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+3922BF8: 41 B1 01                       -  mov r9l,01
 "FIFA18_TRIAL.exe"+3922BFB: 48 8D 55 90                    -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+3922BFF: 41 83 C8 FF                    -  or r8d,-01
 "FIFA18_TRIAL.exe"+3922C03: 48 8B CF                       -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3922C06: E8 C5 C6 1F FE                 -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3922C06: E8 C5 C6 1F FE                 -  call FIFA18_TRIAL.exe+1B1F2D0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+3922C0B: FF C3                          -  inc ebx
 "FIFA18_TRIAL.exe"+3922C0D: 89 06                          -  mov [rsi],eax
 "FIFA18_TRIAL.exe"+3922C0F: 48 8D 76 04                    -  lea rsi,[rsi+04]
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+3922C13: 83 FB 06                       -  cmp ebx,06
-"FIFA18_TRIAL.exe"+3922C16: 7C C8                          -  jl FIFA18.exe+3922BE0
+"FIFA18_TRIAL.exe"+3922C16: 7C C8                          -  jl FIFA18_TRIAL.exe+3922BE0
 "FIFA18_TRIAL.exe"+3922C18: 41 8B DE                       -  mov ebx,r14d
 "FIFA18_TRIAL.exe"+3922C1B: 49 8D B7 58 07 00 00           -  lea rsi,[r15+00000758]
 "FIFA18_TRIAL.exe"+3922C22: 0F 1F 40 00                    -  nop [rax+00]
 "FIFA18_TRIAL.exe"+3922C26: 66 66 0F 1F 84 00 00 00 00 00  -  nop [rax+rax+00000000]
 "FIFA18_TRIAL.exe"+3922C30: 44 8B CB                       -  mov r9d,ebx
-"FIFA18_TRIAL.exe"+3922C33: 4C 8D 05 B6 04 06 01           -  lea r8,[FIFA18.exe+49830F0]
+"FIFA18_TRIAL.exe"+3922C33: 4C 8D 05 B6 04 06 01           -  lea r8,[FIFA18_TRIAL.exe+49830F0]
 "FIFA18_TRIAL.exe"+3922C3A: BA 64 00 00 00                 -  mov edx,00000064
 "FIFA18_TRIAL.exe"+3922C3F: 48 8D 4D 90                    -  lea rcx,[rbp-70]
 }
@@ -7027,7 +6515,7 @@ dealloc(newmem_WeakFootChance)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_SkillMoveChance,FIFA18.exe,89 03 FF C6 48 83 C3 04 49) // should be unique
+aobscanmodule(INJECT_SkillMoveChance,FIFA18_TRIAL.exe,89 03 FF C6 48 83 C3 04 49) // should be unique
 alloc(newmem_SkillMoveChance,$1000,"FIFA18_TRIAL.exe"+3922CBF)
 
 label(code_SkillMoveChance)
@@ -7075,25 +6563,25 @@ dealloc(newmem_SkillMoveChance)
 // ORIGINAL code_SkillMoveChance - INJECTION POINT: "FIFA18_TRIAL.exe"+3922CBF
 
 "FIFA18_TRIAL.exe"+3922C93: 89 74 24 20                 -  mov [rsp+20],esi
-"FIFA18_TRIAL.exe"+3922C97: 4C 8D 05 8A 04 06 01        -  lea r8,[FIFA18.exe+4983128]
+"FIFA18_TRIAL.exe"+3922C97: 4C 8D 05 8A 04 06 01        -  lea r8,[FIFA18_TRIAL.exe+4983128]
 "FIFA18_TRIAL.exe"+3922C9E: BA 64 00 00 00              -  mov edx,00000064
 "FIFA18_TRIAL.exe"+3922CA3: 48 8D 4D 90                 -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+3922CA7: E8 E4 FB 8E FC              -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+3922CA7: E8 E4 FB 8E FC              -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+3922CAC: 41 B1 01                    -  mov r9l,01
 "FIFA18_TRIAL.exe"+3922CAF: 48 8D 55 90                 -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+3922CB3: 41 83 C8 FF                 -  or r8d,-01
 "FIFA18_TRIAL.exe"+3922CB7: 48 8B CF                    -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3922CBA: E8 11 C6 1F FE              -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3922CBA: E8 11 C6 1F FE              -  call FIFA18_TRIAL.exe+1B1F2D0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+3922CBF: 89 03                       -  mov [rbx],eax
 "FIFA18_TRIAL.exe"+3922CC1: FF C6                       -  inc esi
 "FIFA18_TRIAL.exe"+3922CC3: 48 83 C3 04                 -  add rbx,04
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+3922CC7: 49 83 EF 01                 -  sub r15,01
-"FIFA18_TRIAL.exe"+3922CCB: 75 C3                       -  jne FIFA18.exe+3922C90
+"FIFA18_TRIAL.exe"+3922CCB: 75 C3                       -  jne FIFA18_TRIAL.exe+3922C90
 "FIFA18_TRIAL.exe"+3922CCD: 41 FF C5                    -  inc r13d
 "FIFA18_TRIAL.exe"+3922CD0: 48 83 6C 24 38 01           -  sub qword ptr [rsp+38],01
-"FIFA18_TRIAL.exe"+3922CD6: 75 A8                       -  jne FIFA18.exe+3922C80
+"FIFA18_TRIAL.exe"+3922CD6: 75 A8                       -  jne FIFA18_TRIAL.exe+3922C80
 "FIFA18_TRIAL.exe"+3922CD8: 48 8B 74 24 48              -  mov rsi,[rsp+48]
 "FIFA18_TRIAL.exe"+3922CDD: 41 8B DE                    -  mov ebx,r14d
 "FIFA18_TRIAL.exe"+3922CE0: 48 81 C6 48 08 00 00        -  add rsi,00000848
@@ -7108,7 +6596,7 @@ dealloc(newmem_SkillMoveChance)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_MinAgeForPromotion,FIFA18.exe,89 85 F4 00 00 00 41 B8) // should be unique
+aobscanmodule(INJECT_MinAgeForPromotion,FIFA18_TRIAL.exe,89 85 F4 00 00 00 41 B8) // should be unique
 alloc(newmem_MinAgeForPromotion,$1000,"FIFA18_TRIAL.exe"+391B3D2)
 
 label(code_MinAgeForPromotion)
@@ -7137,29 +6625,29 @@ dealloc(newmem_MinAgeForPromotion)
 {
 // ORIGINAL code_MinAgeForPromotion - INJECTION POINT: "FIFA18_TRIAL.exe"+391B3D2
 
-"FIFA18_TRIAL.exe"+391B3A2: 48 8D 15 A7 69 06 01  -  lea rdx,[FIFA18.exe+4981D50]
+"FIFA18_TRIAL.exe"+391B3A2: 48 8D 15 A7 69 06 01  -  lea rdx,[FIFA18_TRIAL.exe+4981D50]
 "FIFA18_TRIAL.exe"+391B3A9: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+391B3AC: E8 1F 3F 20 FE        -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+391B3AC: E8 1F 3F 20 FE        -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+391B3B1: 41 B1 01              -  mov r9l,01
 "FIFA18_TRIAL.exe"+391B3B4: 89 85 18 01 00 00     -  mov [rbp+00000118],eax
 "FIFA18_TRIAL.exe"+391B3BA: 41 B8 10 00 00 00     -  mov r8d,00000010
-"FIFA18_TRIAL.exe"+391B3C0: 48 8D 15 B1 69 06 01  -  lea rdx,[FIFA18.exe+4981D78]
+"FIFA18_TRIAL.exe"+391B3C0: 48 8D 15 B1 69 06 01  -  lea rdx,[FIFA18_TRIAL.exe+4981D78]
 "FIFA18_TRIAL.exe"+391B3C7: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+391B3CA: E8 01 3F 20 FE        -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+391B3CA: E8 01 3F 20 FE        -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+391B3CF: 41 B1 01              -  mov r9l,01
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+391B3D2: 89 85 F4 00 00 00     -  mov [rbp+000000F4],eax
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+391B3D8: 41 B8 03 00 00 00     -  mov r8d,00000003
-"FIFA18_TRIAL.exe"+391B3DE: 48 8D 15 C3 69 06 01  -  lea rdx,[FIFA18.exe+4981DA8]
+"FIFA18_TRIAL.exe"+391B3DE: 48 8D 15 C3 69 06 01  -  lea rdx,[FIFA18_TRIAL.exe+4981DA8]
 "FIFA18_TRIAL.exe"+391B3E5: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+391B3E8: E8 E3 3E 20 FE        -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+391B3E8: E8 E3 3E 20 FE        -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+391B3ED: 41 B1 01              -  mov r9l,01
 "FIFA18_TRIAL.exe"+391B3F0: 89 85 04 01 00 00     -  mov [rbp+00000104],eax
 "FIFA18_TRIAL.exe"+391B3F6: 41 B8 03 00 00 00     -  mov r8d,00000003
-"FIFA18_TRIAL.exe"+391B3FC: 48 8D 15 CD 69 06 01  -  lea rdx,[FIFA18.exe+4981DD0]
+"FIFA18_TRIAL.exe"+391B3FC: 48 8D 15 CD 69 06 01  -  lea rdx,[FIFA18_TRIAL.exe+4981DD0]
 "FIFA18_TRIAL.exe"+391B403: 48 8B CF              -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+391B406: E8 C5 3E 20 FE        -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+391B406: E8 C5 3E 20 FE        -  call FIFA18_TRIAL.exe+1B1F2D0
 }
 </AssemblerScript>
                 </CheatEntry>
@@ -7169,7 +6657,7 @@ dealloc(newmem_MinAgeForPromotion)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_PlayerAgeRange,FIFA18.exe,41 89 47 08 41 B8 62 00 00 00) // should be unique
+aobscanmodule(INJECT_PlayerAgeRange,FIFA18_TRIAL.exe,41 89 47 08 41 B8 62 00 00 00) // should be unique
 alloc(newmem_PlayerAgeRange,$1000,"FIFA18_TRIAL.exe"+3922410)
 
 label(code_PlayerAgeRange)
@@ -7208,27 +6696,27 @@ dealloc(newmem_PlayerAgeRange)
 
 "FIFA18_TRIAL.exe"+39223E3: 41 B8 0E 00 00 00        -  mov r8d,0000000E
 "FIFA18_TRIAL.exe"+39223E9: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+39223EC: E8 DF CE 1F FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+39223EC: E8 DF CE 1F FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+39223F1: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+39223F4: 41 89 47 04              -  mov [r15+04],eax
 "FIFA18_TRIAL.exe"+39223F8: 41 B8 10 00 00 00        -  mov r8d,00000010
-"FIFA18_TRIAL.exe"+39223FE: 48 8D 15 13 FC 05 01     -  lea rdx,[FIFA18.exe+4982018]
+"FIFA18_TRIAL.exe"+39223FE: 48 8D 15 13 FC 05 01     -  lea rdx,[FIFA18_TRIAL.exe+4982018]
 "FIFA18_TRIAL.exe"+3922405: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3922408: E8 C3 CE 1F FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3922408: E8 C3 CE 1F FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+392240D: 41 B1 01                 -  mov r9l,01
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+3922410: 41 89 47 08              -  mov [r15+08],eax
 "FIFA18_TRIAL.exe"+3922414: 41 B8 62 00 00 00        -  mov r8d,00000062
 // ---------- DONE INJECTING  ----------
-"FIFA18_TRIAL.exe"+392241A: 48 8D 15 77 07 06 01     -  lea rdx,[FIFA18.exe+4982B98]
+"FIFA18_TRIAL.exe"+392241A: 48 8D 15 77 07 06 01     -  lea rdx,[FIFA18_TRIAL.exe+4982B98]
 "FIFA18_TRIAL.exe"+3922421: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3922424: E8 A7 CE 1F FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3922424: E8 A7 CE 1F FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+3922429: 41 B1 01                 -  mov r9l,01
 "FIFA18_TRIAL.exe"+392242C: 41 89 87 BC 06 00 00     -  mov [r15+000006BC],eax
 "FIFA18_TRIAL.exe"+3922433: 41 B8 10 00 00 00        -  mov r8d,00000010
-"FIFA18_TRIAL.exe"+3922439: 48 8D 15 38 F9 05 01     -  lea rdx,[FIFA18.exe+4981D78]
+"FIFA18_TRIAL.exe"+3922439: 48 8D 15 38 F9 05 01     -  lea rdx,[FIFA18_TRIAL.exe+4981D78]
 "FIFA18_TRIAL.exe"+3922440: 48 8B CF                 -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3922443: E8 88 CE 1F FE           -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3922443: E8 88 CE 1F FE           -  call FIFA18_TRIAL.exe+1B1F2D0
 "FIFA18_TRIAL.exe"+3922448: 41 B1 01                 -  mov r9l,01
 }
 </AssemblerScript>
@@ -7239,7 +6727,7 @@ dealloc(newmem_PlayerAgeRange)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_YA_PlayerPotential,FIFA18.exe,89 06 FF C3 48 83 C6 04 83 FB 02 7C C3) // should be unique
+aobscanmodule(INJECT_YA_PlayerPotential,FIFA18_TRIAL.exe,89 06 FF C3 48 83 C6 04 83 FB 02 7C C3) // should be unique
 alloc(newmem_YA_PlayerPotential,$1000,"FIFA18_TRIAL.exe"+3922DA0)
 
 label(code_YA_PlayerPotential)
@@ -7273,28 +6761,28 @@ dealloc(newmem_YA_PlayerPotential)
 // ORIGINAL code_YA_PlayerPotential - INJECTION POINT: "FIFA18_TRIAL.exe"+3922DA0
 
 "FIFA18_TRIAL.exe"+3922D74: 89 5C 24 20                 -  mov [rsp+20],ebx
-"FIFA18_TRIAL.exe"+3922D78: 4C 8D 05 41 04 06 01        -  lea r8,[FIFA18.exe+49831C0]
+"FIFA18_TRIAL.exe"+3922D78: 4C 8D 05 41 04 06 01        -  lea r8,[FIFA18_TRIAL.exe+49831C0]
 "FIFA18_TRIAL.exe"+3922D7F: BA 64 00 00 00              -  mov edx,00000064
 "FIFA18_TRIAL.exe"+3922D84: 48 8D 4D 90                 -  lea rcx,[rbp-70]
-"FIFA18_TRIAL.exe"+3922D88: E8 03 FB 8E FC              -  call FIFA18.exe+212890
+"FIFA18_TRIAL.exe"+3922D88: E8 03 FB 8E FC              -  call FIFA18_TRIAL.exe+212890
 "FIFA18_TRIAL.exe"+3922D8D: 41 B1 01                    -  mov r9l,01
 "FIFA18_TRIAL.exe"+3922D90: 48 8D 55 90                 -  lea rdx,[rbp-70]
 "FIFA18_TRIAL.exe"+3922D94: 41 83 C8 FF                 -  or r8d,-01
 "FIFA18_TRIAL.exe"+3922D98: 48 8B CF                    -  mov rcx,rdi
-"FIFA18_TRIAL.exe"+3922D9B: E8 30 C5 1F FE              -  call FIFA18.exe+1B1F2D0
+"FIFA18_TRIAL.exe"+3922D9B: E8 30 C5 1F FE              -  call FIFA18_TRIAL.exe+1B1F2D0
 // ---------- INJECTING HERE ----------
 "FIFA18_TRIAL.exe"+3922DA0: 89 06                       -  mov [rsi],eax
 "FIFA18_TRIAL.exe"+3922DA2: FF C3                       -  inc ebx
 "FIFA18_TRIAL.exe"+3922DA4: 48 83 C6 04                 -  add rsi,04
 // ---------- DONE INJECTING  ----------
 "FIFA18_TRIAL.exe"+3922DA8: 83 FB 02                    -  cmp ebx,02
-"FIFA18_TRIAL.exe"+3922DAB: 7C C3                       -  jl FIFA18.exe+3922D70
+"FIFA18_TRIAL.exe"+3922DAB: 7C C3                       -  jl FIFA18_TRIAL.exe+3922D70
 "FIFA18_TRIAL.exe"+3922DAD: 41 8B DE                    -  mov ebx,r14d
 "FIFA18_TRIAL.exe"+3922DB0: 49 8B 4C 24 28              -  mov rcx,[r12+28]
 "FIFA18_TRIAL.exe"+3922DB5: 4C 8D 45 00                 -  lea r8,[rbp+00]
 "FIFA18_TRIAL.exe"+3922DB9: 41 B9 64 00 00 00           -  mov r9d,00000064
 "FIFA18_TRIAL.exe"+3922DBF: 41 8B D5                    -  mov edx,r13d
-"FIFA18_TRIAL.exe"+3922DC2: E8 09 FD C3 FF              -  call FIFA18.exe+3562AD0
+"FIFA18_TRIAL.exe"+3922DC2: E8 09 FD C3 FF              -  call FIFA18_TRIAL.exe+3562AD0
 "FIFA18_TRIAL.exe"+3922DC7: 48 8D 45 00                 -  lea rax,[rbp+00]
 "FIFA18_TRIAL.exe"+3922DCB: 89 5C 24 28                 -  mov [rsp+28],ebx
 }
@@ -7306,7 +6794,7 @@ dealloc(newmem_YA_PlayerPotential)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_CountryIsBeingScouted,FIFA18.exe,80 FB 01 75 11 E8) // should be unique
+aobscanmodule(INJECT_CountryIsBeingScouted,FIFA18_TRIAL.exe,80 FB 01 75 11 E8) // should be unique
 alloc(newmem_CountryIsBeingScouted,$1000,"FIFA18_TRIAL.exe"+361CFD8)
 
 label(code_CountryIsBeingScouted)
@@ -7336,30 +6824,30 @@ dealloc(newmem_CountryIsBeingScouted)
 // ORIGINAL code_CountryIsBeingScouted - INJECT_CountryIsBeingScoutedION POINT: "FIFA18_TRIAL.exe"+361CFD8
 "CMYS_Popup_CountryIsBeingScouted"
 
-"FIFA18_TRIAL.exe"+361CFAD: FF 15 1D BC 8C 00     -  call qword ptr [FIFA18.exe+3EE8BD0]
+"FIFA18_TRIAL.exe"+361CFAD: FF 15 1D BC 8C 00     -  call qword ptr [FIFA18_TRIAL.exe+3EE8BD0]
 "FIFA18_TRIAL.exe"+361CFB3: 48 2B DF              -  sub rbx,rdi
 "FIFA18_TRIAL.exe"+361CFB6: 48 01 5C 24 30        -  add [rsp+30],rbx
 "FIFA18_TRIAL.exe"+361CFBB: 48 8B CE              -  mov rcx,rsi
-"FIFA18_TRIAL.exe"+361CFBE: E8 AD 08 F4 FF        -  call FIFA18.exe+355D870
+"FIFA18_TRIAL.exe"+361CFBE: E8 AD 08 F4 FF        -  call FIFA18_TRIAL.exe+355D870
 "FIFA18_TRIAL.exe"+361CFC3: 0F B6 D8              -  movzx ebx,al
-"FIFA18_TRIAL.exe"+361CFC6: 48 8D 15 A3 1D 2F 01  -  lea rdx,[FIFA18.exe+490ED70]
+"FIFA18_TRIAL.exe"+361CFC6: 48 8D 15 A3 1D 2F 01  -  lea rdx,[FIFA18_TRIAL.exe+490ED70]
 "FIFA18_TRIAL.exe"+361CFCD: 48 8D 4C 24 70        -  lea rcx,[rsp+70]
-"FIFA18_TRIAL.exe"+361CFD2: E8 D9 A4 08 00        -  call FIFA18.exe+36A74B0
+"FIFA18_TRIAL.exe"+361CFD2: E8 D9 A4 08 00        -  call FIFA18_TRIAL.exe+36A74B0
 "FIFA18_TRIAL.exe"+361CFD7: 90                    -  nop
 // ---------- INJECT_CountryIsBeingScoutedING HERE ----------
 "FIFA18_TRIAL.exe"+361CFD8: 80 FB 01              -  cmp bl,01
-"FIFA18_TRIAL.exe"+361CFDB: 75 11                 -  jne FIFA18.exe+361CFEE
+"FIFA18_TRIAL.exe"+361CFDB: 75 11                 -  jne FIFA18_TRIAL.exe+361CFEE
 // ---------- DONE INJECT_CountryIsBeingScoutedING  ----------
-"FIFA18_TRIAL.exe"+361CFDD: E8 BE B0 C0 FD        -  call FIFA18.exe+12280A0
-"FIFA18_TRIAL.exe"+361CFE2: 4C 8D 05 27 AD 2F 01  -  lea r8,[FIFA18.exe+4917D10]
-"FIFA18_TRIAL.exe"+361CFE9: E9 D2 00 00 00        -  jmp FIFA18.exe+361D0C0
+"FIFA18_TRIAL.exe"+361CFDD: E8 BE B0 C0 FD        -  call FIFA18_TRIAL.exe+12280A0
+"FIFA18_TRIAL.exe"+361CFE2: 4C 8D 05 27 AD 2F 01  -  lea r8,[FIFA18_TRIAL.exe+4917D10]
+"FIFA18_TRIAL.exe"+361CFE9: E9 D2 00 00 00        -  jmp FIFA18_TRIAL.exe+361D0C0
 "FIFA18_TRIAL.exe"+361CFEE: 4D 8B CE              -  mov r9,r14
 "FIFA18_TRIAL.exe"+361CFF1: 45 33 C0              -  xor r8d,r8d
 "FIFA18_TRIAL.exe"+361CFF4: 8B 96 3C 01 00 00     -  mov edx,[rsi+0000013C]
 "FIFA18_TRIAL.exe"+361CFFA: 48 8D 4C 24 20        -  lea rcx,[rsp+20]
-"FIFA18_TRIAL.exe"+361CFFF: E8 6C 49 19 00        -  call FIFA18.exe+37B1970
+"FIFA18_TRIAL.exe"+361CFFF: E8 6C 49 19 00        -  call FIFA18_TRIAL.exe+37B1970
 "FIFA18_TRIAL.exe"+361D004: 84 C0                 -  test al,al
-"FIFA18_TRIAL.exe"+361D006: 0F 84 A8 00 00 00     -  je FIFA18.exe+361D0B4
+"FIFA18_TRIAL.exe"+361D006: 0F 84 A8 00 00 00     -  je FIFA18_TRIAL.exe+361D0B4
 }
 </AssemblerScript>
                 </CheatEntry>
@@ -7370,7 +6858,7 @@ dealloc(newmem_CountryIsBeingScouted)
                   <LastState/>
                   <VariableType>Auto Assembler Script</VariableType>
                   <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_allCountriesAvailable,FIFA18.exe,89 4C 24 30 49 8D 54 24 10) // should be unique
+aobscanmodule(INJECT_allCountriesAvailable,FIFA18_TRIAL.exe,89 4C 24 30 49 8D 54 24 10) // should be unique
 alloc(newmem_allCountriesAvailable,$1000,"FIFA18_TRIAL.exe"+3614249)
 
 label(code_allCountriesAvailable)
@@ -7410,14 +6898,14 @@ dealloc(ptr_YA_NatID)
 {
 // ORIGINAL code_allCountriesAvailable - INJECTION POINT: "FIFA18_TRIAL.exe"+3614249
 
-"FIFA18_TRIAL.exe"+361421C: E8 9F 0A 18 00           -  call FIFA18.exe+3794CC0
+"FIFA18_TRIAL.exe"+361421C: E8 9F 0A 18 00           -  call FIFA18_TRIAL.exe+3794CC0
 "FIFA18_TRIAL.exe"+3614221: 89 44 24 34              -  mov [rsp+34],eax
-"FIFA18_TRIAL.exe"+3614225: 48 8D 15 AC FA BD 00     -  lea rdx,[FIFA18.exe+41F3CD8]
+"FIFA18_TRIAL.exe"+3614225: 48 8D 15 AC FA BD 00     -  lea rdx,[FIFA18_TRIAL.exe+41F3CD8]
 "FIFA18_TRIAL.exe"+361422C: 49 8B CE                 -  mov rcx,r14
-"FIFA18_TRIAL.exe"+361422F: E8 8C 0A 18 00           -  call FIFA18.exe+3794CC0
+"FIFA18_TRIAL.exe"+361422F: E8 8C 0A 18 00           -  call FIFA18_TRIAL.exe+3794CC0
 "FIFA18_TRIAL.exe"+3614234: 48 63 D0                 -  movsxd  rdx,eax
 "FIFA18_TRIAL.exe"+3614237: 48 8D 04 5B              -  lea rax,[rbx+rbx*2]
-"FIFA18_TRIAL.exe"+361423B: 4C 8D 05 26 21 2E 01     -  lea r8,[FIFA18.exe+48F6368]
+"FIFA18_TRIAL.exe"+361423B: 4C 8D 05 26 21 2E 01     -  lea r8,[FIFA18_TRIAL.exe+48F6368]
 "FIFA18_TRIAL.exe"+3614242: 49 8B 04 C0              -  mov rax,[r8+rax*8]
 "FIFA18_TRIAL.exe"+3614246: 8B 0C 90                 -  mov ecx,[rax+rdx*4]
 // ---------- INJECTING HERE ----------
@@ -7456,7 +6944,7 @@ dealloc(ptr_YA_NatID)
           <LastState/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_DisableSubstitutions,FIFA18.exe,41 8B BC 1D A0 96 00 00 45) // should be unique
+aobscanmodule(INJECT_DisableSubstitutions,FIFA18_TRIAL.exe,41 8B BC 1D A0 96 00 00 45) // should be unique
 alloc(newmem_DisableSubstitutions,$1000,"FIFA18_TRIAL.exe"+14E956A)
 
 label(code_DisableSubstitutions)
@@ -7527,7 +7015,7 @@ INJECT_DisableSubstitutions:
 ret_DisableSubstitutions:
 registersymbol(INJECT_DisableSubstitutions)
 
-aobscanmodule(INJECT_ingame_stamina,FIFA18.exe,F3 0F 10 B1 A4 00 00 00 48) // should be unique
+aobscanmodule(INJECT_ingame_stamina,FIFA18_TRIAL.exe,F3 0F 10 B1 A4 00 00 00 48) // should be unique
 alloc(cave_ingame_stamina,$1000,"FIFA18_TRIAL.exe"+1BA9F4D)
 
 alloc(bHomeTeam_Tired, 1)
@@ -7670,7 +7158,7 @@ INJECT_ingame_stamina:
 ret_ingame_stamina:
 registersymbol(INJECT_ingame_stamina)
 
-aobscanmodule(INJECT_matchScore,FIFA18.exe,44 8B 80 34 01 00 00 EB) // should be unique
+aobscanmodule(INJECT_matchScore,FIFA18_TRIAL.exe,44 8B 80 34 01 00 00 EB) // should be unique
 alloc(matchscore_cave,$1000,"FIFA18_TRIAL.exe"+1BAA9B3)
 
 alloc(ptrHomeTeamScore, 8)
@@ -7715,7 +7203,7 @@ INJECT_matchScore:
 return_matchscore:
 registersymbol(INJECT_matchScore)
 
-aobscanmodule(INJECT_ingame_fivestarskillmoves,FIFA18.exe,8B B8 60 02 00 00 48) // should be unique
+aobscanmodule(INJECT_ingame_fivestarskillmoves,FIFA18_TRIAL.exe,8B B8 60 02 00 00 48) // should be unique
 alloc(skillmoves_cave,$1000,"FIFA18_TRIAL.exe"+1BAA168)
 
 
@@ -7834,7 +7322,7 @@ dealloc(bAwayTeam_FiveStars)
 "FIFA18_TRIAL.exe"+14E9552: 03 D0                    -  add edx,eax
 "FIFA18_TRIAL.exe"+14E9554: 41 3B D0                 -  cmp edx,r8d
 "FIFA18_TRIAL.exe"+14E9557: C6 44 24 70 01           -  mov byte ptr [rsp+70],01
-"FIFA18_TRIAL.exe"+14E955C: 7C 05                    -  jl FIFA18.exe+14E9563
+"FIFA18_TRIAL.exe"+14E955C: 7C 05                    -  jl FIFA18_TRIAL.exe+14E9563
 "FIFA18_TRIAL.exe"+14E955E: C6 44 24 70 00           -  mov byte ptr [rsp+70],00
 "FIFA18_TRIAL.exe"+14E9563: 4C 69 EE AC 04 00 00     -  imul r13,rsi,000004AC
 // ---------- INJECTING HERE ----------
@@ -7843,12 +7331,12 @@ dealloc(bAwayTeam_FiveStars)
 "FIFA18_TRIAL.exe"+14E9572: 45 8B B4 1D 48 8D 00 00  -  mov r14d,[r13+rbx+00008D48]
 "FIFA18_TRIAL.exe"+14E957A: 44 2B F7                 -  sub r14d,edi
 "FIFA18_TRIAL.exe"+14E957D: 85 FF                    -  test edi,edi
-"FIFA18_TRIAL.exe"+14E957F: 0F 84 84 01 00 00        -  je FIFA18.exe+14E9709
+"FIFA18_TRIAL.exe"+14E957F: 0F 84 84 01 00 00        -  je FIFA18_TRIAL.exe+14E9709
 "FIFA18_TRIAL.exe"+14E9585: 4C 8B FE                 -  mov r15,rsi
 "FIFA18_TRIAL.exe"+14E9588: 49 C1 E7 05              -  shl r15,05
 "FIFA18_TRIAL.exe"+14E958C: 0F 1F 40 00              -  nop [rax+00]
 "FIFA18_TRIAL.exe"+14E9590: 41 83 FE 02              -  cmp r14d,02
-"FIFA18_TRIAL.exe"+14E9594: 0F 8F 6F 01 00 00        -  jg FIFA18.exe+14E9709
+"FIFA18_TRIAL.exe"+14E9594: 0F 8F 6F 01 00 00        -  jg FIFA18_TRIAL.exe+14E9709
 "FIFA18_TRIAL.exe"+14E959A: 83 FD 01                 -  cmp ebp,01
 }
 
@@ -7946,7 +7434,7 @@ dealloc(bAwayTeam_FiveStars)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_MatchTimer,FIFA18.exe,8B 48 08 41 89 4C 24 10) // should be unique
+aobscanmodule(INJECT_MatchTimer,FIFA18_TRIAL.exe,8B 48 08 41 89 4C 24 10) // should be unique
 alloc(newmem,$1000,"FIFA18_TRIAL.exe"+1BF9A42)
 alloc(ptrMatchTime, 8)
 registersymbol(ptrMatchTime)
@@ -8067,7 +7555,7 @@ getAddressList().getMemoryRecordByDescription("TIME").Value=0
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_UnlimitedSubstitutions,FIFA18.exe,48 69 D0 AC 04 00 00 8B 84 0A 48) // should be unique
+aobscanmodule(INJECT_UnlimitedSubstitutions,FIFA18_TRIAL.exe,48 69 D0 AC 04 00 00 8B 84 0A 48) // should be unique
 alloc(newmem_UnlimitedSubstitutions,$1000,"FIFA18_TRIAL.exe"+14EDC73)
 
 label(code_UnlimitedSubstitutions)
@@ -8374,6 +7862,47 @@ bHomeTeam_Tired:
       <Options moHideChildren="1"/>
       <LastState Value="" RealAddress="00000000"/>
       <Color>0000FF</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1999</ID>
+      <Description>"------------------------"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2001</ID>
+      <Description>"FIFA TRACKER"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>2002</ID>
+          <Description>"https://fifatracker.net"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2003</ID>
+          <Description>"More Info:"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2004</ID>
+              <Description>"https://www.reddit.com/r/FifaCareers/comments/7sgywq/fifa_tracker_youth_players_database/"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2000</ID>
+      <Description>"------------------------"</Description>
+      <LastState Value="" RealAddress="00000000"/>
       <GroupHeader>1</GroupHeader>
     </CheatEntry>
     <CheatEntry>

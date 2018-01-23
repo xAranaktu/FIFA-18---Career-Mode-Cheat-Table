@@ -88,3 +88,8 @@ Changelog:
 		- Added "Weather", "Time of Day", "Half Length" to "Match Settings"
 		- Fixed "Disable Substitutions" - You can choose which team will have disabled substitutions now.
 		- Added short guide explaining how to assign commentary name to a player to F.A.Q (https://github.com/xAranaktu/FIFA-18---Career-Mode-Cheat-Table/blob/master/README.md)
+		
+	Update 23.01.2018
+		- Added "teamkits" to "Player_Data". (you can change the fonttype on kits)
+		- Removed "The Journey" section.
+		- FIFA Tracker is live! https://fifatracker.net/
