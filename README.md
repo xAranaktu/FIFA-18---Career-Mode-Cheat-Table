@@ -395,6 +395,10 @@ Oceania
 ```
 ## Tattoo's
 ![Tattoos](https://i.imgur.com/1G4dvAd.png)
+Left Arm Tattoos Id's by Zozo#1205
+![Left Arm Tattoos](https://i.imgur.com/qYl1xEn.jpg)
+Right Arm Tattoos Id's by Zozo#1205
+![Right Arm Tattoos](https://i.imgur.com/uX6zXzI.jpg)
 ![Tattoo](https://i.imgur.com/N1eLzGg.png)
 
 ## Free Kick IDs
