@@ -394,6 +394,7 @@ Oceania
 215 New Caledonia 
 ```
 ## Tattoo's
+![Tattoos](https://i.imgur.com/1G4dvAd.png)
 ![Tattoo](https://i.imgur.com/N1eLzGg.png)
 
 ## Free Kick IDs
