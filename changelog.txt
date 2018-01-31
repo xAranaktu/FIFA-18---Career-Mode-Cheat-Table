@@ -93,3 +93,7 @@ Changelog:
 		- Added "teamkits" to "Player_Data". (you can change the fonttype on kits)
 		- Removed "The Journey" section.
 		- FIFA Tracker is live! https://fifatracker.net/
+		
+	Update 31.01.2018
+		- Added "Player Contract" -> "Disable negotiation status checks"
+		- Added editing kit font colours (thanks sammygriffiths)
