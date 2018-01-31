@@ -4189,12 +4189,87 @@ dealloc(newmem_ReleasePlayerFee)
 </AssemblerScript>
         </CheatEntry>
         <CheatEntry>
-          <ID>1459</ID>
-          <Description>"Contract Negotiation"</Description>
+          <ID>2005</ID>
+          <Description>"Player Contract"</Description>
           <Options moHideChildren="1"/>
-          <LastState/>
-          <VariableType>Auto Assembler Script</VariableType>
-          <AssemblerScript>[ENABLE]
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>0</ID>
+              <Description>"Disable negotiation status checks"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+//code_neg_status_check from here to '[DISABLE]' will be used to enable the cheat
+aobscanmodule(INJECT_neg_status_check,FIFA18_TRIAL.exe,4C 89 F1 FF 90 F8 00 00 00) // should be unique
+alloc(newmem_neg_status_check,$1000,"FIFA18_TRIAL.exe"+BAF15E6)
+
+label(code_neg_status_check)
+label(ret_neg_status_check)
+
+newmem_neg_status_check:
+
+code_neg_status_check:
+  mov rcx,r14
+  call qword ptr [rax+000000F8]
+  xor eax, eax
+  jmp ret_neg_status_check
+
+INJECT_neg_status_check:
+  jmp newmem_neg_status_check
+  nop
+  nop
+  nop
+  nop
+ret_neg_status_check:
+registersymbol(INJECT_neg_status_check)
+
+[DISABLE]
+//code_neg_status_check from here till the end of the code_neg_status_check will be used to disable the cheat
+INJECT_neg_status_check:
+  db 4C 89 F1 FF 90 F8 00 00 00
+
+unregistersymbol(INJECT_neg_status_check)
+dealloc(newmem_neg_status_check)
+
+{
+// ORIGINAL code_neg_status_check - INJECTION POINT: "FIFA18_TRIAL.exe"+BAF15E6
+
+"FIFA18_TRIAL.exe"+BAF15B9: 48 C7 44 24 28 00 00 00 00  -  mov [rsp+28],00000000
+"FIFA18_TRIAL.exe"+BAF15C2: 48 C7 44 24 30 00 00 00 00  -  mov [rsp+30],00000000
+"FIFA18_TRIAL.exe"+BAF15CB: 4C 8B 00                    -  mov r8,[rax]
+"FIFA18_TRIAL.exe"+BAF15CE: 48 8D 54 24 28              -  lea rdx,[rsp+28]
+"FIFA18_TRIAL.exe"+BAF15D3: 48 89 C1                    -  mov rcx,rax
+"FIFA18_TRIAL.exe"+BAF15D6: 41 FF 50 08                 -  call qword ptr [r8+08]
+"FIFA18_TRIAL.exe"+BAF15DA: 49 8B 06                    -  mov rax,[r14]
+"FIFA18_TRIAL.exe"+BAF15DD: 4C 8D 4E 20                 -  lea r9,[rsi+20]
+"FIFA18_TRIAL.exe"+BAF15E1: 45 89 F8                    -  mov r8d,r15d
+"FIFA18_TRIAL.exe"+BAF15E4: 89 EA                       -  mov edx,ebp
+// ---------- INJECTING HERE ----------
+"FIFA18_TRIAL.exe"+BAF15E6: 4C 89 F1                    -  mov rcx,r14
+"FIFA18_TRIAL.exe"+BAF15E9: FF 90 F8 00 00 00           -  call qword ptr [rax+000000F8]
+// ---------- DONE INJECTING  ----------
+"FIFA18_TRIAL.exe"+BAF15EF: 89 46 18                    -  mov [rsi+18],eax
+"FIFA18_TRIAL.exe"+BAF15F2: 85 C0                       -  test eax,eax
+"FIFA18_TRIAL.exe"+BAF15F4: 75 5C                       -  jne FIFA18_TRIAL.exe+BAF1652
+"FIFA18_TRIAL.exe"+BAF15F6: 49 8B 06                    -  mov rax,[r14]
+"FIFA18_TRIAL.exe"+BAF15F9: 45 89 F8                    -  mov r8d,r15d
+"FIFA18_TRIAL.exe"+BAF15FC: 89 EA                       -  mov edx,ebp
+"FIFA18_TRIAL.exe"+BAF15FE: 4C 89 F1                    -  mov rcx,r14
+"FIFA18_TRIAL.exe"+BAF1601: FF 90 B8 01 00 00           -  call qword ptr [rax+000001B8]
+"FIFA18_TRIAL.exe"+BAF1607: E8 B4 A7 3D F5              -  call FIFA18_TRIAL.exe+ECBDC0
+"FIFA18_TRIAL.exe"+BAF160C: 48 89 C2                    -  mov rdx,rax
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1459</ID>
+              <Description>"Contract Negotiation"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
 
 aobscanmodule(INJECT_ContractNeg,FIFA18_TRIAL.exe,89 08 48 8B 43 18) // should be unique
 alloc(newmem_ContractNeg,$1000,"FIFA18_TRIAL.exe"+AD12CC8)
@@ -4335,54 +4410,56 @@ unregistersymbol(ContractNeg_BonusType_Sum)
 "FIFA18_TRIAL.exe"+AD12CF4: 89 41 50                       -  mov [rcx+50],eax
 }
 </AssemblerScript>
-          <CheatEntries>
-            <CheatEntry>
-              <ID>1460</ID>
-              <Description>"Wage"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>ContractNeg_Wage</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1461</ID>
-              <Description>"Contract Length (months)"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>ContractNeg_Length</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1462</ID>
-              <Description>"Release Clause"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>ContractNeg_ReleaseClause</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1463</ID>
-              <Description>"Squad Role"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>ContractNeg_Role</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1464</ID>
-              <Description>"Signing Bonus"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>ContractNeg_SigningBonus</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1465</ID>
-              <Description>"Bonus Type"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>ContractNeg_BonusType</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1466</ID>
-              <Description>"Bonus Type - Count"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>ContractNeg_BonusType_Count</Address>
-            </CheatEntry>
-            <CheatEntry>
-              <ID>1467</ID>
-              <Description>"Bonus Type - Sum"</Description>
-              <VariableType>4 Bytes</VariableType>
-              <Address>ContractNeg_BonusType_Sum</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1460</ID>
+                  <Description>"Wage"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ContractNeg_Wage</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1461</ID>
+                  <Description>"Contract Length (months)"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ContractNeg_Length</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1462</ID>
+                  <Description>"Release Clause"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ContractNeg_ReleaseClause</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1463</ID>
+                  <Description>"Squad Role"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ContractNeg_Role</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1464</ID>
+                  <Description>"Signing Bonus"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ContractNeg_SigningBonus</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1465</ID>
+                  <Description>"Bonus Type"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ContractNeg_BonusType</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1466</ID>
+                  <Description>"Bonus Type - Count"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ContractNeg_BonusType_Count</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1467</ID>
+                  <Description>"Bonus Type - Sum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ContractNeg_BonusType_Sum</Address>
+                </CheatEntry>
+              </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
