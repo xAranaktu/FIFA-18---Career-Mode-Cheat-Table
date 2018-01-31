@@ -3615,7 +3615,7 @@ dealloc(ptrTeamkits)
                                 <Offset>30</Offset>
                               </Offsets>
                             </CheatEntry>
-		                                        <CheatEntry>
+		            <CheatEntry>
                               <ID>2006</ID>
                               <Description>"Font Colours"</Description>
                               <Options moHideChildren="1"/>
