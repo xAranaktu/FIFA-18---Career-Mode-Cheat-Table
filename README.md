@@ -66,7 +66,13 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
     Example:
     ![Example commentary change](https://i.imgur.com/5n3Mzon.jpg)
     I've changed my youth player (Fausto Hurtado) "LastNameID" from '0' to '17830' and now he is recognized as Messi. :) 
-
+    
+* **How to replace generic manager with real one?**
+  - If you want to replace generic manager with for example. Arsène Wenger you need to know his headid. headid can be checked with DB 
+  Master in "managers" table or with FrostyTool in "content -> character -> manager/player". You can also use real players heads like 
+  Ronaldinho (ID: 28130) or Messi (ID: 158023). Then, you need to have an upcoming away match. While match pointer in cheat table should point to away manager which will be yours team coach. ;p
+Arsène Wenger headid is 232298. After you change headid you need to play match to the end or forfeit it. Then save your career and reload it. [Video Guide](https://youtu.be/wVV9s4jD7sI)
+  
 
 ## Getting Started
 
