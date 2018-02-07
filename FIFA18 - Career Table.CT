@@ -2372,6 +2372,13 @@ dealloc(ptrManager)
                           <GroupHeader>1</GroupHeader>
                           <CheatEntries>
                             <CheatEntry>
+                              <ID>2055</ID>
+                              <Description>"Base Address - teamkits table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>ptrTeamkits</Address>
+                            </CheatEntry>
+                            <CheatEntry>
                               <ID>1994</ID>
                               <Description>"teamkitid"</Description>
                               <VariableType>Binary</VariableType>
@@ -2381,6 +2388,18 @@ dealloc(ptrManager)
                               <Address>ptrTeamkits</Address>
                               <Offsets>
                                 <Offset>2D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2056</ID>
+                              <Description>"jerseycollargeometrytype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>1F</Offset>
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>

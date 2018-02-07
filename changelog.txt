@@ -101,3 +101,6 @@ Changelog:
 	Update 01.02.2018
 		- Renamed "Player Data" to "Database tables"
 		- Added manager table to "Database tables"
+		
+	Update 07.02.2018
+		- Added "jerseycollargeometrytype" to "teamkits"
