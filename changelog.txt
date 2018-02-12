@@ -104,3 +104,6 @@ Changelog:
 		
 	Update 07.02.2018
 		- Added "jerseycollargeometrytype" to "teamkits"
+		
+	Update 12.02.2018
+		- Added "ONLINE->Alt + Tab Disconnect bypass"

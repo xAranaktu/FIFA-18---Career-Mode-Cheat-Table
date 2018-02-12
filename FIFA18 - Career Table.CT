@@ -63,6 +63,75 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
+          <ID>2059</ID>
+          <Description>"ONLINE"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2058</ID>
+              <Description>"Alt + Tab Disconnect bypass"</Description>
+              <LastState Activated="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_alttab,FIFA18.exe,74 7B 48 89 5C 24 58) // should be unique
+alloc(newmem_alttab,$1000,"FIFA18.exe"+14A991C)
+
+label(code_alttab)
+label(ret_alttab)
+
+newmem_alttab:
+
+code_alttab:
+  jmp ret_alttab
+
+INJECT_alttab:
+  db EB 7B 48 89 5C 24 58
+ret_alttab:
+registersymbol(INJECT_alttab)
+
+[DISABLE]
+//code_alttab from here till the end of the code_alttab will be used to disable the cheat
+INJECT_alttab:
+  db 74 7B 48 89 5C 24 58
+
+unregistersymbol(INJECT_alttab)
+dealloc(newmem_alttab)
+
+{
+// ORIGINAL code_alttab - INJECTION POINT: "FIFA18.exe"+14A991C
+
+"FIFA18.exe"+14A9909: CC                                -  int 3
+"FIFA18.exe"+14A990A: CC                                -  int 3
+"FIFA18.exe"+14A990B: CC                                -  int 3
+"FIFA18.exe"+14A990C: CC                                -  int 3
+"FIFA18.exe"+14A990D: CC                                -  int 3
+"FIFA18.exe"+14A990E: CC                                -  int 3
+"FIFA18.exe"+14A990F: CC                                -  int 3
+"FIFA18.exe"+14A9910: 48 83 EC 48                       -  sub rsp,48
+"FIFA18.exe"+14A9914: E8 A7 39 FC FF                    -  call FIFA18.exe+146D2C0
+"FIFA18.exe"+14A9919: 48 85 C0                          -  test rax,rax
+// ---------- INJECTING HERE ----------
+"FIFA18.exe"+14A991C: 74 7B                             -  je FIFA18.exe+14A9999
+"FIFA18.exe"+14A991E: 48 89 5C 24 58                    -  mov [rsp+58],rbx
+// ---------- DONE INJECTING  ----------
+"FIFA18.exe"+14A9923: 48 8D 0D 2E 88 D5 02              -  lea rcx,[FIFA18.exe+4202158]
+"FIFA18.exe"+14A992A: 48 89 7C 24 40                    -  mov [rsp+40],rdi
+"FIFA18.exe"+14A992F: C7 44 24 50 00 00 00 00           -  mov [rsp+50],00000000
+"FIFA18.exe"+14A9937: E8 64 33 FC FF                    -  call FIFA18.exe+146CCA0
+"FIFA18.exe"+14A993C: 48 8D 15 E5 5C EE 02              -  lea rdx,[FIFA18.exe+438F628]
+"FIFA18.exe"+14A9943: 48 8B F8                          -  mov rdi,rax
+"FIFA18.exe"+14A9946: 48 8D 0D A7 18 97 04              -  lea rcx,[FIFA18.exe+5E1B1F4]
+"FIFA18.exe"+14A994D: E8 8E 2A FC FF                    -  call FIFA18.exe+146C3E0
+"FIFA18.exe"+14A9952: 48 8D 15 CF 5C EE 02              -  lea rdx,[FIFA18.exe+438F628]
+"FIFA18.exe"+14A9959: 48 8B D8                          -  mov rbx,rax
+}
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
           <ID>1292</ID>
           <Description>"Editing Database"</Description>
           <Options moHideChildren="1"/>
