@@ -72,7 +72,7 @@
             <CheatEntry>
               <ID>2058</ID>
               <Description>"Alt + Tab Disconnect bypass"</Description>
-              <LastState Activated="1"/>
+              <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
 aobscanmodule(INJECT_alttab,FIFA18_TRIAL.exe,74 7B 48 89 5C 24 58) // should be unique
@@ -5323,6 +5323,124 @@ dealloc(newmem_EditReleaseClause)
 "FIFA18_TRIAL.exe"+356B9FD: 41 5E                    -  pop r14
 "FIFA18_TRIAL.exe"+356B9FF: C3                       -  ret
 "FIFA18_TRIAL.exe"+356BA00: 40 55                    -  push rbp
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2060</ID>
+              <Description>"Allow Transfer approach"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_allowtransferapp_thtxt,FIFA18_TRIAL.exe,44 8B F0 83 F8 0E 0F 87 ?? ?? ?? ?? B8 65 65 00 00 44 0F A3 F0 0F 83 ?? ?? ?? ?? 33 FF) // should be unique
+alloc(newmem_allowtransferapp_thtxt,$1000,"FIFA18_TRIAL.exe"+35877E8)
+
+label(code_allowtransferapp_thtxt)
+label(ret_allowtransferapp_thtxt)
+
+newmem_allowtransferapp_thtxt:
+  mov eax, D
+code_allowtransferapp_thtxt:
+  mov r14d,eax
+  cmp eax,0E
+  jmp ret_allowtransferapp_thtxt
+
+INJECT_allowtransferapp_thtxt:
+  jmp newmem_allowtransferapp_thtxt
+  nop
+ret_allowtransferapp_thtxt:
+registersymbol(INJECT_allowtransferapp_thtxt)
+
+aobscanmodule(INJECT_allowtransferapp_btnclick,FIFA18_TRIAL.exe,44 8B F0 83 F8 0E 0F 87 ?? ?? ?? ?? B8 65 65 00 00 44 0F A3 F0 0F 83 ?? ?? ?? ?? 48 8B 4D 7F) // should be unique
+alloc(newmem_allowtransferapp_btnclick,$1000,"FIFA18_TRIAL.exe"+2E5EE54)
+
+label(code_allowtransferapp_btnclick)
+label(ret_allowtransferapp_btnclick)
+
+newmem_allowtransferapp_btnclick:
+  mov eax, D
+
+code_allowtransferapp_btnclick:
+  mov r14d,eax
+  cmp eax,0E
+  jmp ret_allowtransferapp_btnclick
+
+INJECT_allowtransferapp_btnclick:
+  jmp newmem_allowtransferapp_btnclick
+  nop
+ret_allowtransferapp_btnclick:
+registersymbol(INJECT_allowtransferapp_btnclick)
+
+[DISABLE]
+//code_allowtransferapp_thtxt from here till the end of the code_allowtransferapp_thtxt will be used to disable the cheat
+INJECT_allowtransferapp_thtxt:
+  db 44 8B F0 83 F8 0E
+
+unregistersymbol(INJECT_allowtransferapp_thtxt)
+dealloc(newmem_allowtransferapp_thtxt)
+
+INJECT_allowtransferapp_btnclick:
+  db 44 8B F0 83 F8 0E
+
+unregistersymbol(INJECT_allowtransferapp_btnclick)
+dealloc(newmem_allowtransferapp_btnclick)
+
+{
+// ORIGINAL code_allowtransferapp_thtxt - INJECT_allowtransferapp_thtxtION POINT: "FIFA18_TRIAL.exe"+35877E8
+
+"FIFA18_TRIAL.exe"+35877B6: E8 65 BC AE FF        -  call FIFA18_TRIAL.exe+3073420
+"FIFA18_TRIAL.exe"+35877BB: 48 63 44 24 78        -  movsxd  rax,dword ptr [rsp+78]
+"FIFA18_TRIAL.exe"+35877C0: 48 C1 E0 05           -  shl rax,05
+"FIFA18_TRIAL.exe"+35877C4: 48 8B 44 38 18        -  mov rax,[rax+rdi+18]
+"FIFA18_TRIAL.exe"+35877C9: 48 8B 08              -  mov rcx,[rax]
+"FIFA18_TRIAL.exe"+35877CC: 45 33 C9              -  xor r9d,r9d
+"FIFA18_TRIAL.exe"+35877CF: 44 8B 85 D0 00 00 00  -  mov r8d,[rbp+000000D0]
+"FIFA18_TRIAL.exe"+35877D6: 8B 95 80 00 00 00     -  mov edx,[rbp+00000080]
+"FIFA18_TRIAL.exe"+35877DC: 48 8B 89 E0 0E 00 00  -  mov rcx,[rcx+00000EE0]
+"FIFA18_TRIAL.exe"+35877E3: E8 28 25 15 00        -  call FIFA18_TRIAL.exe+36D9D10
+// ---------- INJECT_allowtransferapp_thtxtING HERE ----------
+"FIFA18_TRIAL.exe"+35877E8: 44 8B F0              -  mov r14d,eax
+"FIFA18_TRIAL.exe"+35877EB: 83 F8 0E              -  cmp eax,0E
+// ---------- DONE INJECT_allowtransferapp_thtxtING  ----------
+"FIFA18_TRIAL.exe"+35877EE: 0F 87 C1 03 00 00     -  ja FIFA18_TRIAL.exe+3587BB5
+"FIFA18_TRIAL.exe"+35877F4: B8 65 65 00 00        -  mov eax,00006565
+"FIFA18_TRIAL.exe"+35877F9: 44 0F A3 F0           -  bt eax,r14d
+"FIFA18_TRIAL.exe"+35877FD: 0F 83 B2 03 00 00     -  jae FIFA18_TRIAL.exe+3587BB5
+"FIFA18_TRIAL.exe"+3587803: 33 FF                 -  xor edi,edi
+"FIFA18_TRIAL.exe"+3587805: 48 89 7D 10           -  mov [rbp+10],rdi
+"FIFA18_TRIAL.exe"+3587809: 66 89 7D 18           -  mov [rbp+18],di
+"FIFA18_TRIAL.exe"+358780D: 0F 57 C0              -  xorps xmm0,xmm0
+"FIFA18_TRIAL.exe"+3587810: F3 0F 11 45 1C        -  movss [rbp+1C],xmm0
+"FIFA18_TRIAL.exe"+3587815: 89 7D 24              -  mov [rbp+24],edi
+}
+
+{
+// ORIGINAL code_allowtransferapp_btnclick - INJECT_allowtransferapp_btnclickION POINT: "FIFA18_TRIAL.exe"+2E5EE54
+
+"FIFA18_TRIAL.exe"+2E5EE2D: 45 32 FF              -  xor r15l,r15l
+"FIFA18_TRIAL.exe"+2E5EE30: 49 8B 06              -  mov rax,[r14]
+"FIFA18_TRIAL.exe"+2E5EE33: 49 8B CE              -  mov rcx,r14
+"FIFA18_TRIAL.exe"+2E5EE36: FF 90 20 01 00 00     -  call qword ptr [rax+00000120]
+"FIFA18_TRIAL.exe"+2E5EE3C: 48 89 45 7F           -  mov [rbp+7F],rax
+"FIFA18_TRIAL.exe"+2E5EE40: 48 8B 4E 18           -  mov rcx,[rsi+18]
+"FIFA18_TRIAL.exe"+2E5EE44: 4C 8B 09              -  mov r9,[rcx]
+"FIFA18_TRIAL.exe"+2E5EE47: 45 8B C5              -  mov r8d,r13d
+"FIFA18_TRIAL.exe"+2E5EE4A: 41 8B D4              -  mov edx,r12d
+"FIFA18_TRIAL.exe"+2E5EE4D: 41 FF 91 E0 00 00 00  -  call qword ptr [r9+000000E0]
+// ---------- INJECT_allowtransferapp_btnclickING HERE ----------
+"FIFA18_TRIAL.exe"+2E5EE54: 44 8B F0              -  mov r14d,eax
+"FIFA18_TRIAL.exe"+2E5EE57: 83 F8 0E              -  cmp eax,0E
+// ---------- DONE INJECT_allowtransferapp_btnclickING  ----------
+"FIFA18_TRIAL.exe"+2E5EE5A: 0F 87 BF 01 00 00     -  ja FIFA18_TRIAL.exe+2E5F01F
+"FIFA18_TRIAL.exe"+2E5EE60: B8 65 65 00 00        -  mov eax,00006565
+"FIFA18_TRIAL.exe"+2E5EE65: 44 0F A3 F0           -  bt eax,r14d
+"FIFA18_TRIAL.exe"+2E5EE69: 0F 83 B0 01 00 00     -  jae FIFA18_TRIAL.exe+2E5F01F
+"FIFA18_TRIAL.exe"+2E5EE6F: 48 8B 4D 7F           -  mov rcx,[rbp+7F]
+"FIFA18_TRIAL.exe"+2E5EE73: 48 8B 01              -  mov rax,[rcx]
+"FIFA18_TRIAL.exe"+2E5EE76: 48 8D 55 6F           -  lea rdx,[rbp+6F]
+"FIFA18_TRIAL.exe"+2E5EE7A: 48 89 54 24 28        -  mov [rsp+28],rdx
+"FIFA18_TRIAL.exe"+2E5EE7F: 48 8D 55 77           -  lea rdx,[rbp+77]
+"FIFA18_TRIAL.exe"+2E5EE83: 48 89 54 24 20        -  mov [rsp+20],rdx
 }
 </AssemblerScript>
             </CheatEntry>
