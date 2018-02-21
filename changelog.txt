@@ -110,3 +110,6 @@ Changelog:
 		
 	Update 16.02.2018
 		- Added "Transfer HUB -> Allow Transfer approach" (You can negotiate with players which: recently moved to club, unwilling to relocate, are blacklisted)
+		
+	Update 21.02.2018
+		- Added "Unique Player Movement" section. (Now any player can run like 'Ronaldo'.)

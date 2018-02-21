@@ -132,6 +132,1132 @@ dealloc(newmem_alttab)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>2061</ID>
+          <Description>"Unique Player Movement"</Description>
+          <Options moHideChildren="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>14</ID>
+              <Description>"Unique Run Style"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_uniquedribble,FIFA18.exe,3D 6A 4B 03 00 0F 94 C0 88 44 24 25) // should be unique
+alloc(newmem_uniquedribble,$1000,"FIFA18.exe"+1B3E024)
+
+label(sterling)
+label(sterling_loop)
+label(apply_sterling_dribble)
+
+label(robben)
+label(robben_loop)
+label(apply_robben_dribble)
+
+label(messi)
+label(messi_loop)
+label(apply_messi_dribble)
+
+label(ftorres)
+label(ftorres_loop)
+label(apply_ftorres_dribble)
+
+label(ytoure)
+label(ytoure_loop)
+label(apply_ytoure_dribble)
+
+label(jalba)
+label(jalba_loop)
+label(apply_jalba_dribble)
+
+label(lsuarez)
+label(lsuarez_loop)
+label(apply_lsuarez_dribble)
+
+label(kante)
+label(kante_loop)
+label(apply_kante_dribble)
+
+label(code_uniquedribble)
+label(ret_uniquedribble)
+
+globalalloc(arr_DribbleLike_Sterling,512)
+globalalloc(arr_DribbleLike_Robben,512)
+globalalloc(arr_DribbleLike_Messi,512)
+globalalloc(arr_DribbleLike_FernandoTorres,512)
+globalalloc(arr_DribbleLike_YayaToure,512)
+globalalloc(arr_DribbleLike_JordiAlba,512)
+globalalloc(arr_DribbleLike_Suarez,512)
+globalalloc(arr_DribbleLike_Kante,512)
+
+alloc(bDribbleLike_Sterling, 1)
+registersymbol(bDribbleLike_Sterling)
+bDribbleLike_Sterling:
+db 00
+
+alloc(bDribbleLike_Robben, 1)
+registersymbol(bDribbleLike_Robben)
+bDribbleLike_Robben:
+db 00
+
+alloc(bDribbleLike_Messi, 1)
+registersymbol(bDribbleLike_Messi)
+bDribbleLike_Messi:
+db 00
+
+alloc(bDribbleLike_FernandoTorres, 1)
+registersymbol(bDribbleLike_FernandoTorres)
+bDribbleLike_FernandoTorres:
+db 00
+
+alloc(bDribbleLike_YayaToure, 1)
+registersymbol(bDribbleLike_YayaToure)
+bDribbleLike_YayaToure:
+db 00
+
+alloc(bDribbleLike_JordiAlba, 1)
+registersymbol(bDribbleLike_JordiAlba)
+bDribbleLike_JordiAlba:
+db 00
+
+alloc(bDribbleLike_Suarez, 1)
+registersymbol(bDribbleLike_Suarez)
+bDribbleLike_Suarez:
+db 00
+
+alloc(bDribbleLike_Kante, 1)
+registersymbol(bDribbleLike_Kante)
+bDribbleLike_Kante:
+db 00
+
+newmem_uniquedribble:
+  xor r15d, r15d
+sterling:
+  cmp [bDribbleLike_Sterling], 1
+  jne robben
+  mov r15d, [arr_DribbleLike_Sterling+4] // Array_Size
+  cmp r15d, 0
+  je robben
+
+sterling_loop:
+  cmp eax, [arr_DribbleLike_Sterling+r15d*4]
+  je apply_sterling_dribble  // Current players is in arr_DribbleLike_Sterling
+  dec r15d
+  jnz sterling_loop
+  jmp robben  // Check next
+
+apply_sterling_dribble:
+  mov r9l, 1
+  mov [rsp+21],r9l
+
+robben:
+  cmp [bDribbleLike_Robben], 1
+  jne messi
+  mov r15d, [arr_DribbleLike_Robben+4] // Array_Size
+  cmp r15d, 0
+  je messi
+
+robben_loop:
+  cmp eax, [arr_DribbleLike_Robben+r15d*4]
+  je apply_robben_dribble  // Current players is in arr_DribbleLike_Robben
+  dec r15d
+  jnz robben_loop
+  jmp messi  // Check next
+
+apply_robben_dribble:
+  mov cl, 1
+  mov [rsp+22], cl
+
+messi:
+  cmp [bDribbleLike_Messi], 1
+  jne ftorres
+  mov r15d, [arr_DribbleLike_Messi+4] // Array_Size
+  cmp r15d, 0
+  je ftorres
+
+messi_loop:
+  cmp eax, [arr_DribbleLike_Messi+r15d*4]
+  je apply_messi_dribble  // Current players is in arr_DribbleLike_Messi
+  dec r15d
+  jnz messi_loop
+  jmp ftorres  // Check next
+
+apply_messi_dribble:
+  mov dl, 1
+  mov [rsp+23], dl
+
+ftorres:
+  cmp [bDribbleLike_FernandoTorres], 1
+  jne ytoure
+  mov r15d, [arr_DribbleLike_FernandoTorres+4] // Array_Size
+  cmp r15d, 0
+  je ytoure
+
+ftorres_loop:
+  cmp eax, [arr_DribbleLike_FernandoTorres+r15d*4]
+  je apply_ftorres_dribble  // Current players is in arr_DribbleLike_FernandoTorres
+  dec r15d
+  jnz ftorres_loop
+  jmp ytoure  // Check next
+
+apply_ftorres_dribble:
+  mov dil, 1
+  mov [rsp+24], dil
+
+ytoure:
+  cmp [bDribbleLike_YayaToure], 1
+  jne jalba
+  mov r15d, [arr_DribbleLike_YayaToure+4] // Array_Size
+  cmp r15d, 0
+  je jalba
+
+ytoure_loop:
+  cmp eax, [arr_DribbleLike_YayaToure+r15d*4]
+  je apply_ytoure_dribble  // Current players is in arr_DribbleLike_YayaToure
+  dec r15d
+  jnz ytoure_loop
+  jmp jalba  // Check next
+
+apply_ytoure_dribble:
+  mov r13l, 1
+  mov [rsp+27], r13l
+
+jalba:
+  cmp [bDribbleLike_JordiAlba], 1
+  jne lsuarez
+  mov r15d, [arr_DribbleLike_JordiAlba+4] // Array_Size
+  cmp r15d, 0
+  je lsuarez
+
+jalba_loop:
+  cmp eax, [arr_DribbleLike_JordiAlba+r15d*4]
+  je apply_jalba_dribble  // Current players is in arr_DribbleLike_JordiAlba
+  dec r15d
+  jnz jalba_loop
+  jmp lsuarez  // Check next
+
+apply_jalba_dribble:
+  mov r8l, 1
+  mov [rsp+20], r8l
+
+lsuarez:
+  cmp [bDribbleLike_Suarez], 1
+  jne kante
+  mov r15d, [arr_DribbleLike_Suarez+4] // Array_Size
+  cmp r15d, 0
+  je kante
+
+lsuarez_loop:
+  cmp eax, [arr_DribbleLike_Suarez+r15d*4]
+  je apply_lsuarez_dribble  // Current players is in arr_DribbleLike_Suarez
+  dec r15d
+  jnz lsuarez_loop
+  jmp kante  // Check next
+
+apply_lsuarez_dribble:
+  mov r12l, 1
+
+kante:
+  cmp [bDribbleLike_Kante], 1
+  jne code_uniquedribble
+  mov r15d, [arr_DribbleLike_Kante+4] // Array_Size
+  cmp r15d, 0
+  je code_uniquedribble
+
+kante_loop:
+  cmp eax, [arr_DribbleLike_Kante+r15d*4]
+  je apply_kante_dribble  // Current players is in arr_DribbleLike_Kante
+  dec r15d
+  jnz kante_loop
+  jmp code_uniquedribble  // Check next
+
+apply_kante_dribble:
+  mov al, 1
+  mov [rsp+25], al
+  xor r15d, r15d
+  jmp ret_uniquedribble+7
+
+code_uniquedribble:
+  xor r15d, r15d
+  cmp eax,00034B6A
+  sete al
+  mov [rsp+25], al
+  jmp ret_uniquedribble+7
+
+INJECT_uniquedribble:
+  jmp newmem_uniquedribble
+ret_uniquedribble:
+registersymbol(INJECT_uniquedribble)
+
+[DISABLE]
+//code_uniquedribble from here till the end of the code_uniquedribble will be used to disable the cheat
+INJECT_uniquedribble:
+  db 3D 6A 4B 03 00
+
+unregistersymbol(INJECT_uniquedribble)
+dealloc(newmem_uniquedribble)
+unregistersymbol(bDribbleLike_Sterling)
+dealloc(bDribbleLike_Sterling)
+unregistersymbol(bDribbleLike_Robben)
+dealloc(bDribbleLike_Robben)
+unregistersymbol(bDribbleLike_Messi)
+dealloc(bDribbleLike_Messi)
+unregistersymbol(bDribbleLike_FernandoTorres)
+dealloc(bDribbleLike_FernandoTorres)
+unregistersymbol(bDribbleLike_YayaToure)
+dealloc(bDribbleLike_YayaToure)
+unregistersymbol(bDribbleLike_JordiAlba)
+dealloc(bDribbleLike_JordiAlba)
+unregistersymbol(bDribbleLike_Suarez)
+dealloc(bDribbleLike_Suarez)
+unregistersymbol(bDribbleLike_Kante)
+dealloc(bDribbleLike_Kante)
+
+{
+// ORIGINAL code_uniquedribble - INJECT_uniquedribbleION POINT: "FIFA18.exe"+1B3E02C
+
+"FIFA18.exe"+1B3DFFF: 3D 41 4F 00 00           -  cmp eax,00004F41
+"FIFA18.exe"+1B3E004: 41 0F 94 C5              -  sete r13l
+"FIFA18.exe"+1B3E008: 44 88 6C 24 27           -  mov [rsp+27],r13l
+"FIFA18.exe"+1B3E00D: 3D 94 E3 02 00           -  cmp eax,0002E394
+"FIFA18.exe"+1B3E012: 41 0F 94 C0              -  sete r8l
+"FIFA18.exe"+1B3E016: 44 88 44 24 20           -  mov [rsp+20],r8l
+"FIFA18.exe"+1B3E01B: 3D C4 B1 02 00           -  cmp eax,0002B1C4
+"FIFA18.exe"+1B3E020: 41 0F 94 C4              -  sete r12l
+"FIFA18.exe"+1B3E024: 3D 6A 4B 03 00           -  cmp eax,00034B6A
+"FIFA18.exe"+1B3E029: 0F 94 C0                 -  sete al
+// ---------- INJECT_uniquedribbleING HERE ----------
+"FIFA18.exe"+1B3E02C: 88 44 24 25              -  mov [rsp+25],al
+"FIFA18.exe"+1B3E030: 45 84 C9                 -  test r9l,r9l
+// ---------- DONE INJECT_uniquedribbleING  ----------
+"FIFA18.exe"+1B3E033: 75 24                    -  jne FIFA18.exe+1B3E059
+"FIFA18.exe"+1B3E035: 84 C9                    -  test cl,cl
+"FIFA18.exe"+1B3E037: 75 20                    -  jne FIFA18.exe+1B3E059
+"FIFA18.exe"+1B3E039: 84 D2                    -  test dl,dl
+"FIFA18.exe"+1B3E03B: 75 1C                    -  jne FIFA18.exe+1B3E059
+"FIFA18.exe"+1B3E03D: 40 84 FF                 -  test dil,dil
+"FIFA18.exe"+1B3E040: 75 17                    -  jne FIFA18.exe+1B3E059
+"FIFA18.exe"+1B3E042: 45 84 ED                 -  test r13l,r13l
+"FIFA18.exe"+1B3E045: 75 12                    -  jne FIFA18.exe+1B3E059
+"FIFA18.exe"+1B3E047: 45 84 C0                 -  test r8l,r8l
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>2070</ID>
+                  <Description>"Run Like:"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>2071</ID>
+                      <Description>"Sterling (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {0, 0} -- IDs of the players which will dribble like Sterling. Last ID must be 0!
+local i = 0
+local addr = "arr_DribbleLike_Sterling"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bDribbleLike_Sterling:
+  db 1
+[DISABLE]
+bDribbleLike_Sterling:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_DribbleLike_Sterling"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_DribbleLike_Sterling
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2072</ID>
+                      <Description>"Robben (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {0, 0} -- IDs of the players which will dribble like Robben. Last ID must be 0!
+local i = 0
+local addr = "arr_DribbleLike_Robben"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bDribbleLike_Robben:
+  db 1
+
+[DISABLE]
+bDribbleLike_Robben:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_DribbleLike_Robben"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_DribbleLike_Robben
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2073</ID>
+                      <Description>"Messi (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {0, 0} -- IDs of the players which will dribble like Messi. Last ID must be 0!
+local i = 0
+local addr = "arr_DribbleLike_Messi"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bDribbleLike_Messi:
+  db 1
+[DISABLE]
+bDribbleLike_Messi:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_DribbleLike_Messi"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_DribbleLike_Messi
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2074</ID>
+                      <Description>"Fernando Torres (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {0, 0} -- IDs of the players which will dribble like FernandoTorres. Last ID must be 0!
+local i = 0
+local addr = "arr_DribbleLike_FernandoTorres"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bDribbleLike_FernandoTorres:
+  db 1
+[DISABLE]
+bDribbleLike_FernandoTorres:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_DribbleLike_FernandoTorres"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_DribbleLike_FernandoTorres
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2075</ID>
+                      <Description>"Yaya Toure (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {0, 0} -- IDs of the players which will dribble like YayaToure. Last ID must be 0!
+local i = 0
+local addr = "arr_DribbleLike_YayaToure"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bDribbleLike_YayaToure:
+  db 1
+[DISABLE]
+bDribbleLike_YayaToure:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_DribbleLike_YayaToure"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_DribbleLike_YayaToure
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1993</ID>
+                      <Description>"Jordi Alba (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {0, 0} -- IDs of the players which will dribble like JordiAlba. Last ID must be 0!
+local i = 0
+local addr = "arr_DribbleLike_JordiAlba"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+bDribbleLike_JordiAlba:
+  db 1
+[DISABLE]
+bDribbleLike_JordiAlba:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_DribbleLike_JordiAlba"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_DribbleLike_JordiAlba
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2076</ID>
+                      <Description>"Luis Suarez (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {0, 0}-- IDs of the players which will dribble like Suarez. Last ID must be 0!
+local i = 0
+local addr = "arr_DribbleLike_Suarez"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bDribbleLike_Suarez:
+  db 1
+
+[DISABLE]
+bDribbleLike_Suarez:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_DribbleLike_Suarez"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_DribbleLike_Suarez
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2077</ID>
+                      <Description>"Kante (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {0, 0} -- IDs of the players which will dribble like Kante. Last ID must be 0!
+local i = 0
+local addr = "arr_DribbleLike_Kante"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bDribbleLike_Kante:
+  db 1
+[DISABLE]
+bDribbleLike_Kante:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_DribbleLike_Kante"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_DribbleLike_Kante
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2062</ID>
+              <Description>"Unique Sprint Style"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_uniquesprint,FIFA18.exe,3D 47 69 02 00 75) // should be unique
+alloc(newmem_uniquesprint,$1000,"FIFA18.exe"+1E5E3D6)
+
+label(messi)
+label(messi_sprint_loop)
+label(apply_messi_sprint)
+
+label(cronaldo)
+label(cronaldo_sprint_loop)
+label(apply_cronaldo_sprint)
+
+label(robben)
+label(robben_sprint_loop)
+label(apply_robben_sprint)
+
+label(yayatoure)
+label(yayatoure_sprint_loop)
+label(apply_yayatoure_sprint)
+
+label(bale)
+label(bale_sprint_loop)
+label(apply_bale_sprint)
+
+label(neymarandalba)
+label(neymarandalba_sprint_loop)
+label(apply_neymarandalba_sprint)
+
+label(return_success)
+
+label(code_uniquesprint)
+label(ret_uniquesprint)
+
+globalalloc(arr_SprintLike_Messi,512)
+globalalloc(arr_SprintLike_CRonaldo,512)
+globalalloc(arr_SprintLike_Robben,512)
+globalalloc(arr_SprintLike_YayaToure,512)
+globalalloc(arr_SprintLike_Bale,512)
+globalalloc(arr_SprintLike_NeymarAndAlba,512)
+
+alloc(bSprintLike_Messi, 1)
+registersymbol(bSprintLike_Messi)
+bSprintLike_Messi:
+db 00
+
+alloc(bSprintLike_CRonaldo, 1)
+registersymbol(bSprintLike_CRonaldo)
+bSprintLike_CRonaldo:
+db 00
+
+alloc(bSprintLike_Robben, 1)
+registersymbol(bSprintLike_Robben)
+bSprintLike_Robben:
+db 00
+
+alloc(bSprintLike_YayaToure, 1)
+registersymbol(bSprintLike_YayaToure)
+bSprintLike_YayaToure:
+db 00
+
+alloc(bSprintLike_Bale, 1)
+registersymbol(bSprintLike_Bale)
+bSprintLike_Bale:
+db 00
+
+alloc(bSprintLike_NeymarAndAlba, 1)
+registersymbol(bSprintLike_NeymarAndAlba)
+bSprintLike_NeymarAndAlba:
+db 00
+
+newmem_uniquesprint:
+  push r15
+  xor r15d, r15d
+
+messi:
+  cmp [bSprintLike_Messi], 1
+  jne cronaldo
+  mov r15d, [arr_SprintLike_Messi+4] // Array_Size
+  cmp r15d, 0
+  je cronaldo
+
+messi_sprint_loop:
+  cmp eax, [arr_SprintLike_Messi+r15d*4]
+  je apply_messi_sprint  // Current players is in arr_SprintLike_Messi
+  dec r15d
+  jnz messi_sprint_loop
+  jmp cronaldo  // Check next
+
+apply_messi_sprint:
+  mov eax, 8
+  jmp return_success
+
+cronaldo:
+  cmp [bSprintLike_CRonaldo], 1
+  jne robben
+  mov r15d, [arr_SprintLike_CRonaldo+4] // Array_Size
+  cmp r15d, 0
+  je robben
+
+cronaldo_sprint_loop:
+  cmp eax, [arr_SprintLike_CRonaldo+r15d*4]
+  je apply_cronaldo_sprint  // Current players is in arr_SprintLike_CRonaldo
+  dec r15d
+  jnz cronaldo_sprint_loop
+  jmp robben  // Check next
+
+apply_cronaldo_sprint:
+  mov eax, 10
+  jmp return_success
+
+robben:
+  cmp [bSprintLike_Robben], 1
+  jne yayatoure
+  mov r15d, [arr_SprintLike_Robben+4] // Array_Size
+  cmp r15d, 0
+  je yayatoure
+
+robben_sprint_loop:
+  cmp eax, [arr_SprintLike_Robben+r15d*4]
+  je apply_robben_sprint  // Current players is in arr_SprintLike_Robben
+  dec r15d
+  jnz robben_sprint_loop
+  jmp yayatoure  // Check next
+
+apply_robben_sprint:
+  mov eax, 20
+  jmp return_success
+
+yayatoure:
+  cmp [bSprintLike_YayaToure], 1
+  jne bale
+  mov r15d, [arr_SprintLike_YayaToure+4] // Array_Size
+  cmp r15d, 0
+  je bale
+
+yayatoure_sprint_loop:
+  cmp eax, [arr_SprintLike_YayaToure+r15d*4]
+  je apply_yayatoure_sprint  // Current players is in arr_SprintLike_yayatoure
+  dec r15d
+  jnz yayatoure_sprint_loop
+  jmp bale  // Check next
+
+apply_yayatoure_sprint:
+  mov eax, 80
+  jmp return_success
+
+bale:
+  cmp [bSprintLike_Bale], 1
+  jne neymarandalba
+  mov r15d, [arr_SprintLike_Bale+4] // Array_Size
+  cmp r15d, 0
+  je neymarandalba
+
+bale_sprint_loop:
+  cmp eax, [arr_SprintLike_Bale+r15d*4]
+  je apply_bale_sprint  // Current players is in arr_SprintLike_Bale
+  dec r15d
+  jnz bale_sprint_loop
+  jmp neymarandalba  // Check next
+
+apply_bale_sprint:
+  mov eax, 40
+  jmp return_success
+
+neymarandalba:
+  cmp [bSprintLike_NeymarAndAlba], 1
+  jne code_uniquesprint
+  mov r15d, [arr_SprintLike_NeymarAndAlba+4] // Array_Size
+  cmp r15d, 0
+  je code_uniquesprint
+
+neymarandalba_sprint_loop:
+  cmp eax, [arr_SprintLike_NeymarAndAlba+r15d*4]
+  je apply_neymarandalba_sprint  // Current players is in arr_SprintLike_NeymarAndAlba
+  dec r15d
+  jnz neymarandalba_sprint_loop
+  jmp code_uniquesprint  // Check next
+
+apply_neymarandalba_sprint:
+  mov eax, 2002
+  jmp return_success
+
+
+code_uniquesprint:
+  pop r15
+  cmp eax,00026947
+  jmp ret_uniquesprint+6E
+
+return_success:
+  pop r15
+  add rsp, 30
+  pop rbx
+  ret
+
+INJECT_uniquesprint:
+  jmp newmem_uniquesprint
+ret_uniquesprint:
+registersymbol(INJECT_uniquesprint)
+
+[DISABLE]
+//code_uniquesprint from here till the end of the code_uniquesprint will be used to disable the cheat
+INJECT_uniquesprint:
+  db 3D 47 69 02 00
+
+unregistersymbol(INJECT_uniquesprint)
+dealloc(newmem_uniquesprint)
+unregistersymbol(bSprintLike_Messi)
+dealloc(bSprintLike_Messi)
+unregistersymbol(bSprintLike_CRonaldo)
+dealloc(bSprintLike_CRonaldo)
+unregistersymbol(bSprintLike_Robben)
+dealloc(bSprintLike_Robben)
+unregistersymbol(bSprintLike_YayaToure)
+dealloc(bSprintLike_YayaToure)
+unregistersymbol(bSprintLike_Bale)
+dealloc(bSprintLike_Bale)
+unregistersymbol(bSprintLike_NeymarAndAlba)
+dealloc(bSprintLike_NeymarAndAlba)
+
+
+{
+// ORIGINAL code_uniquesprint - INJECTION POINT: "FIFA18.exe"+1E5E3D6
+
+"FIFA18.exe"+1E5E3BC: CC                       -  int 3
+"FIFA18.exe"+1E5E3BD: CC                       -  int 3
+"FIFA18.exe"+1E5E3BE: CC                       -  int 3
+"FIFA18.exe"+1E5E3BF: CC                       -  int 3
+"FIFA18.exe"+1E5E3C0: 40 53                    -  push rbx
+"FIFA18.exe"+1E5E3C2: 48 83 EC 30              -  sub rsp,30
+"FIFA18.exe"+1E5E3C6: 48 8B D9                 -  mov rbx,rcx
+"FIFA18.exe"+1E5E3C9: 48 8B 49 10              -  mov rcx,[rcx+10]
+"FIFA18.exe"+1E5E3CD: 48 83 C1 30              -  add rcx,30
+"FIFA18.exe"+1E5E3D1: E8 9A 10 D6 FF           -  call FIFA18.exe+1BBF470
+// ---------- INJECTING HERE ----------
+"FIFA18.exe"+1E5E3D6: 3D 47 69 02 00           -  cmp eax,00026947
+// ---------- DONE INJECTING  ----------
+"FIFA18.exe"+1E5E3DB: 75 0B                    -  jne FIFA18.exe+1E5E3E8
+"FIFA18.exe"+1E5E3DD: B8 08 00 00 00           -  mov eax,00000008
+"FIFA18.exe"+1E5E3E2: 48 83 C4 30              -  add rsp,30
+"FIFA18.exe"+1E5E3E6: 5B                       -  pop rbx
+"FIFA18.exe"+1E5E3E7: C3                       -  ret
+"FIFA18.exe"+1E5E3E8: 3D 41 51 00 00           -  cmp eax,00005141
+"FIFA18.exe"+1E5E3ED: 75 0B                    -  jne FIFA18.exe+1E5E3FA
+"FIFA18.exe"+1E5E3EF: B8 10 00 00 00           -  mov eax,00000010
+"FIFA18.exe"+1E5E3F4: 48 83 C4 30              -  add rsp,30
+"FIFA18.exe"+1E5E3F8: 5B                       -  pop rbx
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>2063</ID>
+                  <Description>"Sprint Like:"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>2064</ID>
+                      <Description>"Messi (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {158023, 0} -- IDs of the players which will sprint like Messi. '158023' is original Messi. Last ID must be 0!
+local i = 0
+local addr = "arr_SprintLike_Messi"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bSprintLike_Messi:
+  db 1
+[DISABLE]
+bSprintLike_Messi:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_SprintLike_Messi"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_SprintLike_Messi
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2065</ID>
+                      <Description>"Cristiano Ronaldo (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {20801, 0} -- IDs of the players which will sprint like CRonaldo. '20801' is original CRonaldo. Last ID must be 0!
+local i = 0
+local addr = "arr_SprintLike_CRonaldo"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bSprintLike_CRonaldo:
+  db 1
+[DISABLE]
+bSprintLike_CRonaldo:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_SprintLike_CRonaldo"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_SprintLike_CRonaldo
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2066</ID>
+                      <Description>"Robben (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {9014, 0} -- IDs of the players which will sprint like Robben. '9014' is original Robben. Last ID must be 0!
+local i = 0
+local addr = "arr_SprintLike_Robben"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bSprintLike_Robben:
+  db 1
+[DISABLE]
+bSprintLike_Robben:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_SprintLike_Robben"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_SprintLike_Robben
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2067</ID>
+                      <Description>"Yaya Toure (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {20289, 0} -- IDs of the players which will sprint like YayaToure. '20289' is original YayaToure. Last ID must be 0!
+local i = 0
+local addr = "arr_SprintLike_YayaToure"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bSprintLike_YayaToure:
+  db 1
+[DISABLE]
+bSprintLike_YayaToure:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_SprintLike_YayaToure"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_SprintLike_YayaToure
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2068</ID>
+                      <Description>"Bale (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {173731, 0} -- IDs of the players which will sprint like Bale. '173731' is original Bale. Last ID must be 0!
+local i = 0
+local addr = "arr_SprintLike_Bale"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bSprintLike_Bale:
+  db 1
+[DISABLE]
+bSprintLike_Bale:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_SprintLike_Bale"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_SprintLike_Bale
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>2069</ID>
+                      <Description>"Neymar/Jordi Alba (edit playerids inside script!)"</Description>
+                      <LastState/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+{$lua}
+local playerids = {190871, 189332, 0} -- IDs of the players which will sprint like Neymar/Jordi Alba. '190871' is original Neymar, '189332' is original Jordi Alba. Last ID must be 0!
+local i = 0
+local addr = "arr_SprintLike_NeymarAndAlba"
+local players_arr = getAddress(addr)
+
+while i &lt; 128 do
+  local playerid = playerids[i]
+  if playerid == 0 then break end
+  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4 + i*4, playerid)
+  i = i + 1
+end
+{$asm}
+
+bSprintLike_NeymarAndAlba:
+  db 1
+[DISABLE]
+bSprintLike_NeymarAndAlba:
+  db 0
+
+{$lua}
+local i = 0
+local addr = "arr_SprintLike_NeymarAndAlba"
+local players_arr = getAddress(addr)
+while i &lt; 128 do
+  writeInteger(players_arr + i*4, 0)   -- clear arr_SprintLike_NeymarAndAlba
+  i = i + 1
+end
+{$asm}
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
           <ID>1292</ID>
           <Description>"Editing Database"</Description>
           <Options moHideChildren="1"/>
@@ -8734,7 +9860,64 @@ bHomeTeam_Tired:
       </CheatEntries>
     </CheatEntry>
   </CheatEntries>
-  <UserdefinedSymbols/>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>arr_DribbleLike_Sterling</Name>
+      <Address>041B0000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_DribbleLike_Robben</Name>
+      <Address>041B0200</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_DribbleLike_Messi</Name>
+      <Address>041B0400</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_DribbleLike_FernandoTorres</Name>
+      <Address>041B0600</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_DribbleLike_YayaToure</Name>
+      <Address>041B0800</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_DribbleLike_JordiAlba</Name>
+      <Address>041B0A00</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_DribbleLike_Suarez</Name>
+      <Address>041B0C00</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_DribbleLike_Kante</Name>
+      <Address>041B0E00</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_SprintLike_Messi</Name>
+      <Address>041B1000</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_SprintLike_CRonaldo</Name>
+      <Address>041B1200</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_SprintLike_Robben</Name>
+      <Address>041B1400</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_SprintLike_YayaToure</Name>
+      <Address>041B1600</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_SprintLike_Bale</Name>
+      <Address>041B1800</Address>
+    </SymbolEntry>
+    <SymbolEntry>
+      <Name>arr_SprintLike_NeymarAndAlba</Name>
+      <Address>041B1A00</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
   <Structures StructVersion="2">
     <Structure Name="Database_Binary" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
       <Elements>
