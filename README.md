@@ -72,7 +72,12 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
   Master in "managers" table or with FrostyTool in "content -> character -> manager/player". You can also use real players heads like 
   Ronaldinho (ID: 28130) or Messi (ID: 158023). Then, you need to have an upcoming away match. While match pointer in cheat table should point to away manager which will be yours team coach. ;p
 Arsène Wenger headid is 232298. After you change headid you need to play match to the end or forfeit it. Then save your career and reload it. [Video Guide](https://youtu.be/wVV9s4jD7sI)
+
+* **Where can I find list of player hairstyles?**
+  - sonaldo#6128 has screenshotted all 151 generic hair styles and published it on discord, click [here](https://drive.google.com/drive/folders/1pNkjubQH2SmLOEw5KyVT1Pzu2oCRBsBB) to see the list.
   
+* **How can I make my player to run exactly the same as 'Ronaldo'?**
+  - I've written short guide how to do that on the soccergaming forum. -> [How to run like Ronaldo](http://soccergaming.com/index.php?threads/fifa-18-career-mode-cheat-table.6459576/page-17#post-6488623)
 
 ## Getting Started
 
