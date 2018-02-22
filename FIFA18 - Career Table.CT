@@ -467,7 +467,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -505,7 +505,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -544,7 +544,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -582,7 +582,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -620,7 +620,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -658,7 +658,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -695,7 +695,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -734,7 +734,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -1038,7 +1038,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -1076,7 +1076,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -1114,7 +1114,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -1152,7 +1152,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -1190,7 +1190,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
@@ -1228,7 +1228,7 @@ local players_arr = getAddress(addr)
 while i &lt; 128 do
   local playerid = playerids[i]
   if playerid == 0 then break end
-  writeInteger(players_arr + 4, i) -- Array size
+  writeInteger(players_arr + 4, i+1) -- Array size
   writeInteger(players_arr + 4 + i*4, playerid)
   i = i + 1
 end
