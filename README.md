@@ -412,7 +412,8 @@ Left Arm Tattoos Id's by Zozo#1205
 Right Arm Tattoos Id's by Zozo#1205
 ![Right Arm Tattoos](https://i.imgur.com/uX6zXzI.jpg)
 
-Tattoo postion ID in frostytool:
+Tattoo postion ID in frostytool
+
 ![Tattoo](https://i.imgur.com/N1eLzGg.png)
 
 ## Free Kick IDs
