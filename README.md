@@ -12,7 +12,6 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
    * [Free & Unlimited Releasing Players](#free-and-unlimited-releasing-players)
    * [Contract Negotiation](#contract-negotiation)
    * [Editing Player](#editing-player)
-   * [Traits list](#traits)
    * [Nationalities list](#nationalities)
    * [Free Kick IDs](#free-kick-ids)
    * [Position Ids](#position-ids)
@@ -38,7 +37,7 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
 
 
 * **How can I edit player traits?**
-  - Traits list is available [here](#traits). For older Cheat table version, if you want to add more than 1 trait then you need to sum values of traits in windows calculator. for example, 2 - Long Throw-in & 4 - Power free kick. 2 + 4 = 6. If you set value of "traits1" to "6" in Cheat table your player will have "Long Throw-in" and "Power free kick" traits. In newer versions just replace '0' with '1'.
+  - Just replace '0' with '1' in the trait value you want to have. As far as I know there is no limit, so your player can have all traits.
 
 
 * **Why cracked version is not supported?**
@@ -86,7 +85,7 @@ After you unzip the archive you probably notice that there are actually two chea
 
 ## Video Tutorials
 
-If you like watching video tutorials then you should check a YouTube channel of this guy -> [Und3rcov3r Nerd](https://www.youtube.com/channel/UCmw8d7G15f-zk1TvzYwYiiQ)
+If you like watching video tutorials then you should check a YouTube channel of this guy -> [Und3rcov3r Nerd](https://www.youtube.com/watch?v=qVEnMdiH0Po&list=PLx3DZm1ifjQw5exchXxcZpj0oN7_eDy-Q&index=4)
 Or mine YouTube channel, if you like watching videos without sound -> [Pawelek212](https://www.youtube.com/user/Pawelek212/videos)
 
 ## The Journey
@@ -156,74 +155,6 @@ sensitive and our career mode will be screwed because of this.
   - Max. value for skill moves and weak foot is 4 (it will be 5 in-game)
   - attackingworkrate & defensiveworkrate. 0 = medium, 1 = low, 2 = high
 
- ## Traits
- 
- Make sure you type a value by using your keyboard. Copy & paste method may not work.
- 
- Check [F.A.Q](#f.a.q) if you want to know how to add multiple traits.
-
-
-Traits1:
-```
-0 - No traits: 0000
-1 - ? Nothing probably: 0001
-2 - Long Throw-in: 0010
-4 - Power free kick: 0100
-8 - Diver (Not working?): 1000
-16 - Injury prone: 0001 0000
-32 - Injury free (Not working?): 0010 0000
-64 - Avoids using weaker foot (Not working?): 0100 0000
-128 - Dives into tackles (Not working?): 1000 0000
-256 - Tries to beat defensive line (Not working?): 0001 0000 0000
-512 - Selfish (Not working?): 0010 0000 0000
-1024 - Leadership (Not working?): 0100 0000 0000
-2048 - ? Nothing probably: 1000 0000 0000
-4096 - Early crosser: ‭0001 0000 0000 0000‬
-8192 - Finesse shot: ‭0010 0000 0000 0000‬
-‭16384‬ - Flair: 0100 0000 0000 0000‬
-‭32768‬ - Long passer: 1000 0000 0000 0000‬
-65536 - Long shot taker: 0001 0000 0000 0000 0000‬
-‭131072‬ - Skilled dribbling(Not working?): 0010 0000 0000 0000 0000‬
-‭262144‬ - Playmaker(Not working?): 0100 0000 0000 0000 0000‬
-‭524288‬ - GK up for corners: 1000 0000 0000 0000 0000‬
-‭1048576‬ - Puncher: 0001 0000 0000 0000 0000 0000‬
-‭2097152‬ - GK long throw: 0010 0000 0000 0000 0000 0000‬
-‭4194304‬ - Power header: 0100 0000 0000 0000 0000 0000‬
-‭8388608‬0 - ? Nothing probably: 1000 0000 0000 0000 0000 0000‬
-‭16777216‬ - Giant throw-in:  0001 0000 0000 0000 0000 0000 0000‬
-‭33554432‬ - Outside foot shot: 0010 0000 0000 0000 0000 0000 0000‬
-‭134217728‬ - Swerve Pass (?) 
-268435456 - Second Wind (?)
-536870912 - Acrobatic Clearance (?)
-
-1073741823 - All Traits 
-```
-
-Traits2:
-```
-1 - Skilled dribbling (?): 0001
-2 - Fancy Pass (?): 0010
-4 - Fancy Flicks (?): 0100
-8 - Stutter Penalty (?): 1000
-16 - ? Nothing probably 0001 0000
-32 - Bicycle Kick (?): 0010 0000
-64 - Diving Header (?): 0100 0000
-128 - Driven Pass(?): 1000 0000
-256 - GK Flat Kick (?): 0001 0000 0000
-512: One club player: 0010 0000 0000
-1024: Team player: 0100 0000 0000
-2048 - Chip shot: 1000 0000 0000
-4096 - Technical dribbler: 0001 0000 0000 0000
-8192 - Sweeper: 0010 0000 0000 0000
-‭16384‬ - Backs Into player: 0100 0000 0000 0000
-‭32768‬ - Corner specialist: 1000 0000 0000 0000
-65536 - Takes finesse free kicks: 0001 0000 0000 0000 0000
-‭131072‬ - Target forward: 0010 0000 0000 0000 0000‬
-‭262144‬ - Cautious with crosses: 0100 0000 0000 0000 0000‬
-‭524288‬ - Comes for crosses: 1000 0000 0000 0000 0000‬
-
-‭1048575‬ - ALL TRAITS
-```
 ## Nationalities 
 
 These ID's are useful for changing origin country of your player and for "Send scout to any country" script. For "National Team ID" click [here](https://sofifa.com/teams/national?offset=0)
