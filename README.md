@@ -16,6 +16,7 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
    * [Nationalities list](#nationalities)
    * [Free Kick IDs](#free-kick-ids)
    * [Position Ids](#position-ids)
+   * [Boots + ID by maic](#boots)
 
 
 ## F.A.Q
@@ -417,3 +418,262 @@ Right Arm Tattoos Id's by Zozo#1205
 
 ## Position Ids
 ![Position Ids](http://puu.sh/z59KC/ca5bbeb90b.png)
+
+## Boots
+```
+ID + Boot (Hersteller/Modell/Farbe) 
+1. EA Black/White
+2. EA Black/White
+3. EA Black/White
+4. EA Black/White
+5. EA Black/White
+6. EA Black/White
+7. EA Black/White
+8. EA Black/White
+9. EA Black/White
+10. EA Black/White
+11. EA Black/White
+12. EA Black/White
+13. EA Black/White
+14. EA Black/White
+15. EA Black/White
+16. EA Black/White
+17. EA Black/White
+18. EA Black/White
+19. EA Black/White
+20. EA Black/White
+21. Adidas Ace 17+ PURECONTROL Magnetic Storm
+22. Adidas Ace 17+ PURECONTROL Energy Aqua
+23. Adidas Ace 17+ PURECONTROL Thunder Storm
+24. EA Black/White
+25. EA Black/White
+26. Adidas Ace 17+ Purple/Red/Black
+27. Adidas Copa 17.1 Dust Storm
+28. EA Black/White
+29. Adidas Copa 17.1 Ocean Storm
+30. Adidas NEMEZIZ 17.0 Magnetic Storm
+31. Adidas NEMEZIZ 17.0 Ocean Storm
+32. Adidas NEMEZIZ 17.0 Black
+33. EA Black/White
+34. EA Black/White
+35. Adidas NEMEZIZ 17.1 White/Red
+36. Joma Vulcano 2.0
+37. Hummel Rapid X Blade Bluebird
+38. EA Black/White
+39. EA Black/White
+40. Adidas X17+ 360SPEED FG Magnetic Storm
+41. Adidas X17+ 360SPEED FG Ocean Storm
+42. Adidas X17+ 360SPEED FG Thunder Storm
+43. EA Black/White
+44. EA Black/White
+45. Nike Mercurial Veloce III Dynamic
+46. Nike Tiempo Legacy III
+47. Nike Magista Onda II Dynamic Fit
+48. Nike Hypervenom Phatal III
+49. EA Black/White
+50. EA Black/White
+51. EA Black/White
+52. EA Black/White
+53. EA Black/White
+54. EA Black/White
+55. EA Black/White
+56. EA Black/White
+57. EA Black/White
+58. EA Black/White
+59. EA Black/White
+60. EA Black/White
+61. EA Black/White
+62. EA Black/White
+63. Nike Mercurial Superfly V CR7 Dynamic
+64. EA Black/White
+65. Puma evoPower Vigor 1 Red Coral/Silver/Black
+66. EA Black/White
+67. Puma One 17.1 White/Black
+68. EA Black/White
+69. EA Black/White
+70. EA Black/White
+71. Umbro Medusae 2 Electric Blue
+72. Umbro Velocita 3 Yellow/Blue
+73. Umbro Velocita 3 Yellow
+74. EA Black/White
+75. EA Black/White
+76. EA Black/White
+77. Umbro Velocita 3 Blue
+78. Umbro Velocita 3 Black/Blue
+79. Umbro Velocita 3 Black
+80. Nike Mercurial Vapor XI Yellow/Black
+81. EA Black/White
+82. EA Black/White
+83. Under Armour Clutchfit Force 3.0 Black/Orange
+84. Under Armour Clutchfit Force 3.0 Yellow
+85. Under Armour Spotlight White/Red/Black
+86. Under Armour Spotlight Green/Black
+87. New Balance Visaro 2.0 Green
+88. New Balance Visaro 2.0 Black
+89. EA Black/White
+90. EA Black/White
+91. EA Black/White
+92. EA Black/White
+93. EA Black/White
+94. EA Black/White
+95. EA Black/White
+96. Mizuno Morelia Neo II Blue
+97. Mizuno Morelia Neo II Orange
+98. EA Black/White
+99. EA Black/White
+100. EA Black/White
+101. EA Black/White
+102. EA Black/White
+103. EA Black/White
+104. EA Black/White
+105. Asics DS Light X-Fly 3
+106. Asics DS Light X-Fly 3 SL
+107. Nike Tiempo Legend V White/Black/Red
+108. Nike Hypervenom Phantom White / Black / Total Orange / Volt / Pink
+109. Nike Magista Obra White/Black/Pink Blast/Volt
+110. Nike Tiempo Mystic V FG White/Black/Total Orange
+111. Puma Evopower 1.3 Yellow/Atomic Blue
+112. PUMA evoSPEED SL Safety Yellow
+113. New Balance Visaro Red Wine/Green
+114. New Balance Visaro Black/Green
+115. New Balance Visaro Black/Yellow
+116. New Balance Visaro Orange
+117. New Balance Furon Green/Blue
+118. New Balance Visaro White/Yellow
+119. Umbro Geo Flare ProSafety Yellow Camo/Chrome/Black
+120. Umbro Velocita 2.0 dazzling blue/white/fiery coral
+121. Umbro Medusae - Black / White / Turquoise
+122. Umbro UX-1 Black
+123. Nike Mercurial Superfly White / Black / Volt / Total Orange / Hyper Pink
+124. Nike Mercurial Superfly V Crimson/Yellow/Pink/Black
+125. Adidas adiPURE III Black
+126. Adidas ACE 16.1 Primeknit Womens White/Solar Gold/Shock
+127. Adidas X 15.1 Fwhite/Blue/Red
+128. Umbro Medusa Blue/Red
+129. EA Black/White
+130. Adidas ACE 16.1 Dark Space
+131. Adidas ACE 16.1 Mercury Pack
+132. Adidas ACE 16.1 Viper Pack
+133. Adidas ACE 16.1 Stellar Pack
+134. Adidas ACE 16.1 Speed of Light
+135. Adidas Ace 16+ Dark Space
+136. Adidas Ace 16+ Mercury Pack
+137. Adidas Ace 16+ Viper Pack
+138. Adidas Ace 16+ Speed of Light
+139. Adidas Ace 16+ Stellar Pack
+140. Adidas adiZero 99Gram
+141. Adidas Messi 16.1 Speed of Light
+142. Adidas Messi 16.1 Mercury Pack
+143. Adidas Messi 16+ Blackout
+144. Adidas Messi 16+ Mercury Pack
+145. Adidas Messi 16+ Speed of Light
+146. Adidas X 16.1 Dark Space
+147. Adidas X 16.1 Mercury Pack
+148. Adidas X 16.1 Speed of Light
+149. Adidas X 16.1 Viper Pack
+150. Adidas X 16.1 Stellar Pack
+151. Adidas X 16+ Dark Space
+152. Adidas X 16+ Intersport
+153. Adidas X 16+ Mercury Pack
+154. Adidas X 16+ Speed of Light
+155. Adidas X 16+ Viper Pack
+156. Adidas X 16+ Stellar Pack
+157. Adidas Ace 16+ Pure Control Silver
+158. Adidas X 16.1 Dark Space/White
+159. Asics DS Light X-Fly 2 Pearl/White/Electric Blue
+160. Asics Lethal Legacy Flash Yellow/Black
+161. Asics Menace 3 Spice Orange/White
+162. Lotto Zhero Gravity VIII 700  Orange/White
+163. Joma Champion Max Black/Yellow
+164. Joma Champion Max Blue/Green/White
+165. ???
+166. Joma Propulsion Lite Fluo Yellow
+167. Mizuno Basara 101 KL - Black/Green Gecko
+168. Mizuno Morelia II Blue
+169. Mizuno Wave Ignitus 4 Blue
+170. Mizuno Wave Ignitus 4 Red
+171. New Balance Furon Bright Cherry/Galaxy/Firefly
+172. New Balance Visaro Galaxy/Bright Cherry/Firefly
+173. Nike Hypervenom Phantom II Pure Platinum/Black/Green
+174. Nike Hypervenom Phantom II Volt/Black/Hyper Turq
+175. Nike Hypervenom Phantom II Wolf Grey/Total Orange/Black/Black-Volt
+176. Nike Magista Total Crimson/Black/Volt
+177. Nike Magista Obra White/Black/Pink Blast/Volt
+178. Nike Magista Obra II Pure Platinum/Black/Ghost Green
+179. Nike Magista Obra II Volt/Black/Total Orange/Pink
+180. Nike Mercurial Superfly V Pure Platinum/Black/Ghost Green
+181. Nike Mercurial Superfly V Crimson/Yellow/Pink/Black
+182. Nike Mercurial Superfly White / Black / Volt / Total Orange / Hyper Pink
+183. Nike Tiempo Legend VI Clear Jade/Black/Volt
+184. Nike Tiempo Mystic V FG White/Black/Total Orange
+185. Nike Tiempo Legend VI Wolf Grey/Black/Clear Jade
+186. Pirma Brasil Accurate Aqua/Silver
+187. Pirma Supreme Spry Black/Green
+188. Pirma Supreme Spry Black/Red
+189. Puma evoPower 1.3 Tricks Yellow Pink
+190. Puma evoPower 1.3 Blue/Red
+191. Puma evoPower 1.3 Red/Black
+192. Puma evoSpeed SL White/Red
+193. Puma evoSpeed SL White/Red
+194. Puma evoSpeed 1.5 Tricks Yellow Pink
+195. Puma evoTouch Pro Black/Green
+196. Umbro Medusae Black/White/Bluebird
+197. Umbro Medusae Grenadine/White/Black
+198. Umbro Medusae White/Black/Grenadine
+199. Umbro UX-Accuro Black/Metallic/Grenadine
+200. Umbro UX-Accuro Grenadine/Black
+201. Umbro UX-Accuro White/Black/Bluebird
+202. Umbro Velocita II  Black/White/Grenadine
+203. Umbro Velocita II Bluebird/White
+204. Umbro Velocita II Red/White
+205. Under Armour Clutchfit Black/Rocket Red/White
+206. Under Armour Clutchfit High-Vis Yellow/Black/Red
+207. Under Armour Spotlight Pro 2.0Rocket Red/High Vis Yellow
+208. Under Armour Spotlight Pro 2.0Rocket White/Black
+209. Adidas Ace 17+ PURECONTROL White/Blue
+210. Adidas Ace 17+ PURECONTROL Black
+211. Adidas Ace 17+ PURECONTROL Black/Blue
+212. Adidas Ace 17+ PURECONTROL Red/Black
+213. Adidas Ace 17+ PURECONTROL Solar Green
+214. Adidas Ace 17+ PURECONTROL Camouflage
+215. Adidas Messi 16+ Blue/Red
+216. Adidas Messi 16+ Gold/Black
+217. Adidas Messi 16+ White/Red
+218. Adidas X17 Blue/Red
+219. Adidas X17 Black
+220. Adidas X17 Red/Black
+221. Adidas X17 Solar Green
+222. Adidas X17.1 Camouflage
+223. Adidas Copa 17.1 Red/White
+224. Adidas Copa 17.1 Black/White
+225. Adidas Copa 17.1 Blue/White
+226. Adidas Copa 17.1 Black/Gold
+227. Adidas Copa 17.1 Silver/Gold
+228. EA Black/White
+229. Adidas Copa 17.1 White/Black
+230. Adidas X17.1 Women Core Black
+231. Adidas Ace 17+ White/Black
+232. Puma evoPower 17 green
+233. Puma evospeed 17 green
+234. Puma evospeed white/blue
+235. Nike Hypervenom Phantom III Green/Orange
+236. Nike Magista Obra II Red
+237. Nike Mercurial Superfly V Green
+238. Nike Tiempo Mystic V Yellow
+239. Nike Mercurial Superfly EA SPORTS
+240. Nike Hypervenom Phantom III White/Darkblue
+241. Nike Magista Obra II White/Yellow
+242. Nike Mercurial Superfly V Pink/White
+243. Nike Tiempo V White/Green
+244. Mizuno Morelia II Blue
+245. Mizuno Morelia II Red
+246. New Balance Furon Bright Cherry/Galaxy/Firefly
+247. New Balance Visaro Galaxy/Bright Cherry/Firefly
+248. New Balance Furon 2.0 Red
+249. New Balance Visaro 2.0 Grey/Red
+250. Umbro Velocita II Purple
+251. Umbro Medusae II Purple
+252. Umbro Velocita II Green/Purple
+253. Nike Hypervenom Phantom III NJR X Jordan
+254. EA Black/White
+```
