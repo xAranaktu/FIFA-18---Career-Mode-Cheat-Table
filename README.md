@@ -352,11 +352,11 @@ Tattoo postion ID in frostytool
 ![Free Kick IDs](https://i.imgur.com/utMPuK1.png)
 
 ## Position Ids
-(by @Queue)(http://fearlessrevolution.com/memberlist.php?mode=viewprofile&u=11864)
+by [@Queue](http://fearlessrevolution.com/memberlist.php?mode=viewprofile&u=11864)
 ![Position Ids](http://puu.sh/z59KC/ca5bbeb90b.png)
 
 ## Bodytype Ids
-(by @Queue)(http://fearlessrevolution.com/memberlist.php?mode=viewprofile&u=11864)
+by [@Queue](http://fearlessrevolution.com/memberlist.php?mode=viewprofile&u=11864)
 ![Bodytype Ids](http://puu.sh/zofaK/4f4de5d953.png)
 
 ## Boots
