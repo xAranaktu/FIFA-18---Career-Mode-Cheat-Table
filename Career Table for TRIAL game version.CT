@@ -2156,7 +2156,7 @@ dealloc(ptrManager)
                                   <CheatEntries>
                                     <CheatEntry>
                                       <ID>1298</ID>
-                                      <Description>"Unknown"</Description>
+                                      <Description>"Inflexibility"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>7</BitStart>
                                       <BitLength>1</BitLength>
@@ -2288,7 +2288,7 @@ dealloc(ptrManager)
                                     </CheatEntry>
                                     <CheatEntry>
                                       <ID>1821</ID>
-                                      <Description>"Unknown"</Description>
+                                      <Description>"Argues With Referee"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>2</BitStart>
                                       <BitLength>1</BitLength>
@@ -2432,7 +2432,7 @@ dealloc(ptrManager)
                                     </CheatEntry>
                                     <CheatEntry>
                                       <ID>1827</ID>
-                                      <Description>"Unknown"</Description>
+                                      <Description>"GK One on One"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>6</BitStart>
                                       <BitLength>1</BitLength>
@@ -2468,7 +2468,7 @@ dealloc(ptrManager)
                                     </CheatEntry>
                                     <CheatEntry>
                                       <ID>1873</ID>
-                                      <Description>"Unknown"</Description>
+                                      <Description>"Fans favourite"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>1</BitStart>
                                       <BitLength>1</BitLength>
@@ -2573,7 +2573,7 @@ dealloc(ptrManager)
                                     </CheatEntry>
                                     <CheatEntry>
                                       <ID>1842</ID>
-                                      <Description>"Unknown"</Description>
+                                      <Description>"Chipped Penalty"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>4</BitStart>
                                       <BitLength>1</BitLength>
@@ -2765,7 +2765,7 @@ dealloc(ptrManager)
                                     </CheatEntry>
                                     <CheatEntry>
                                       <ID>1961</ID>
-                                      <Description>"Unknown"</Description>
+                                      <Description>"Blames Teammates"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>4</BitStart>
                                       <BitLength>1</BitLength>
@@ -2792,6 +2792,18 @@ dealloc(ptrManager)
                                       <Description>"Set Play Specialist"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>6</BitStart>
+                                      <BitLength>1</BitLength>
+                                      <ShowAsBinary>0</ShowAsBinary>
+                                      <Address>playerDataPtr</Address>
+                                      <Offsets>
+                                        <Offset>A</Offset>
+                                      </Offsets>
+                                    </CheatEntry>
+                                    <CheatEntry>
+                                      <ID>2078</ID>
+                                      <Description>"Tornado Skillmove"</Description>
+                                      <VariableType>Binary</VariableType>
+                                      <BitStart>7</BitStart>
                                       <BitLength>1</BitLength>
                                       <ShowAsBinary>0</ShowAsBinary>
                                       <Address>playerDataPtr</Address>

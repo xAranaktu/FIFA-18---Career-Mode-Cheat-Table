@@ -113,6 +113,6 @@ Changelog:
 		
 	Update 21.02.2018
 		- Added "Unique Player Movement" section. (Now any player can run like 'Ronaldo'.)
-	
-	Update 22.02.2018
-		- Fixed not working "Unique Player Movement" scripts.
+		
+	Update 27.02.2018
+		- Updated traits (Thanks '@StillFunkyB#5412')
