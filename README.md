@@ -2,6 +2,10 @@
 
 This is a brief walk-through tutorial that illustrates how to use mine Cheat Table for FIFA 18. Before you start using it, I'd recommend you to make a __backup of your current career mode save__ and regular backups of your further progress. Trust me, you don't want to start a new career after 5 seasons because something will screw up.     
 
+# Donate
+If you like my content, please consider buying me a coffee.
+[![Buy me a coffee](https://i.imgur.com/UXCoCcE.png)](https://www.buymeacoffee.com/Aranaktu)
+
 
 # Table of Contents
    * [Frequently asked questions](#faq)
