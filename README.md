@@ -4,6 +4,7 @@ This is a brief walk-through tutorial that illustrates how to use mine Cheat Tab
 
 # Donate
 If you like my content, please consider buying me a coffee.
+
 [![Buy me a coffee](https://i.imgur.com/UXCoCcE.png)](https://www.buymeacoffee.com/Aranaktu)
 
 
