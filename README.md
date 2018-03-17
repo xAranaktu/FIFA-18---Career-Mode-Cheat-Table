@@ -12,7 +12,6 @@ If you like my content, please consider buying me a coffee.
    * [Frequently asked questions](#faq)
    * [Getting Started](#getting-started)
    * [Video Tutorials](#video-tutorials)
-   * [The Journey](#the-journey)
    * [Sim Match Settings](#sim-match-settings)
    * [Free & Unlimited Releasing Players](#free-and-unlimited-releasing-players)
    * [Contract Negotiation](#contract-negotiation)
@@ -93,19 +92,6 @@ After you unzip the archive you probably notice that there are actually two chea
 
 If you like watching video tutorials then you should check a YouTube channel of this guy -> [Und3rcov3r Nerd](https://www.youtube.com/watch?v=qVEnMdiH0Po&list=PLx3DZm1ifjQw5exchXxcZpj0oN7_eDy-Q&index=4)
 Or mine YouTube channel, if you like watching videos without sound -> [Pawelek212](https://www.youtube.com/user/Pawelek212/videos)
-
-## The Journey
-
-* **99 Skill Points**
-  -  99 Skill points available to spend in The Journey game mode.
-
-
-* **Edit Attributes**
-  - You can edit all attributes (except skill moves and weak foot) of your star in The Journey. If you go over 99 points in any of the attributes you may be not able to complete training session, so keep that in mind.
-
-
-* **999,999 Followers**
-  - 999,999 Followers on Alex Hunter social media profile.
 
 ## Sim Match Settings
 
