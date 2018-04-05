@@ -1302,7 +1302,7 @@ label(playerDataPtrCode)
 label(playerDataPtrOrg)
 label(players_table) // 0x60 bytes
 label(teamplayerlinks_table)  // 0x10 bytes
-label(return)
+label(ret_playerDataPtrCave)
 
 alloc(playerDataPtr, 8)
 registersymbol(playerDataPtr)
@@ -1368,14 +1368,147 @@ playerDataPtrOrg:
   popfq
   mov eax,r10d
   shr rax,03
-  jmp return
+  jmp ret_playerDataPtrCave
 
 playerDataPtrInject:
   jmp playerDataPtrCode
   nop
   nop
-return:
+ret_playerDataPtrCave:
 registersymbol(playerDataPtrInject)
+
+// New
+// https://i.imgur.com/34fZ931.png
+// https://i.imgur.com/QrjGse1.png
+aobscanmodule(INJECT_DatabaseRead,FIFA18_TRIAL.exe,48 03 D3 4C 03 46 30)
+alloc(new_DatabaseReadCave,$1000,"FIFA18_TRIAL.exe"+14D9DA1)
+
+label(career_presignedcontractTable)
+label(career_precontractTable)
+label(career_transferofferTable)
+label(career_scoutsTable)
+label(career_scoutmissionTable)
+label(career_managerprefTable)
+label(career_managerinfoTable)
+label(career_usersTable)
+label(career_calendarTable)
+
+alloc(presignedcontractDataPtr, 8)
+registersymbol(presignedcontractDataPtr)
+presignedcontractDataPtr:
+dq 0
+
+alloc(precontractDataPtr, 8)
+registersymbol(precontractDataPtr)
+precontractDataPtr:
+dq 0
+
+alloc(transferofferDataPtr, 8)
+registersymbol(transferofferDataPtr)
+transferofferDataPtr:
+dq 0
+
+alloc(scoutsDataPtr, 8)
+registersymbol(scoutsDataPtr)
+scoutsDataPtr:
+dq 0
+
+alloc(scoutmissionDataPtr, 8)
+registersymbol(scoutmissionDataPtr)
+scoutmissionDataPtr:
+dq 0
+
+alloc(managerprefDataPtr, 8)
+registersymbol(managerprefDataPtr)
+managerprefDataPtr:
+dq 0
+
+alloc(managerinfoDataPtr, 8)
+registersymbol(managerinfoDataPtr)
+managerinfoDataPtr:
+dq 0
+
+alloc(usersDataPtr, 8)
+registersymbol(usersDataPtr)
+usersDataPtr:
+dq 0
+
+alloc(calendarDataPtr, 8)
+registersymbol(calendarDataPtr)
+calendarDataPtr:
+dq 0
+
+label(code)
+label(return)
+
+new_DatabaseReadCave:
+  add rdx,rbx
+  add r8,[rsi+30]							// [rsi+30] = First Record addr, [rdi+8] = Table shortname (4chars)
+  cmp [rdi+8], 'gllz' 						// career_presignedcontract
+  je career_presignedcontractTable
+  cmp [rdi+8], 'PHFQ'						// career_precontract
+  je career_precontractTable
+  cmp [rdi+8], 'QWbR'						// career_transferoffer
+  je career_transferofferTable
+  cmp [rdi+8], 'zlrC'						// career_scouts
+  je career_scoutsTable
+  cmp [rdi+8], 'apoo'						// career_scoutmission
+  je career_scoutmissionTable
+  cmp [rdi+8], 'dqXv'						// career_managerpref
+  je career_managerprefTable
+  cmp [rdi+8], 'biWl'						// career_managerinfo
+  je career_managerinfoTable
+  cmp [rdi+8], 'mPrV'						// career_users
+  je career_usersTable
+  cmp [rdi+8], 'GJUr'						// career_calendar
+  je career_calendarTable
+  jmp code
+
+career_presignedcontractTable:
+  mov [presignedcontractDataPtr], r8
+  jmp code
+
+career_precontractTable:
+  mov [precontractDataPtr], r8
+  jmp code
+
+career_transferofferTable:
+  mov [transferofferDataPtr], r8
+  jmp code
+
+career_scoutsTable:
+  mov [scoutsDataPtr], r8
+  jmp code
+
+career_scoutmissionTable:
+  mov [scoutmissionDataPtr], r8
+  jmp code
+
+career_managerprefTable:
+  mov [managerprefDataPtr], r8
+  jmp code
+
+career_managerinfoTable:
+  mov [managerinfoDataPtr], r8
+  jmp code
+
+career_usersTable:
+  mov [usersDataPtr], r8
+  jmp code
+
+career_calendarTable:
+  mov [calendarDataPtr], r8
+  jmp code
+
+code:
+  jmp return
+
+INJECT_DatabaseRead:
+  jmp new_DatabaseReadCave
+  nop
+  nop
+return:
+registersymbol(INJECT_DatabaseRead)
 
 [DISABLE]
 //code from here till the end of the code will be used to disable the cheat
@@ -1393,6 +1526,59 @@ dealloc(ptrTeamplayerlinks)
 dealloc(ptrTeamkits)
 dealloc(ptrManager)
 
+
+INJECT_DatabaseRead:
+  db 48 03 D3 4C 03 46 30
+
+unregistersymbol(INJECT_DatabaseRead)
+unregistersymbol(presignedcontractDataPtr)
+unregistersymbol(precontractDataPtr)
+unregistersymbol(transferofferDataPtr)
+unregistersymbol(scoutsDataPtr)
+unregistersymbol(scoutmissionDataPtr)
+unregistersymbol(managerprefDataPtr)
+unregistersymbol(managerinfoDataPtr)
+unregistersymbol(usersDataPtr)
+unregistersymbol(calendarDataPtr)
+dealloc(new_DatabaseReadCave)
+dealloc(presignedcontractDataPtr)
+dealloc(precontractDataPtr)
+dealloc(transferofferDataPtr)
+dealloc(scoutsDataPtr)
+dealloc(scoutmissionDataPtr)
+dealloc(managerprefDataPtr)
+dealloc(managerinfoDataPtr)
+dealloc(usersDataPtr)
+dealloc(calendarDataPtr)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FIFA18_TRIAL.exe"+14D9DA1
+
+"FIFA18_TRIAL.exe"+14D9D7D: 74 59                    -  je FIFA18_TRIAL.exe+14D9DD8
+"FIFA18_TRIAL.exe"+14D9D7F: 44 8B 46 44              -  mov r8d,[rsi+44]
+"FIFA18_TRIAL.exe"+14D9D83: 48 8D 96 84 00 00 00     -  lea rdx,[rsi+00000084]
+"FIFA18_TRIAL.exe"+14D9D8A: 0F B6 E8                 -  movzx ebp,al
+"FIFA18_TRIAL.exe"+14D9D8D: 4C 8B CF                 -  mov r9,rdi
+"FIFA18_TRIAL.exe"+14D9D90: 41 0F B7 C6              -  movzx eax,r14w
+"FIFA18_TRIAL.exe"+14D9D94: 8B DD                    -  mov ebx,ebp
+"FIFA18_TRIAL.exe"+14D9D96: 44 0F AF C0              -  imul r8d,eax
+"FIFA18_TRIAL.exe"+14D9D9A: 48 8B CE                 -  mov rcx,rsi
+"FIFA18_TRIAL.exe"+14D9D9D: 48 C1 E3 04              -  shl rbx,04
+// ---------- INJECTING HERE ----------
+"FIFA18_TRIAL.exe"+14D9DA1: 48 03 D3                 -  add rdx,rbx
+"FIFA18_TRIAL.exe"+14D9DA4: 4C 03 46 30              -  add r8,[rsi+30]
+// ---------- DONE INJECTING  ----------
+"FIFA18_TRIAL.exe"+14D9DA8: E8 73 39 FF FF           -  call FIFA18_TRIAL.exe+14CD720
+"FIFA18_TRIAL.exe"+14D9DAD: 83 BC 33 84 00 00 00 00  -  cmp dword ptr [rbx+rsi+00000084],00
+"FIFA18_TRIAL.exe"+14D9DB5: 75 15                    -  jne FIFA18_TRIAL.exe+14D9DCC
+"FIFA18_TRIAL.exe"+14D9DB7: 48 8D 45 09              -  lea rax,[rbp+09]
+"FIFA18_TRIAL.exe"+14D9DBB: 48 03 C0                 -  add rax,rax
+"FIFA18_TRIAL.exe"+14D9DBE: 8B 0C C6                 -  mov ecx,[rsi+rax*8]
+"FIFA18_TRIAL.exe"+14D9DC1: 48 8B 07                 -  mov rax,[rdi]
+"FIFA18_TRIAL.exe"+14D9DC4: 48 C1 E9 03              -  shr rcx,03
+"FIFA18_TRIAL.exe"+14D9DC8: C6 04 01 00              -  mov byte ptr [rcx+rax],00
+"FIFA18_TRIAL.exe"+14D9DCC: 48 83 C7 18              -  add rdi,18
+}
 
 {
 // ORIGINAL CODE - INJECTION POINT: "FIFA17.exe"+73839E0
@@ -1437,6 +1623,13 @@ dealloc(ptrManager)
                               <ShowAsHex>1</ShowAsHex>
                               <VariableType>8 Bytes</VariableType>
                               <Address>playerDataPtr</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>1865</ID>
+                              <Description>"Base Address - teamplayerlinks table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>ptrTeamplayerlinks</Address>
                             </CheatEntry>
                             <CheatEntry>
                               <ID>1104</ID>
@@ -3562,13 +3755,6 @@ dealloc(ptrManager)
                                 </CheatEntry>
                               </CheatEntries>
                             </CheatEntry>
-                            <CheatEntry>
-                              <ID>1865</ID>
-                              <Description>"Base Address - teamplayerlinks table"</Description>
-                              <ShowAsHex>1</ShowAsHex>
-                              <VariableType>8 Bytes</VariableType>
-                              <Address>ptrTeamplayerlinks</Address>
-                            </CheatEntry>
                           </CheatEntries>
                         </CheatEntry>
                         <CheatEntry>
@@ -4153,6 +4339,1515 @@ dealloc(ptrManager)
                               <Address>ptrManager</Address>
                               <Offsets>
                                 <Offset>2F</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>2084</ID>
+                          <Description>"career_transferoffer Table"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>2085</ID>
+                              <Description>"Base Address - career_transferoffer table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>transferofferDataPtr</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2087</ID>
+                              <Description>"offerteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>18</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2088</ID>
+                              <Description>"approachreason"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>2</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2089</ID>
+                              <Description>"offerid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>2</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2090</ID>
+                              <Description>"stage"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2091</ID>
+                              <Description>"iscputransfer"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2092</ID>
+                              <Description>"exchangeplayerid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2093</ID>
+                              <Description>"offeredfee"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>6</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2106</ID>
+                              <Description>"counteroffers"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2107</ID>
+                              <Description>"precontract"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2108</ID>
+                              <Description>"startdate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2109</ID>
+                              <Description>"offeredwage"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>F</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2110</ID>
+                              <Description>"currentcontractlength"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>13</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2111</ID>
+                              <Description>"date"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>13</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2112</ID>
+                              <Description>"result"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>6</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>17</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2113</ID>
+                              <Description>"desiredfee"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>18</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2114</ID>
+                              <Description>"isloanbuy"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>1C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2115</ID>
+                              <Description>"teamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>18</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>1C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2116</ID>
+                              <Description>"offeredcontracttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>1E</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2117</ID>
+                              <Description>"valuation"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>1E</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2118</ID>
+                              <Description>"snipedteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>18</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>22</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2119</ID>
+                              <Description>"playerid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>24</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2120</ID>
+                              <Description>"squadrole"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>27</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2121</ID>
+                              <Description>"issnipe"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>27</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2122</ID>
+                              <Description>"transferwindow"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>27</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2123</ID>
+                              <Description>"isloan"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>28</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2124</ID>
+                              <Description>"offeredbonus"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>transferofferDataPtr</Address>
+                              <Offsets>
+                                <Offset>28</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>2126</ID>
+                          <Description>"career_scouts Table"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>2127</ID>
+                              <Description>"Base Address - career_scouts table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>scoutsDataPtr</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2139</ID>
+                              <Description>"regionid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutsDataPtr</Address>
+                              <Offsets>
+                                <Offset>5A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2140</ID>
+                              <Description>"state"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutsDataPtr</Address>
+                              <Offsets>
+                                <Offset>5A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2141</ID>
+                              <Description>"knowledge"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutsDataPtr</Address>
+                              <Offsets>
+                                <Offset>5A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2142</ID>
+                              <Description>"firstname"</Description>
+                              <VariableType>String</VariableType>
+                              <Length>44</Length>
+                              <Unicode>0</Unicode>
+                              <CodePage>0</CodePage>
+                              <ZeroTerminate>1</ZeroTerminate>
+                              <Address>scoutsDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2143</ID>
+                              <Description>"lastname"</Description>
+                              <VariableType>String</VariableType>
+                              <Length>44</Length>
+                              <Unicode>0</Unicode>
+                              <CodePage>0</CodePage>
+                              <ZeroTerminate>1</ZeroTerminate>
+                              <Address>scoutsDataPtr</Address>
+                              <Offsets>
+                                <Offset>2D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2144</ID>
+                              <Description>"nationality"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>9</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutsDataPtr</Address>
+                              <Offsets>
+                                <Offset>5B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2145</ID>
+                              <Description>"scoutid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutsDataPtr</Address>
+                              <Offsets>
+                                <Offset>5C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2146</ID>
+                              <Description>"experience"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutsDataPtr</Address>
+                              <Offsets>
+                                <Offset>5C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>2136</ID>
+                          <Description>"career_scoutmission Table"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>2137</ID>
+                              <Description>"Base Address - career_scoutmission table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>scoutmissionDataPtr</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2147</ID>
+                              <Description>"playertype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutmissionDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2148</ID>
+                              <Description>"durationid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutmissionDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2138</ID>
+                              <Description>"returningdate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutmissionDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2149</ID>
+                              <Description>"nationality"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>9</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutmissionDataPtr</Address>
+                              <Offsets>
+                                <Offset>3</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2150</ID>
+                              <Description>"scoutid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>scoutmissionDataPtr</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>2134</ID>
+                          <Description>"career_managerpref Table"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>2135</ID>
+                              <Description>"Base Address - career_managerpref table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>managerprefDataPtr</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2151</ID>
+                              <Description>"currency"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2152</ID>
+                              <Description>"matchdifficulty"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2153</ID>
+                              <Description>"intlformation3"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2154</ID>
+                              <Description>"intlformation4"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>1</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2155</ID>
+                              <Description>"playasaiteam"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>3</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2156</ID>
+                              <Description>"intlformation2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>3</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2157</ID>
+                              <Description>"bonuspercentage"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2158</ID>
+                              <Description>"boardfinancialstrictness"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>5</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2159</ID>
+                              <Description>"usedsquad"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>5</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2160</ID>
+                              <Description>"clubformation1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>5</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2161</ID>
+                              <Description>"stadiumid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>9</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>6</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2162</ID>
+                              <Description>"intlformation5"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>8</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2163</ID>
+                              <Description>"clubformation5"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>9</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2164</ID>
+                              <Description>"clubformation2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2165</ID>
+                              <Description>"halflength"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>6</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2166</ID>
+                              <Description>"intlformation1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2167</ID>
+                              <Description>"managerprefid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2168</ID>
+                              <Description>"wagebudget"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2169</ID>
+                              <Description>"boardaidifficulty"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>11</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2170</ID>
+                              <Description>"clubformation4"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>12</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2171</ID>
+                              <Description>"clubformation3"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>10</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>13</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2172</ID>
+                              <Description>"startofseasontransferbudget"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>14</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2173</ID>
+                              <Description>"transferbudget"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>18</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2174</ID>
+                              <Description>"startofseasonwagebudget"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>1C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2175</ID>
+                              <Description>"skipfirsttransfer"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>20</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2176</ID>
+                              <Description>"startofseasonplayerwages"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerprefDataPtr</Address>
+                              <Offsets>
+                                <Offset>20</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>2132</ID>
+                          <Description>"career_managerinfo Table"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>2133</ID>
+                              <Description>"Base Address - career_managerinfo table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>managerinfoDataPtr</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2203</ID>
+                              <Description>"seasonobjective3"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2204</ID>
+                              <Description>"bigwindate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2205</ID>
+                              <Description>"biglossoppscore"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2206</ID>
+                              <Description>"bigwinoppteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>7</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2207</ID>
+                              <Description>"biglossdate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>9</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2208</ID>
+                              <Description>"seasonobjectiveresult1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2209</ID>
+                              <Description>"bigwinoppscore"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>1</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2210</ID>
+                              <Description>"seasonobjectiveresult2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2211</ID>
+                              <Description>"biglossuserscore"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>2</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2212</ID>
+                              <Description>"totalearnings"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2213</ID>
+                              <Description>"clubteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>18</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>10</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2214</ID>
+                              <Description>"biglossuserteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>12</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2215</ID>
+                              <Description>"bigwinuserscore"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>3</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2216</ID>
+                              <Description>"wage"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>15</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2217</ID>
+                              <Description>"bigwinuserteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>18</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2218</ID>
+                              <Description>"losingstreak"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>6</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>1B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2219</ID>
+                              <Description>"seasonobjectiveresult3"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>1C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2220</ID>
+                              <Description>"playersreleasedthisseason"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>1C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2221</ID>
+                              <Description>"biglossoppteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>1C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2222</ID>
+                              <Description>"seasonobjective1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>1F</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2223</ID>
+                              <Description>"internationalteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>18</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>1F</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2224</ID>
+                              <Description>"managerreputation"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>21</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2225</ID>
+                              <Description>"seasonobjective2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>23</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2226</ID>
+                              <Description>"boardconfidence"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>23</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2227</ID>
+                              <Description>"userid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>managerinfoDataPtr</Address>
+                              <Offsets>
+                                <Offset>24</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>2130</ID>
+                          <Description>"career_users Table"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>2131</ID>
+                              <Description>"Base Address - career_users table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>usersDataPtr</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2177</ID>
+                              <Description>"goalnews"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>61</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2178</ID>
+                              <Description>"playertype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>61</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2179</ID>
+                              <Description>"nationalteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>18</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>61</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2180</ID>
+                              <Description>"leagueseasonmessagesent"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>9</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>63</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2181</ID>
+                              <Description>"firstname"</Description>
+                              <VariableType>String</VariableType>
+                              <Length>31</Length>
+                              <Unicode>0</Unicode>
+                              <CodePage>0</CodePage>
+                              <ZeroTerminate>1</ZeroTerminate>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2182</ID>
+                              <Description>"sponsorid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>64</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2183</ID>
+                              <Description>"leagueid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>12</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>65</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2184</ID>
+                              <Description>"clubteamid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>18</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>66</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2185</ID>
+                              <Description>"wage"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>31</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>69</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2186</ID>
+                              <Description>"primarycompobjid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>6D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2187</ID>
+                              <Description>"surname"</Description>
+                              <VariableType>String</VariableType>
+                              <Length>31</Length>
+                              <Unicode>0</Unicode>
+                              <CodePage>0</CodePage>
+                              <ZeroTerminate>1</ZeroTerminate>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>20</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2188</ID>
+                              <Description>"agentname"</Description>
+                              <VariableType>String</VariableType>
+                              <Length>31</Length>
+                              <Unicode>0</Unicode>
+                              <CodePage>0</CodePage>
+                              <ZeroTerminate>1</ZeroTerminate>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>40</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2189</ID>
+                              <Description>"nationalityid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>60</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2190</ID>
+                              <Description>"seasoncount"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>4</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>6E</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2191</ID>
+                              <Description>"usertype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>3</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>6E</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2192</ID>
+                              <Description>"userid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>usersDataPtr</Address>
+                              <Offsets>
+                                <Offset>6F</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                          </CheatEntries>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>2128</ID>
+                          <Description>"career_calendar Table"</Description>
+                          <Options moHideChildren="1"/>
+                          <LastState Value="" RealAddress="00000000"/>
+                          <GroupHeader>1</GroupHeader>
+                          <CheatEntries>
+                            <CheatEntry>
+                              <ID>2129</ID>
+                              <Description>"Base Address - career_calendar table"</Description>
+                              <ShowAsHex>1</ShowAsHex>
+                              <VariableType>8 Bytes</VariableType>
+                              <Address>calendarDataPtr</Address>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2193</ID>
+                              <Description>"transferwindowend1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>0</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2194</ID>
+                              <Description>"transferwindowstart1"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>1</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2195</ID>
+                              <Description>"transferwindowend2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>2</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2196</ID>
+                              <Description>"setupdate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2197</ID>
+                              <Description>"dateid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>6</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2198</ID>
+                              <Description>"enddate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>6</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2199</ID>
+                              <Description>"currdate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>9</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2200</ID>
+                              <Description>"startdate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>B</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2201</ID>
+                              <Description>"transferwindowstart2"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2202</ID>
+                              <Description>"objectivecheckdate"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>19</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>calendarDataPtr</Address>
+                              <Offsets>
+                                <Offset>F</Offset>
                               </Offsets>
                             </CheatEntry>
                           </CheatEntries>
@@ -9380,6 +11075,108 @@ dealloc(bAwayTeam_FiveStars)
 </AssemblerScript>
           <CheatEntries>
             <CheatEntry>
+              <ID>6</ID>
+              <Description>"Ball Position"</Description>
+              <Options moHideChildren="1"/>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_BallPosition,FIFA18_TRIAL.exe,0F 28 40 60 B0 01) // should be unique
+alloc(newmem,$1000,"FIFA18_TRIAL.exe"+E673AB)
+
+alloc(ptrBallPos, 8)
+registersymbol(ptrBallPos)
+ptrBallPos:
+dq 00
+
+label(code)
+label(return)
+
+newmem:
+  mov [ptrBallPos], rax
+
+code:
+  movaps xmm0,[rax+60]
+  mov al,01
+  jmp return
+
+INJECT_BallPosition:
+  jmp newmem
+  nop
+return:
+registersymbol(INJECT_BallPosition)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+INJECT_BallPosition:
+  db 0F 28 40 60 B0 01
+
+unregistersymbol(INJECT_BallPosition)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "FIFA18_TRIAL.exe"+E673AB
+
+"FIFA18_TRIAL.exe"+E67380: 48 8B 1D 59 7B BC 04     -  mov rbx,[FIFA18_TRIAL.exe+5A2EEE0]
+"FIFA18_TRIAL.exe"+E67387: 48 8D 4C 24 20           -  lea rcx,[rsp+20]
+"FIFA18_TRIAL.exe"+E6738C: E8 EF 46 9C 01           -  call FIFA18_TRIAL.exe+282BA80
+"FIFA18_TRIAL.exe"+E67391: 48 8B D0                 -  mov rdx,rax
+"FIFA18_TRIAL.exe"+E67394: 44 8B C5                 -  mov r8d,ebp
+"FIFA18_TRIAL.exe"+E67397: 48 8B CB                 -  mov rcx,rbx
+"FIFA18_TRIAL.exe"+E6739A: E8 51 FA 32 00           -  call FIFA18_TRIAL.exe+1196DF0
+"FIFA18_TRIAL.exe"+E6739F: 48 85 C0                 -  test rax,rax
+"FIFA18_TRIAL.exe"+E673A2: 74 10                    -  je FIFA18_TRIAL.exe+E673B4
+"FIFA18_TRIAL.exe"+E673A4: 48 8B 80 70 02 00 00     -  mov rax,[rax+00000270]
+// ---------- INJECTING HERE ----------
+"FIFA18_TRIAL.exe"+E673AB: 0F 28 40 60              -  movaps xmm0,[rax+60]
+"FIFA18_TRIAL.exe"+E673AF: B0 01                    -  mov al,01
+// ---------- DONE INJECTING  ----------
+"FIFA18_TRIAL.exe"+E673B1: 0F 29 06                 -  movaps [rsi],xmm0
+"FIFA18_TRIAL.exe"+E673B4: 48 8B 7C 24 40           -  mov rdi,[rsp+40]
+"FIFA18_TRIAL.exe"+E673B9: 48 8B 5C 24 48           -  mov rbx,[rsp+48]
+"FIFA18_TRIAL.exe"+E673BE: 48 8B 6C 24 58           -  mov rbp,[rsp+58]
+"FIFA18_TRIAL.exe"+E673C3: 48 83 C4 30              -  add rsp,30
+"FIFA18_TRIAL.exe"+E673C7: 5E                       -  pop rsi
+"FIFA18_TRIAL.exe"+E673C8: C3                       -  ret
+"FIFA18_TRIAL.exe"+E673C9: CC                       -  int 3
+"FIFA18_TRIAL.exe"+E673CA: CC                       -  int 3
+"FIFA18_TRIAL.exe"+E673CB: CC                       -  int 3
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>2079</ID>
+                  <Description>"Ball Position - X"</Description>
+                  <LastState Value="115.4246368" RealAddress="485A4FF0"/>
+                  <VariableType>Float</VariableType>
+                  <Address>ptrBallPos</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9</ID>
+                  <Description>"Ball Position - Y"</Description>
+                  <LastState Value="83.79235077" RealAddress="485A4FF8"/>
+                  <VariableType>Float</VariableType>
+                  <Address>ptrBallPos</Address>
+                  <Offsets>
+                    <Offset>68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>10</ID>
+                  <Description>"Ball Position - Z"</Description>
+                  <LastState Value="0.3859274387" RealAddress="485A4FF4"/>
+                  <VariableType>Float</VariableType>
+                  <Address>ptrBallPos</Address>
+                  <Offsets>
+                    <Offset>64</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
               <ID>836</ID>
               <Description>"Match Timer"</Description>
               <Options moHideChildren="1"/>
@@ -10004,6 +11801,26 @@ timer_setEnabled(AutoAttachTimer, true)
     <DisassemblerComment>
       <Address>"FIFA18_TRIAL.exe"+3811890</Address>
       <Comment>clear
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"FIFA18_TRIAL.exe"+38A28A2</Address>
+      <Comment>career_transferoffer
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"FIFA18_TRIAL.exe"+38A28BF</Address>
+      <Comment>result
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"FIFA18_TRIAL.exe"+38A28DC</Address>
+      <Comment>transferwindow
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"FIFA18_TRIAL.exe"+38A28F9</Address>
+      <Comment>iscputransfer
 </Comment>
     </DisassemblerComment>
   </DisassemblerComments>

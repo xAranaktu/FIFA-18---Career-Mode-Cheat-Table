@@ -116,3 +116,7 @@ Changelog:
 		
 	Update 27.02.2018
 		- Updated traits (Thanks '@StillFunkyB#5412')
+		
+	Update 05.04.2018
+		- Added "Ball Position" pointers to "In-Game Hacks"
+		- Added "career_transferoffer", "career_scouts", "career_scoutmission", "career_managerpref", "career_managerinfo", "career_users" and "career_calendar" to "Editing Database->Database Tables"
