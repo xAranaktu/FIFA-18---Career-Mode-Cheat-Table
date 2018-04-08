@@ -83,6 +83,15 @@ Arsène Wenger headid is 232298. After you change headid you need to play match 
   
 * **How can I make my player to run exactly the same as 'Ronaldo'?**
   - I've written short guide how to do that on the soccergaming forum. -> [How to run like Ronaldo](http://soccergaming.com/index.php?threads/fifa-18-career-mode-cheat-table.6459576/page-17#post-6488623)
+  
+* **How to edit data in career_managerpref/career_managerinfo/career_users/career_calendar Table?**
+  - 1. Activate "Database Tables" script
+    2. Load your career save to initialize pointers.
+    3. Exit career
+    4. In Cheat Engine go to "Memory Viewer" -> Press "CTRL + G" -> Go to address "INJECT_DatabaseRead" -> Follow jmp (https://i.imgur.com/gPHckIj.png) -> Scroll down until you will see "mov [usersDataPtr],r8" instruction -> Set breakpoint there (https://i.imgur.com/QZCd8ZO.png)
+    5. Load your career save, when game will freeze do the changes in database tables.
+    6. After you edit what you want go back to memory Viewer and press 'F9' to unfreeze the game (https://i.imgur.com/jMBAnGd.png)
+    7. Delete breakpoint (https://i.imgur.com/o7YrN2V.png)
 
 ## Getting Started
 
