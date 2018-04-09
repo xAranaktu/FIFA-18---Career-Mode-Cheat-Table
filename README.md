@@ -85,6 +85,7 @@ Arsène Wenger headid is 232298. After you change headid you need to play match 
   - I've written short guide how to do that on the soccergaming forum. -> [How to run like Ronaldo](http://soccergaming.com/index.php?threads/fifa-18-career-mode-cheat-table.6459576/page-17#post-6488623)
   
 * **How to edit data in career_managerpref/career_managerinfo/career_users/career_calendar Table?**
+
   [FIFA 18 - Editing Manager Name & Changing Nat Team & Transfering Players](https://youtu.be/T00WAj4VDOk)
   - 1. Activate "Database Tables" script
     2. Load your career save to initialize pointers.
