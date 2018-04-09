@@ -92,8 +92,8 @@ Arsène Wenger headid is 232298. After you change headid you need to play match 
     3. Exit career
     4. In Cheat Engine go to "Memory Viewer" -> Press "CTRL + G" -> Go to address "INJECT_DatabaseRead" -> Follow jmp (https://i.imgur.com/gPHckIj.png) -> Scroll down until you will see "mov [usersDataPtr],r8" instruction -> Set breakpoint there (https://i.imgur.com/QZCd8ZO.png)
     5. Load your career save, when game will freeze do the changes in database tables.
-    6. After you edit what you want go back to memory Viewer and press 'F9' to unfreeze the game (https://i.imgur.com/jMBAnGd.png)
-    7. Delete breakpoint (https://i.imgur.com/o7YrN2V.png)
+    6. After you edit what you want go back to memory Viewer and delete breakpoint (https://i.imgur.com/o7YrN2V.png)
+    7. press 'F9' to unfreeze the game (https://i.imgur.com/jMBAnGd.png)
 
 ## Getting Started
 
