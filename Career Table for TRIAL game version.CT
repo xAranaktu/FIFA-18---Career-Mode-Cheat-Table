@@ -3772,7 +3772,7 @@ dealloc(calendarDataPtr)
                               <Address>ptrTeamkits</Address>
                             </CheatEntry>
                             <CheatEntry>
-                              <ID>1994</ID>
+                              <ID>2251</ID>
                               <Description>"teamkitid"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
@@ -3784,43 +3784,139 @@ dealloc(calendarDataPtr)
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
-                              <ID>2056</ID>
-                              <Description>"jerseycollargeometrytype"</Description>
+                              <ID>2229</ID>
+                              <Description>"teamkittypetechid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>5</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>2A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2231</ID>
+                              <Description>"powid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>15</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>2A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2240</ID>
+                              <Description>"islocked"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>2C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2269</ID>
+                              <Description>"dlc"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>34</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2228</ID>
+                              <Description>"jerseybacknamefontcase"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>2A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2230</ID>
+                              <Description>"shortsnumberplacementcode"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
                               <BitLength>8</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>ptrTeamkits</Address>
                               <Offsets>
-                                <Offset>1F</Offset>
+                                <Offset>0</Offset>
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
-                              <ID>1995</ID>
-                              <Description>"year"</Description>
+                              <ID>2233</ID>
+                              <Description>"isinheritbasedetailmap"</Description>
                               <VariableType>Binary</VariableType>
-                              <BitStart>4</BitStart>
-                              <BitLength>11</BitLength>
+                              <BitStart>6</BitStart>
+                              <BitLength>1</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>ptrTeamkits</Address>
                               <Offsets>
-                                <Offset>30</Offset>
+                                <Offset>2C</Offset>
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
-                              <ID>1996</ID>
-                              <Description>"shortsnumberfonttype"</Description>
+                              <ID>2234</ID>
+                              <Description>"teamcolorsecb"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
                               <BitLength>8</BitLength>
                               <ShowAsBinary>0</ShowAsBinary>
                               <Address>ptrTeamkits</Address>
                               <Offsets>
-                                <Offset>24</Offset>
+                                <Offset>2</Offset>
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
-                              <ID>1997</ID>
+                              <ID>2235</ID>
+                              <Description>"shortsrenderingdetailmaptype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>3</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2236</ID>
+                              <Description>"jerseyfrontnumberplacementcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>4</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2242</ID>
+                              <Description>"teamcolorprimg"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>9</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2245</ID>
                               <Description>"numberfonttype"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
@@ -3832,7 +3928,19 @@ dealloc(calendarDataPtr)
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
-                              <ID>1998</ID>
+                              <ID>2246</ID>
+                              <Description>"teamcolortertb"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>D</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2249</ID>
                               <Description>"jerseynamefonttype"</Description>
                               <VariableType>Binary</VariableType>
                               <BitStart>0</BitStart>
@@ -3844,21 +3952,321 @@ dealloc(calendarDataPtr)
                               </Offsets>
                             </CheatEntry>
                             <CheatEntry>
-                              <ID>2006</ID>
+                              <ID>2250</ID>
+                              <Description>"jerseynamelayouttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>11</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2252</ID>
+                              <Description>"teamcolorprimpercent"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>6</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>2E</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2255</ID>
+                              <Description>"jerseyshapestyle"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>14</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2256</ID>
+                              <Description>"jerseybacknameplacementcode"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>15</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2257</ID>
+                              <Description>"teamcolorprimr"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>16</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2258</ID>
+                              <Description>"jerseynamecolorg"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>17</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2259</ID>
+                              <Description>"teamcolorsecpercent"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>2F</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2260</ID>
+                              <Description>"teamcolorsecg"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>18</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2262</ID>
+                              <Description>"year"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>11</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>30</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2263</ID>
+                              <Description>"teamcolortertr"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>1A</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2265</ID>
+                              <Description>"renderingmaterialtype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>1C</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2266</ID>
+                              <Description>"teamtechid"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>7</BitStart>
+                              <BitLength>18</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>31</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2267</ID>
+                              <Description>"isembargoed"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>1</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>34</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2268</ID>
+                              <Description>"hasadvertisingkit"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>2</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>34</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2271</ID>
+                              <Description>"teamcolorsecr"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>1E</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2272</ID>
+                              <Description>"teamcolortertpercent"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>4</BitStart>
+                              <BitLength>7</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>34</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2273</ID>
+                              <Description>"jerseycollargeometrytype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>1F</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2275</ID>
+                              <Description>"jerseynamecolorr"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>21</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2276</ID>
+                              <Description>"teamcolorprimb"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>22</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2277</ID>
+                              <Description>"jerseyrenderingdetailmaptype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>23</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2278</ID>
+                              <Description>"shortsnumberfonttype"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>24</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2279</ID>
+                              <Description>"shortstyle"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>3</BitStart>
+                              <BitLength>2</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>35</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2281</ID>
+                              <Description>"jerseynamecolorb"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>26</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2282</ID>
+                              <Description>"jerseyfit"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>5</BitStart>
+                              <BitLength>1</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>35</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2284</ID>
+                              <Description>"teamcolortertg"</Description>
+                              <VariableType>Binary</VariableType>
+                              <BitStart>0</BitStart>
+                              <BitLength>8</BitLength>
+                              <ShowAsBinary>0</ShowAsBinary>
+                              <Address>ptrTeamkits</Address>
+                              <Offsets>
+                                <Offset>28</Offset>
+                              </Offsets>
+                            </CheatEntry>
+                            <CheatEntry>
+                              <ID>2286</ID>
                               <Description>"Font Colours"</Description>
                               <Options moHideChildren="1"/>
                               <LastState Value="" RealAddress="00000000"/>
                               <GroupHeader>1</GroupHeader>
                               <CheatEntries>
                                 <CheatEntry>
-                                  <ID>2007</ID>
+                                  <ID>2287</ID>
                                   <Description>"Shorts Number Colour 1"</Description>
                                   <Options moHideChildren="1"/>
                                   <LastState Value="" RealAddress="00000000"/>
                                   <GroupHeader>1</GroupHeader>
                                   <CheatEntries>
                                     <CheatEntry>
-                                      <ID>2008</ID>
+                                      <ID>2244</ID>
                                       <Description>"R"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3870,7 +4278,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2009</ID>
+                                      <ID>2232</ID>
                                       <Description>"G"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3882,7 +4290,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2010</ID>
+                                      <ID>2248</ID>
                                       <Description>"B"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3896,14 +4304,14 @@ dealloc(calendarDataPtr)
                                   </CheatEntries>
                                 </CheatEntry>
                                 <CheatEntry>
-                                  <ID>2011</ID>
+                                  <ID>2288</ID>
                                   <Description>"Shorts Number Colour 2"</Description>
                                   <Options moHideChildren="1"/>
                                   <LastState Value="" RealAddress="00000000"/>
                                   <GroupHeader>1</GroupHeader>
                                   <CheatEntries>
                                     <CheatEntry>
-                                      <ID>2012</ID>
+                                      <ID>2285</ID>
                                       <Description>"R"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3915,7 +4323,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2013</ID>
+                                      <ID>2261</ID>
                                       <Description>"G"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3927,7 +4335,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2014</ID>
+                                      <ID>2241</ID>
                                       <Description>"B"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3941,14 +4349,14 @@ dealloc(calendarDataPtr)
                                   </CheatEntries>
                                 </CheatEntry>
                                 <CheatEntry>
-                                  <ID>2015</ID>
+                                  <ID>2289</ID>
                                   <Description>"Shorts Number Colour 3"</Description>
                                   <Options moHideChildren="1"/>
                                   <LastState Value="" RealAddress="00000000"/>
                                   <GroupHeader>1</GroupHeader>
                                   <CheatEntries>
                                     <CheatEntry>
-                                      <ID>2016</ID>
+                                      <ID>2270</ID>
                                       <Description>"R"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3960,7 +4368,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2017</ID>
+                                      <ID>2274</ID>
                                       <Description>"G"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3972,7 +4380,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2018</ID>
+                                      <ID>2243</ID>
                                       <Description>"B"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -3986,14 +4394,14 @@ dealloc(calendarDataPtr)
                                   </CheatEntries>
                                 </CheatEntry>
                                 <CheatEntry>
-                                  <ID>2019</ID>
+                                  <ID>2292</ID>
                                   <Description>"Jersey Number Colour 1"</Description>
                                   <Options moHideChildren="1"/>
                                   <LastState Value="" RealAddress="00000000"/>
                                   <GroupHeader>1</GroupHeader>
                                   <CheatEntries>
                                     <CheatEntry>
-                                      <ID>2020</ID>
+                                      <ID>2238</ID>
                                       <Description>"R"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4005,7 +4413,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2021</ID>
+                                      <ID>2239</ID>
                                       <Description>"G"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4017,7 +4425,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2022</ID>
+                                      <ID>2254</ID>
                                       <Description>"B"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4031,14 +4439,14 @@ dealloc(calendarDataPtr)
                                   </CheatEntries>
                                 </CheatEntry>
                                 <CheatEntry>
-                                  <ID>2023</ID>
+                                  <ID>2291</ID>
                                   <Description>"Jersey Number Colour 2"</Description>
                                   <Options moHideChildren="1"/>
                                   <LastState Value="" RealAddress="00000000"/>
                                   <GroupHeader>1</GroupHeader>
                                   <CheatEntries>
                                     <CheatEntry>
-                                      <ID>2024</ID>
+                                      <ID>2237</ID>
                                       <Description>"R"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4050,7 +4458,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2025</ID>
+                                      <ID>2264</ID>
                                       <Description>"G"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4062,7 +4470,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2026</ID>
+                                      <ID>2280</ID>
                                       <Description>"B"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4076,14 +4484,14 @@ dealloc(calendarDataPtr)
                                   </CheatEntries>
                                 </CheatEntry>
                                 <CheatEntry>
-                                  <ID>2027</ID>
+                                  <ID>2290</ID>
                                   <Description>"Jersey Number Colour 3"</Description>
                                   <Options moHideChildren="1"/>
                                   <LastState Value="" RealAddress="00000000"/>
                                   <GroupHeader>1</GroupHeader>
                                   <CheatEntries>
                                     <CheatEntry>
-                                      <ID>2028</ID>
+                                      <ID>2253</ID>
                                       <Description>"R"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4095,7 +4503,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2029</ID>
+                                      <ID>2247</ID>
                                       <Description>"G"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4107,7 +4515,7 @@ dealloc(calendarDataPtr)
                                       </Offsets>
                                     </CheatEntry>
                                     <CheatEntry>
-                                      <ID>2030</ID>
+                                      <ID>2283</ID>
                                       <Description>"B"</Description>
                                       <VariableType>Binary</VariableType>
                                       <BitStart>0</BitStart>
@@ -4116,51 +4524,6 @@ dealloc(calendarDataPtr)
                                       <Address>ptrTeamkits</Address>
                                       <Offsets>
                                         <Offset>27</Offset>
-                                      </Offsets>
-                                    </CheatEntry>
-                                  </CheatEntries>
-                                </CheatEntry>
-                                <CheatEntry>
-                                  <ID>2031</ID>
-                                  <Description>"Jersey Name Colour"</Description>
-                                  <Options moHideChildren="1"/>
-                                  <LastState Value="" RealAddress="00000000"/>
-                                  <GroupHeader>1</GroupHeader>
-                                  <CheatEntries>
-                                    <CheatEntry>
-                                      <ID>2032</ID>
-                                      <Description>"R"</Description>
-                                      <VariableType>Binary</VariableType>
-                                      <BitStart>0</BitStart>
-                                      <BitLength>8</BitLength>
-                                      <ShowAsBinary>0</ShowAsBinary>
-                                      <Address>ptrTeamkits</Address>
-                                      <Offsets>
-                                        <Offset>21</Offset>
-                                      </Offsets>
-                                    </CheatEntry>
-                                    <CheatEntry>
-                                      <ID>2033</ID>
-                                      <Description>"G"</Description>
-                                      <VariableType>Binary</VariableType>
-                                      <BitStart>0</BitStart>
-                                      <BitLength>8</BitLength>
-                                      <ShowAsBinary>0</ShowAsBinary>
-                                      <Address>ptrTeamkits</Address>
-                                      <Offsets>
-                                        <Offset>17</Offset>
-                                      </Offsets>
-                                    </CheatEntry>
-                                    <CheatEntry>
-                                      <ID>2034</ID>
-                                      <Description>"B"</Description>
-                                      <VariableType>Binary</VariableType>
-                                      <BitStart>0</BitStart>
-                                      <BitLength>8</BitLength>
-                                      <ShowAsBinary>0</ShowAsBinary>
-                                      <Address>ptrTeamkits</Address>
-                                      <Offsets>
-                                        <Offset>26</Offset>
                                       </Offsets>
                                     </CheatEntry>
                                   </CheatEntries>
@@ -11147,7 +11510,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>2079</ID>
                   <Description>"Ball Position - X"</Description>
-                  <LastState Value="115.4246368" RealAddress="485A4FF0"/>
                   <VariableType>Float</VariableType>
                   <Address>ptrBallPos</Address>
                   <Offsets>
@@ -11157,7 +11519,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>9</ID>
                   <Description>"Ball Position - Y"</Description>
-                  <LastState Value="83.79235077" RealAddress="485A4FF8"/>
                   <VariableType>Float</VariableType>
                   <Address>ptrBallPos</Address>
                   <Offsets>
@@ -11167,7 +11528,6 @@ dealloc(newmem)
                 <CheatEntry>
                   <ID>10</ID>
                   <Description>"Ball Position - Z"</Description>
-                  <LastState Value="0.3859274387" RealAddress="485A4FF4"/>
                   <VariableType>Float</VariableType>
                   <Address>ptrBallPos</Address>
                   <Offsets>

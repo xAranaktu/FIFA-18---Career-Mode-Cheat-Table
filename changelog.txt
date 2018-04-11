@@ -120,3 +120,6 @@ Changelog:
 	Update 05.04.2018
 		- Added "Ball Position" pointers to "In-Game Hacks"
 		- Added "career_transferoffer", "career_scouts", "career_scoutmission", "career_managerpref", "career_managerinfo", "career_users" and "career_calendar" to "Editing Database->Database Tables"
+		
+	Update 11.04.2018
+		- Added missing fields to "Teamkits Table"
