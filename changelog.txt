@@ -123,3 +123,6 @@ Changelog:
 		
 	Update 11.04.2018
 		- Added missing fields to "Teamkits Table"
+		
+	Update 12.04.2018
+		- Added "career_playercontract", "teamplayerlinks", "teams", "leagueteamlinks" to "Editing Database->Database Tables"
