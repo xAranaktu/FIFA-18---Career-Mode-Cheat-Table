@@ -21,6 +21,7 @@ If you like my content, please consider buying me a coffee.
    * [Position Ids](#position-ids)
    * [Bodytype Ids](#bodytype-ids)
    * [Boots + ID by maic](#boots)
+   * [Hairstyles](#hairstyles)
 
 
 ## F.A.Q
@@ -95,6 +96,12 @@ Arsène Wenger headid is 232298. After you change headid you need to play match 
     6. Load your career save, when game will freeze do the changes in database tables.
     7. After you edit what you want go back to memory Viewer and delete breakpoint (https://i.imgur.com/o7YrN2V.png)
     8. press 'F9' to unfreeze the game (https://i.imgur.com/jMBAnGd.png)
+
+* **Why I can't edit real player hair style?**
+  - It's not possible to edit hair/beard of player with real head model.
+
+* **Can I buy player who “recently joined a club”?**
+  - Yes, you need to edit "playerjointeamdate". Value "158229" should be fine. You will find it in "Editing Database->Database Tables->Players table->Player Info".
 
 ## Getting Started
 
@@ -363,6 +370,7 @@ by [@Queue](http://fearlessrevolution.com/memberlist.php?mode=viewprofile&u=1186
 ![Bodytype Ids](http://puu.sh/zofaK/4f4de5d953.png)
 
 ## Boots
+Boots + ID by maic
 ```
 ID + Boot (Hersteller/Modell/Farbe) 
 1. EA Black/White
@@ -620,3 +628,7 @@ ID + Boot (Hersteller/Modell/Farbe)
 253. Nike Hypervenom Phantom III NJR X Jordan
 254. EA Black/White
 ```
+
+## Hairstyles
+by sonaldo 
+[Hairstyles](https://drive.google.com/drive/folders/1pNkjubQH2SmLOEw5KyVT1Pzu2oCRBsBB)
