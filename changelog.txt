@@ -126,3 +126,6 @@ Changelog:
 		
 	Update 12.04.2018
 		- Added "career_playercontract", "teamplayerlinks", "teams", "leagueteamlinks" to "Editing Database->Database Tables"
+		
+	Update 28.04.2018
+		- Added "DatabaseTables_copyplayerattributes.lua" & "EditingPlayer_copyplayerattributes.lua"

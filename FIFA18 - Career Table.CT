@@ -8847,7 +8847,7 @@ dealloc(ptrEasyEditKnownAs)
                       <CheatEntries>
                         <CheatEntry>
                           <ID>1683</ID>
-                          <Description>"Crossing"</Description>
+                          <Description>"_Crossing"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8858,7 +8858,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1684</ID>
-                          <Description>"Finishing"</Description>
+                          <Description>"_Finishing"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8869,7 +8869,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1685</ID>
-                          <Description>"Heading Acc."</Description>
+                          <Description>"_Heading Acc."</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8880,7 +8880,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1686</ID>
-                          <Description>"Short Pass"</Description>
+                          <Description>"_Short Pass"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8891,7 +8891,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1687</ID>
-                          <Description>"Volleys"</Description>
+                          <Description>"_Volleys"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8902,7 +8902,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1688</ID>
-                          <Description>"Weak Foot"</Description>
+                          <Description>"_Weak Foot"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8922,7 +8922,7 @@ dealloc(ptrEasyEditKnownAs)
                       <CheatEntries>
                         <CheatEntry>
                           <ID>1695</ID>
-                          <Description>"Marking"</Description>
+                          <Description>"_Marking"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8933,7 +8933,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1697</ID>
-                          <Description>"Slide Tackle"</Description>
+                          <Description>"_Slide Tackle"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8944,7 +8944,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1696</ID>
-                          <Description>"Stand Tackle"</Description>
+                          <Description>"_Stand Tackle"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8964,7 +8964,7 @@ dealloc(ptrEasyEditKnownAs)
                       <CheatEntries>
                         <CheatEntry>
                           <ID>1731</ID>
-                          <Description>"GK Diving"</Description>
+                          <Description>"_GK Diving"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8975,7 +8975,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1732</ID>
-                          <Description>"GK Handling"</Description>
+                          <Description>"_GK Handling"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8986,7 +8986,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1733</ID>
-                          <Description>"GK Kicking"</Description>
+                          <Description>"_GK Kicking"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -8997,7 +8997,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1734</ID>
-                          <Description>"GK Pos."</Description>
+                          <Description>"_GK Pos."</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9008,7 +9008,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1735</ID>
-                          <Description>"GK Reflexes"</Description>
+                          <Description>"_GK Reflexes"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9028,7 +9028,7 @@ dealloc(ptrEasyEditKnownAs)
                       <CheatEntries>
                         <CheatEntry>
                           <ID>1719</ID>
-                          <Description>"Aggression"</Description>
+                          <Description>"_Aggression"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9039,7 +9039,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1722</ID>
-                          <Description>"Att. Position"</Description>
+                          <Description>"_Att. Position"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9050,7 +9050,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1720</ID>
-                          <Description>"Composure (?)"</Description>
+                          <Description>"_Composure"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9061,7 +9061,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1721</ID>
-                          <Description>"Interceptions"</Description>
+                          <Description>"_Interceptions"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9072,7 +9072,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1724</ID>
-                          <Description>"Penalties"</Description>
+                          <Description>"_Penalties"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9083,7 +9083,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1723</ID>
-                          <Description>"Vision"</Description>
+                          <Description>"_Vision"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9103,7 +9103,7 @@ dealloc(ptrEasyEditKnownAs)
                       <CheatEntries>
                         <CheatEntry>
                           <ID>1401</ID>
-                          <Description>"Acceleration"</Description>
+                          <Description>"_Acceleration"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9114,7 +9114,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1679</ID>
-                          <Description>"Agility"</Description>
+                          <Description>"_Agility"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9125,7 +9125,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1681</ID>
-                          <Description>"Balance"</Description>
+                          <Description>"_Balance"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9136,7 +9136,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1680</ID>
-                          <Description>"Reactions"</Description>
+                          <Description>"_Reactions"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9147,7 +9147,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1678</ID>
-                          <Description>"Sprint Speed"</Description>
+                          <Description>"_Sprint Speed"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9167,7 +9167,7 @@ dealloc(ptrEasyEditKnownAs)
                       <CheatEntries>
                         <CheatEntry>
                           <ID>1710</ID>
-                          <Description>"Jumping"</Description>
+                          <Description>"_Jumping"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9178,7 +9178,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1713</ID>
-                          <Description>"Long Shots"</Description>
+                          <Description>"_Long Shots"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9189,7 +9189,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1709</ID>
-                          <Description>"Shot Power"</Description>
+                          <Description>"_Shot Power"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9200,7 +9200,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1711</ID>
-                          <Description>"Stamina"</Description>
+                          <Description>"_Stamina"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9211,7 +9211,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1712</ID>
-                          <Description>"Strength"</Description>
+                          <Description>"_Strength"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9231,7 +9231,7 @@ dealloc(ptrEasyEditKnownAs)
                       <CheatEntries>
                         <CheatEntry>
                           <ID>1703</ID>
-                          <Description>"Ball Control"</Description>
+                          <Description>"_Ball Control"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9242,7 +9242,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1700</ID>
-                          <Description>"Curve"</Description>
+                          <Description>"_Curve"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9253,7 +9253,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1699</ID>
-                          <Description>"Dribbling"</Description>
+                          <Description>"_Dribbling"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9264,7 +9264,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1701</ID>
-                          <Description>"FK Acc."</Description>
+                          <Description>"_FK Acc."</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -9275,7 +9275,7 @@ dealloc(ptrEasyEditKnownAs)
                         </CheatEntry>
                         <CheatEntry>
                           <ID>1702</ID>
-                          <Description>"Long Pass"</Description>
+                          <Description>"_Long Pass"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>ptrEasyEdit</Address>
                           <Offsets>
@@ -13947,7 +13947,7 @@ bHomeTeam_Tired:
       <CheatEntries>
         <CheatEntry>
           <ID>615</ID>
-          <Description>"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=J8F4UH72WG7RY"</Description>
+          <Description>"buymeacoff.ee/Aranaktu"</Description>
           <LastState Value="" RealAddress="00000000"/>
           <GroupHeader>1</GroupHeader>
         </CheatEntry>
@@ -14040,8 +14040,9 @@ bHomeTeam_Tired:
     </Structure>
   </Structures>
   <Comments>If you need help visit forum.
-http://fearlessrevolution.com/viewtopic.php?f=4&amp;t=225
-http://soccergaming.com/showthread.php?p=3982857
+https://fearlessrevolution.com/threads/fifa-18-career-mode-cheat-table.4976/
+
+http://soccergaming.com/index.php?threads/fifa-18-career-mode-cheat-table.6459576
 </Comments>
   <LuaScript>function AutoAttach()
 	local ProcessName = "FIFA18.exe"
