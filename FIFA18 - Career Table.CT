@@ -9366,6 +9366,151 @@ dealloc(ptrEasyEditKnownAs)
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
+          <ID>2454</ID>
+          <Description>"Player Injury"</Description>
+          <Options moHideChildren="1"/>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(INJECT_PlayerInjury,FIFA18.exe,8B 43 24 89 47 14) // should be unique
+alloc(newmem_PlayerInjury,$1000,"FIFA18.exe"+38B2C61)
+
+label(code_PlayerInjury)
+label(ret_PlayerInjury)
+
+alloc(playerInjuryPtr, 8)
+registersymbol(playerInjuryPtr)
+playerInjuryPtr:
+dq 0
+
+newmem_PlayerInjury:
+  mov [playerInjuryPtr], rbx
+code_PlayerInjury:
+  mov eax,[rbx+24]
+  mov [rdi+14],eax
+  jmp ret_PlayerInjury
+
+INJECT_PlayerInjury:
+  jmp newmem_PlayerInjury
+  nop
+ret_PlayerInjury:
+registersymbol(INJECT_PlayerInjury)
+
+[DISABLE]
+//code_PlayerInjury from here till the end of the code_PlayerInjury will be used to disable the cheat
+INJECT_PlayerInjury:
+  db 8B 43 24 89 47 14
+
+unregistersymbol(INJECT_PlayerInjury)
+unregistersymbol(playerInjuryPtr)
+dealloc(newmem_PlayerInjury)
+dealloc(playerInjuryPtr)
+
+{
+// ORIGINAL code_PlayerInjury - INJECTION POINT: "FIFA18.exe"+38B2C61
+
+"FIFA18.exe"+38B2C43: 8B 43 18                 -  mov eax,[rbx+18]
+"FIFA18.exe"+38B2C46: 89 47 08                 -  mov [rdi+08],eax
+"FIFA18.exe"+38B2C49: 8B 43 1C                 -  mov eax,[rbx+1C]
+"FIFA18.exe"+38B2C4C: 89 47 0C                 -  mov [rdi+0C],eax
+"FIFA18.exe"+38B2C4F: 8B 43 20                 -  mov eax,[rbx+20]
+"FIFA18.exe"+38B2C52: 89 47 10                 -  mov [rdi+10],eax
+"FIFA18.exe"+38B2C55: 8B 43 28                 -  mov eax,[rbx+28]
+"FIFA18.exe"+38B2C58: 89 47 18                 -  mov [rdi+18],eax
+"FIFA18.exe"+38B2C5B: 8B 43 2C                 -  mov eax,[rbx+2C]
+"FIFA18.exe"+38B2C5E: 89 47 1C                 -  mov [rdi+1C],eax
+// ---------- INJECTING HERE ----------
+"FIFA18.exe"+38B2C61: 8B 43 24                 -  mov eax,[rbx+24]
+"FIFA18.exe"+38B2C64: 89 47 14                 -  mov [rdi+14],eax
+// ---------- DONE INJECTING  ----------
+"FIFA18.exe"+38B2C67: 3D E5 65 32 01           -  cmp eax,013265E5
+"FIFA18.exe"+38B2C6C: 75 B1                    -  jne FIFA18.exe+38B2C1F
+"FIFA18.exe"+38B2C6E: C7 47 14 00 00 00 00     -  mov [rdi+14],00000000
+"FIFA18.exe"+38B2C75: EB A8                    -  jmp FIFA18.exe+38B2C1F
+"FIFA18.exe"+38B2C77: CC                       -  int 3
+"FIFA18.exe"+38B2C78: CC                       -  int 3
+"FIFA18.exe"+38B2C79: CC                       -  int 3
+"FIFA18.exe"+38B2C7A: CC                       -  int 3
+"FIFA18.exe"+38B2C7B: CC                       -  int 3
+"FIFA18.exe"+38B2C7C: CC                       -  int 3
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>2455</ID>
+              <Description>"PlayerID"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>playerInjuryPtr</Address>
+              <Offsets>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2456</ID>
+              <Description>"Unknown"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>playerInjuryPtr</Address>
+              <Offsets>
+                <Offset>14</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2457</ID>
+              <Description>"Unknown"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>playerInjuryPtr</Address>
+              <Offsets>
+                <Offset>18</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2458</ID>
+              <Description>"Unknown"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>playerInjuryPtr</Address>
+              <Offsets>
+                <Offset>1C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2459</ID>
+              <Description>"Unknown"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>playerInjuryPtr</Address>
+              <Offsets>
+                <Offset>20</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2460</ID>
+              <Description>"Recovery Date"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>playerInjuryPtr</Address>
+              <Offsets>
+                <Offset>24</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2461</ID>
+              <Description>"Unknown"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>playerInjuryPtr</Address>
+              <Offsets>
+                <Offset>28</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2462</ID>
+              <Description>"Unknown"</Description>
+              <VariableType>4 Bytes</VariableType>
+              <Address>playerInjuryPtr</Address>
+              <Offsets>
+                <Offset>2C</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
           <ID>53</ID>
           <Description>"Player Training"</Description>
           <Options moHideChildren="1"/>
@@ -14041,7 +14186,6 @@ bHomeTeam_Tired:
   </Structures>
   <Comments>If you need help visit forum.
 https://fearlessrevolution.com/threads/fifa-18-career-mode-cheat-table.4976/
-
 http://soccergaming.com/index.php?threads/fifa-18-career-mode-cheat-table.6459576
 </Comments>
   <LuaScript>function AutoAttach()

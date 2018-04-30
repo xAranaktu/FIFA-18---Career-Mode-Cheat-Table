@@ -129,3 +129,6 @@ Changelog:
 		
 	Update 28.04.2018
 		- Added "DatabaseTables_copyplayerattributes.lua" & "EditingPlayer_copyplayerattributes.lua"
+		
+	Update 30.04.2018
+		- Added "Player Injury". (Top scorer injury is not a problem anymore)
