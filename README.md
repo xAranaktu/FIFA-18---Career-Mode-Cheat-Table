@@ -102,6 +102,14 @@ Arsène Wenger headid is 232298. After you change headid you need to play match 
 
 * **Can I buy player who “recently joined a club”?**
   - Yes, you need to edit "playerjointeamdate". Value "158229" should be fine. You will find it in "Editing Database->Database Tables->Players table->Player Info".
+  
+* **How to remove injury from a player?**
+  - 1. Activate "Player Injury" script
+    2. Go to "Transfers" -> "Search Players" in-game
+    3. Find injured player (https://i.imgur.com/OpWjUlz.png)
+    4. Click on him (https://i.imgur.com/EQuwT3d.png)
+    5. Now in Cheat Engine change following values: playerid to '4294967295', Recovery Date to '20080101' and set the rest to '0' (https://i.imgur.com/ikUK2Ht.png)
+    6. Done. Injury has been removed (https://i.imgur.com/gGWmlNQ.png)
 
 ## Getting Started
 
