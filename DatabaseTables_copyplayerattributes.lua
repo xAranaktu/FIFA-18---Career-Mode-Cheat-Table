@@ -27,12 +27,12 @@ local function apply_stats(fileContent)
 
 	-- Skill Moves
 	skills_index = string.find(fileContent, 'Skills</p>')
-	val = tonumber(fileContent:sub(skills_index-79, skills_index-79))
+	val = tonumber(fileContent:sub(skills_index-80, skills_index-80))
 	addr_list.getMemoryRecordByDescription("skillmoves").Value = val-1
 
 	-- Weak Foot
 	skills_index = string.find(fileContent, 'Weakfoot</p>')
-	val = tonumber(fileContent:sub(skills_index-79, skills_index-79))
+	val = tonumber(fileContent:sub(skills_index-80, skills_index-80))
 	addr_list.getMemoryRecordByDescription("weakfoot").Value = val-1
 
 	-- WorkRates
