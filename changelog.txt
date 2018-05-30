@@ -132,3 +132,6 @@ Changelog:
 		
 	Update 30.04.2018
 		- Added "Player Injury". (Top scorer injury is not a problem anymore)
+		
+	Update 30.05.2018
+		- Fixed bug which was disabling skill moves and fake shots after deactivating "In-Game Hacks" script.

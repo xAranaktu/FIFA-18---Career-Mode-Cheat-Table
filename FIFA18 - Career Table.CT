@@ -3563,7 +3563,7 @@ dealloc(ptrTeamplayerlinks)
                                 </CheatEntry>
                                 <CheatEntry>
                                   <ID>1934</ID>
-                                  <Description>"Has Hight Quality Head"</Description>
+                                  <Description>"Has High Quality Head"</Description>
                                   <VariableType>Binary</VariableType>
                                   <BitStart>6</BitStart>
                                   <BitLength>1</BitLength>
@@ -13383,7 +13383,7 @@ unregistersymbol(ptrAwayTeamScore)
 dealloc(ptrAwayTeamScore)
 
 INJECT_ingame_fivestarskillmoves:
-  db 8B B8 54 02 00 00
+  db 8B B8 60 02 00 00
 
 unregistersymbol(INJECT_ingame_fivestarskillmoves)
 dealloc(skillmoves_cave)
