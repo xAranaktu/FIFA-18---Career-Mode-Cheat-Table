@@ -135,3 +135,6 @@ Changelog:
 		
 	Update 30.05.2018
 		- Fixed bug which was disabling skill moves and fake shots after deactivating "In-Game Hacks" script.
+		
+	Update 02.06.2018
+		- Fixed "Time of Day" script

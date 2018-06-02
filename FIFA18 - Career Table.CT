@@ -11432,7 +11432,7 @@ dealloc(StadiumID)
               <LastState/>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
-aobscanmodule(INJECT_TimeOfDay,FIFA18.exe,8B 55 77 48 8B 4D 67) // should be unique
+aobscanmodule(INJECT_TimeOfDay,FIFA18.exe,8B 55 7F 48 8B 4D 67) // should be unique
 alloc(newmem_TimeOfDay,$1000,"FIFA18.exe"+2C713F4)
 
 label(code_TimeOfDay)
@@ -11460,7 +11460,7 @@ registersymbol(INJECT_TimeOfDay)
 [DISABLE]
 //code_TimeOfDay from here till the end of the code_TimeOfDay will be used to disable the cheat
 INJECT_TimeOfDay:
-  db 8B 55 77 48 8B 4D 67
+  db 8B 55 7F 48 8B 4D 67
 
 unregistersymbol(INJECT_TimeOfDay)
 dealloc(newmem_TimeOfDay)
@@ -11481,7 +11481,7 @@ dealloc(TimeOfDay)
 "FIFA18.exe"+2C713EA: BA 40 01 00 00           -  mov edx,00000140
 "FIFA18.exe"+2C713EF: E8 CC 90 DC FF           -  call FIFA18.exe+2A3A4C0
 // ---------- INJECT_TimeOfDayING HERE ----------
-"FIFA18.exe"+2C713F4: 8B 55 77                 -  mov edx,[rbp+77]
+"FIFA18.exe"+2C713F4: 8B 55 7F                 -  mov edx,[rbp+7F]
 "FIFA18.exe"+2C713F7: 48 8B 4D 67              -  mov rcx,[rbp+67]
 // ---------- DONE INJECT_TimeOfDayING  ----------
 "FIFA18.exe"+2C713FB: E8 90 F2 FF FF           -  call FIFA18.exe+2C70690
